@@ -11,9 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import br.com.rodrigues.murilo.mtrack.R;
+import br.com.rodrigues.murilo.mtrack.activity.ListOrderActivity;
 import br.com.rodrigues.murilo.mtrack.ui.SettingsActivity;
 import br.com.rodrigues.murilo.mtrack.ui.ViewSamplesActivity;
-import br.com.rodrigues.murilo.mtrack.ui.quote.ListActivity;
 
 import static br.com.rodrigues.murilo.mtrack.util.LogUtil.logD;
 import static br.com.rodrigues.murilo.mtrack.util.LogUtil.makeLogTag;
@@ -103,7 +103,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void goToNavDrawerItem(int item) {
         switch (item) {
             case R.id.nav_quotes:
-                startActivity(new Intent(this, ListActivity.class));
+                startActivity(new Intent(this, ListOrderActivity.class));
                 finish();
                 break;
             case R.id.nav_samples:

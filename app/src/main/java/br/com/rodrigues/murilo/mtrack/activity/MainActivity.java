@@ -40,12 +40,12 @@ public class MainActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+/*
     @Override
     protected int getSelfNavDrawerItem() {
         return R.id.nav_quotes;
     }
-
+*/
     @Override
     public boolean providesActivityToolbar() {
         return true;

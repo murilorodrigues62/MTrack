@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:2:1-33:12
+ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:2:1-37:12
 	package
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:3:5-45
 		INJECTED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml
@@ -14,7 +14,7 @@ ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest
 		INJECTED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml
 		INJECTED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml
 application
-ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:5:5-31:19
+ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:5:5-35:19
 MERGED from [com.android.support:appcompat-v7:23.4.0] /home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] /home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.4.0] /home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/AndroidManifest.xml:7:5-20
@@ -59,30 +59,38 @@ category#android.intent.category.LAUNCHER
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:14:17-77
 	android:name
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:14:27-74
-activity#br.com.rodrigues.murilo.mtrack.ui.quote.ArticleDetailActivity
+activity#br.com.rodrigues.murilo.mtrack.activity.ListOrderActivity
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:17:9-20:67
 	android:label
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:19:13-29
 	android:parentActivityName
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:20:13-64
 	android:name
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:18:13-59
-activity#br.com.rodrigues.murilo.mtrack.ui.ViewSamplesActivity
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:18:13-55
+activity#br.com.rodrigues.murilo.mtrack.ui.quote.ArticleDetailActivity
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:21:9-24:67
 	android:label
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:23:13-36
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:23:13-29
 	android:parentActivityName
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:24:13-64
 	android:name
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:22:13-51
-activity#br.com.rodrigues.murilo.mtrack.ui.SettingsActivity
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:22:13-59
+activity#br.com.rodrigues.murilo.mtrack.ui.ViewSamplesActivity
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:25:9-28:67
 	android:label
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:27:13-37
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:27:13-36
 	android:parentActivityName
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:28:13-64
 	android:name
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:26:13-48
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:26:13-51
+activity#br.com.rodrigues.murilo.mtrack.ui.SettingsActivity
+ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:29:9-32:67
+	android:label
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:31:13-37
+	android:parentActivityName
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:32:13-64
+	android:name
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:30:13-48
 uses-sdk
 INJECTED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.4.0] /home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/AndroidManifest.xml:21:5-23:78

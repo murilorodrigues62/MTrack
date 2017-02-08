@@ -25,8 +25,6 @@ import br.com.rodrigues.murilo.mtrack.dummy.DummyContent;
 
 /**
  * Shows a list of all available quotes.
- * <p/>
- * Created by Andreas Schrade on 14.12.2015.
  */
 public class ArticleListFragment extends ListFragment {
 

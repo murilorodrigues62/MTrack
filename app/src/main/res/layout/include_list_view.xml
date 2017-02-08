@@ -6,5 +6,5 @@
     android:name="br.com.rodrigues.murilo.mtrack.ui.quote.ArticleListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListActivity"
+    tools:context=".ui.quote.ListActivity"
     tools:layout="@android:layout/list_content"/>
