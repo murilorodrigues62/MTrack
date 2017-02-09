@@ -1,2 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.4.0_5f0de4b0a9c14963033f0197bb5366ce9f91b6bb/classes.dex" />
+    </item>
+    <item
+        jar="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.1.1_825c83090e9421925f20645b38f6c4d04395437d/classes.dex" />
+    </item>
+    <item
+        jar="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.4.0_ab99126afe8e2d7141a05d2fccc46a70f75bcab5/classes.dex" />
+    </item>
+    <item
+        jar="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.4.0_6857389b358883b8b2f634cdeb5a05906c9d6766/classes.dex" />
+    </item>
+    <item
+        jar="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.1.1_a57dd8757697c002bef340dcb119ad1aca82a0c1/classes.dex" />
+    </item>
+    <item
+        jar="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="5e412e954a24c5310a459c09870e4e2081aceb03">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-cardview-v7-23.1.1_37697b7f122ac94c716f713d4044f345780ec734/classes.dex" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.6.1/86b122e640af09b0723e1fa44083c354ba6d9089/glide-3.6.1.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="86b122e640af09b0723e1fa44083c354ba6d9089">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/glide-3.6.1_4071960512ba28f14e47d089d1dc7e14947091d6/classes.dex" />
+    </item>
+    <item
+        jar="/root/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-7.0.1_6bbe9b5d6a4ec71d1909297ac4c56013742f2fa4/classes.dex" />
+    </item>
+    <item
+        jar="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="f57de4b5634ba3d826d0bb0913f62ccba20b7dd5">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_3fd70ecd143d4ef879cdbd00597546bd2b2a4662/classes.dex" />
+    </item>
+    <item
+        jar="/root/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_f6239821904b8bd6abe8ab66c1e2e11c76623210/classes.dex" />
+    </item>
+    <item
+        jar="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.4.0_be9ec1a5b6e8d0356b7bbe0f5f755943bbec51a6/classes.dex" />
+    </item>
+    <item
+        jar="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.4.0_b99a21c10ca6107efc23c36dc2e5ce41a84e2bd8/classes.dex" />
+    </item>
+    <item
+        jar="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="2588c8fe66defc42b516d621eb161eeb51e095a5">
+        <dex dex="/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_e3855ee5f8b1c36349ef4dd08bbff33fc2682f67/classes.dex" />
+    </item>
+
+</items>

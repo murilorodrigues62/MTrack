@@ -8,7 +8,7 @@ import butterknife.ButterKnife.ViewBinder;
 public class ViewSamplesActivity$$ViewBinder<T extends br.com.rodrigues.murilo.mtrack.ui.ViewSamplesActivity> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131558534, "method 'onFabClicked'");
+    view = finder.findRequiredView(source, 2131558525, "method 'onFabClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

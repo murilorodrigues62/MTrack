@@ -5,11 +5,6 @@ import android.os.Bundle;
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
 
-/**
- * Simple wrapper for {@link ArticleDetailFragment}
- * This wrapper is only used in single pan mode (= on smartphones)
- * Created by Andreas Schrade on 14.12.2015.
- */
 public class ArticleDetailActivity extends BaseActivity {
 
     @Override

@@ -27,6 +27,10 @@
             android:label=""
             android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
         <activity
+            android:name="br.com.rodrigues.murilo.mtrack.activity.OrderActivity"
+            android:label=""
+            android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
+        <activity
             android:name="br.com.rodrigues.murilo.mtrack.ui.quote.ArticleDetailActivity"
             android:label=""
             android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />

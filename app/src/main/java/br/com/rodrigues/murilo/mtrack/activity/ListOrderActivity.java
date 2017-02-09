@@ -7,10 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import br.com.rodrigues.murilo.mtrack.R;
+import br.com.rodrigues.murilo.mtrack.fragment.OrderFragment;
 import br.com.rodrigues.murilo.mtrack.fragment.OrderListFragment;
 import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
-import br.com.rodrigues.murilo.mtrack.ui.quote.ArticleDetailActivity;
-import br.com.rodrigues.murilo.mtrack.ui.quote.ArticleDetailFragment;
 
 /**
  * Lists all sales order
@@ -20,7 +19,7 @@ public class ListOrderActivity extends BaseActivity implements OrderListFragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_order);
+        setContentView(R.layout.activity_order_list); 
 
         setupToolbar();
     }
@@ -32,9 +31,9 @@ public class ListOrderActivity extends BaseActivity implements OrderListFragment
      */
     @Override
     public void onItemSelected(String id) {
-        // Start the detail activity in single pane mode.
-        Intent detailIntent = new Intent(this, ArticleDetailActivity.class);
-        detailIntent.putExtra(ArticleDetailFragment.ARG_ITEM_ID, id);
+        // Start the detail activity of order
+        Intent detailIntent = new Intent(this, OrderActivity.class);
+        detailIntent.putExtra(OrderFragment.ARG_ITEM_ID, id);
         startActivity(detailIntent);
     }
 
