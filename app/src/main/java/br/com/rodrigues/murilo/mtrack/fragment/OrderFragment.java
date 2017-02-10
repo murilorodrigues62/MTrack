@@ -2,19 +2,15 @@ package br.com.rodrigues.murilo.mtrack.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
 
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyContent;
@@ -43,14 +39,11 @@ public class OrderFragment extends BaseFragment {
     @Bind(R.id.author)
     TextView author;
 
-    @Bind(R.id.backdrop)
-    ImageView backdropImg;
-
-    @Bind(R.id.collapsing_toolbar)
-    CollapsingToolbarLayout collapsingToolbar;
-    
     @Bind(R.id.fab)
     FloatingActionButton fab;
+
+    @Bind(R.id.barcode)
+    EditText barcode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,14 +61,7 @@ public class OrderFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflateAndBind(inflater, container, R.layout.fragment_order);
 
-        if (!((BaseActivity) getActivity()).providesActivityToolbar()) {
-            // No Toolbar present. Set include_toolbar:
-            ((BaseActivity) getActivity()).setToolbar((Toolbar) rootView.findViewById(R.id.toolbar));
-        }
-
         if (dummyItem != null) {
-            loadBackdrop();
-            collapsingToolbar.setTitle(dummyItem.title);
             author.setText(dummyItem.author);
             quote.setText(dummyItem.content);
         }
@@ -98,19 +84,15 @@ public class OrderFragment extends BaseFragment {
         if (requestCode == 0) {
             if (resultCode == ((BaseActivity) getActivity()).RESULT_OK) {
                 String contents = intent.getStringExtra("SCAN_RESULT");
-                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
-                // etBarcode.setText(contents);
+                //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+                barcode.setText(contents);
 
                 // Handle successful scan
             } else if (resultCode == ((BaseActivity) getActivity()).RESULT_CANCELED) {
                 // Handle cancel
-                // etBarcode.setText("");
+                barcode.setText("");
             }
         }
-    }
-
-    private void loadBackdrop() {
-        Glide.with(this).load(dummyItem.photoId).centerCrop().into(backdropImg);
     }
 
     @Override
