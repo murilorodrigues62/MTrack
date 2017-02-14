@@ -3,6 +3,9 @@ package br.com.rodrigues.murilo.mtrack.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,11 +15,16 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyContent;
+import br.com.rodrigues.murilo.mtrack.model.Product;
 import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
 import br.com.rodrigues.murilo.mtrack.ui.base.BaseFragment;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Shows the order detail
@@ -45,6 +53,11 @@ public class OrderFragment extends BaseFragment {
     @Bind(R.id.barcode)
     EditText barcode;
 
+    @Bind(R.id.recyclerview)
+    RecyclerView recyclerView;
+
+    private MyAdapter myAdapter;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +66,9 @@ public class OrderFragment extends BaseFragment {
             // load dummy item by using the passed item ID.
             dummyItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
         }
-        
+
         setHasOptionsMenu(true);
-    }
+      }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -75,6 +88,8 @@ public class OrderFragment extends BaseFragment {
                 startActivityForResult(intent, 0);
             }
         });
+
+        setupRecycler();
 
         return rootView;
     }
@@ -119,5 +134,107 @@ public class OrderFragment extends BaseFragment {
         return fragment;
     }
 
+    private void setupRecycler() {
+
+        // Configurando o gerenciador de layout para ser uma lista.
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        // Adiciona o adapter que irá anexar os objetos à lista.
+        // TODO: 11/02/17 substituir por class
+        ArrayList<Product> products = new ArrayList<>();
+        products.add(new Product(1, "Product 1"));
+        products.add(new Product(2, "Product 2"));
+        products.add(new Product(3, "Product 3"));
+        products.add(new Product(4, "Product 4"));
+        products.add(new Product(5, "Product 5"));
+        products.add(new Product(6, "Product 6"));
+        products.add(new Product(7, "Product 7"));
+        products.add(new Product(8, "Product 8"));
+        products.add(new Product(9, "Product 9"));
+        products.add(new Product(10, "Product 10"));
+
+        myAdapter = new MyAdapter(products);
+        recyclerView.setAdapter(myAdapter);
+
+        // Configurando um dividr entre linhas, para uma melhor visualização.
+        recyclerView.addItemDecoration(
+                new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+    }
+
+    public class MyHolder extends RecyclerView.ViewHolder {
+
+        @Bind(R.id.product_name)
+        public TextView title;
+
+        @Bind(R.id.product_count)
+        public TextView count;
+
+        public MyHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+    }
+
+
+    private class MyAdapter extends RecyclerView.Adapter<MyHolder> {
+
+        private final List<Product> products;
+
+        public MyAdapter(ArrayList products) {
+            this.products = products;
+        }
+
+        @Override
+        public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new MyHolder(LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.adapter_product_count, parent, false));
+        }
+
+        @Override
+        public void onBindViewHolder(MyHolder holder, int position) {
+            holder.title.setText(products.get(position).getName());
+            holder.count.setText(String.valueOf(products.get(position).getId())); // TODO: 14/02/17 implementar campos corretos
+        }
+
+        @Override
+        public int getItemCount() {
+            return products != null ? products.size() : 0;
+        }
+
+        /**
+         * Método publico chamado para atualziar a lista.
+         *
+         * @param product deve ser substituido pela classe
+         */
+        public void updateList(Product product) {
+            insertItem(product);
+        }
+
+        // Método responsável por inserir um novo usuário na lista e notificar que há novos itens.
+        private void insertItem(Product product) {
+            products.add(product); // TODO: 13/02/17 ajustar
+            notifyItemInserted(getItemCount());
+        }
+
+        // Método responsável por atualizar um usuário já existente na lista.
+        private void updateItem(int position) {
+            Product product = products.get(position);
+            //product.incrementRead(); // TODO: 10/02/17 Criar imcrementRead para incrementar quantidade lida do produto
+            notifyItemChanged(position);
+        }
+
+        // Método responsável por remover um usuário da lista.
+        private void removerItem(int position) { // TODO: 13/02/17 ajustar
+            products.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, products.size());
+        }
+    }
+
+
+
     public OrderFragment() {}
+    // TODO: 11/02/17 Verificar porque não está inflando cardview do recycle
 }

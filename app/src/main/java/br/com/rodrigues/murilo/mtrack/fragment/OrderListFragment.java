@@ -107,7 +107,7 @@ public class OrderListFragment extends ListFragment {
         @Override
         public View getView(int position, View convertView, ViewGroup container) {
             if (convertView == null) {
-                convertView = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_list_order, container, false);
+                convertView = LayoutInflater.from(getActivity()).inflate(R.layout.adapter_list_order, container, false);
             }
 
             final DummyContent.DummyItem item = (DummyContent.DummyItem) getItem(position);

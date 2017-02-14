@@ -1,4 +1,0 @@
-CHANGED,/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/br/com/rodrigues/murilo/mtrack/fragment/OrderFragment$override.class
-CHANGED,/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/br/com/rodrigues/murilo/mtrack/fragment/OrderFragment$$ViewBinder$override.class
-CHANGED,/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/br/com/rodrigues/murilo/mtrack/R$id$override.class
-CHANGED,/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/transforms/instantRun/debug/folders/4000/5/enhanced/com/android/tools/fd/runtime/AppPatchesLoaderImpl.class
