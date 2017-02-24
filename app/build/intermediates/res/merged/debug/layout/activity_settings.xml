@@ -10,10 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/include_toolbar" />
-        <fragment android:name="br.com.rodrigues.murilo.mtrack.ui.SettingsActivity$SettingsFragment"
-            android:id="@+id/settings_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <include layout="@layout/include_settings_view" />
     </LinearLayout>
     <include layout="@layout/include_navigation" />
 

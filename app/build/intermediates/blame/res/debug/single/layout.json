@@ -56,12 +56,12 @@
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/res/layout/abc_activity_chooser_view_list_item.xml"
     },
     {
-        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
-        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/res/layout/support_simple_spinner_dropdown_item.xml"
-    },
-    {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/res/layout/support_simple_spinner_dropdown_item.xml"
     },
     {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
@@ -90,6 +90,10 @@
     {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res/layout/design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/include_settings_view.xml",
+        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/include_settings_view.xml"
     },
     {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
@@ -156,6 +160,10 @@
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.0/res/layout/abc_list_menu_item_checkbox.xml"
     },
     {
+        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/activity_sync.xml",
+        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/activity_sync.xml"
+    },
+    {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/include_list_view_twopane.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/include_list_view_twopane.xml"
     },
@@ -174,10 +182,6 @@
     {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/adapter_list_order.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/adapter_list_order.xml"
-    },
-    {
-        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/activity_samples.xml",
-        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/activity_samples.xml"
     },
     {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
@@ -268,7 +272,7 @@
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/adapter_product_count.xml"
     },
     {
-        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/include_samples_view.xml",
-        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/include_samples_view.xml"
+        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/include_sync_view.xml",
+        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/include_sync_view.xml"
     }
 ]

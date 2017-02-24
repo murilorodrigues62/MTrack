@@ -12,8 +12,8 @@ import android.view.MenuItem;
 
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.activity.ListOrderActivity;
-import br.com.rodrigues.murilo.mtrack.ui.SettingsActivity;
-import br.com.rodrigues.murilo.mtrack.ui.ViewSamplesActivity;
+import br.com.rodrigues.murilo.mtrack.activity.SettingsActivity;
+import br.com.rodrigues.murilo.mtrack.activity.SyncActivity;
 
 import static br.com.rodrigues.murilo.mtrack.util.LogUtil.logD;
 import static br.com.rodrigues.murilo.mtrack.util.LogUtil.makeLogTag;
@@ -107,7 +107,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.nav_samples:
-                startActivity(new Intent(this, ViewSamplesActivity.class));
+                startActivity(new Intent(this, SyncActivity.class));
                 break;
             case R.id.nav_settings:
                 startActivity(new Intent(this, SettingsActivity.class));

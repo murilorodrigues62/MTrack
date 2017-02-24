@@ -16,25 +16,25 @@
         </activity>
         <activity
             android:name=".activity.ListOrderActivity"
-            android:label=""
+            android:label="Order List"
             android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".activity.OrderActivity"
-            android:label=""
+            android:label="Order"
             android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".ui.quote.ArticleDetailActivity"
             android:label=""
             android:parentActivityName=".activity.MainActivity" />
         <activity
-            android:name=".ui.ViewSamplesActivity"
-            android:label="Samples"
-            android:parentActivityName=".activity.MainActivity" />
-        <activity
-            android:name=".ui.SettingsActivity"
+            android:name=".activity.SettingsActivity"
             android:label="Settings"
             android:parentActivityName=".activity.MainActivity" />
-           <!-- android:parentActivityName=".ui.quote.ListActivity" /> -->
+        <activity
+            android:name=".activity.SyncActivity"
+            android:label="Sync"
+            android:parentActivityName=".activity.MainActivity" />
+        <!-- android:parentActivityName=".ui.quote.ListActivity" /> -->
 
     </application>
 

@@ -23,23 +23,23 @@
         </activity>
         <activity
             android:name="br.com.rodrigues.murilo.mtrack.activity.ListOrderActivity"
-            android:label=""
+            android:label="Order List"
             android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
         <activity
             android:name="br.com.rodrigues.murilo.mtrack.activity.OrderActivity"
-            android:label=""
+            android:label="Order"
             android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
         <activity
             android:name="br.com.rodrigues.murilo.mtrack.ui.quote.ArticleDetailActivity"
             android:label=""
             android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
         <activity
-            android:name="br.com.rodrigues.murilo.mtrack.ui.ViewSamplesActivity"
-            android:label="Samples"
+            android:name="br.com.rodrigues.murilo.mtrack.activity.SettingsActivity"
+            android:label="Settings"
             android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
         <activity
-            android:name="br.com.rodrigues.murilo.mtrack.ui.SettingsActivity"
-            android:label="Settings"
+            android:name="br.com.rodrigues.murilo.mtrack.activity.SyncActivity"
+            android:label="Sync"
             android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
         <!-- android:parentActivityName=".ui.quote.ListActivity" /> -->
 

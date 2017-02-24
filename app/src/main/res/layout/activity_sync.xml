@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/include_toolbar" />
-        <include layout="@layout/include_samples_view" />
+        <include layout="@layout/include_sync_view" />
     </LinearLayout>
     <include layout="@layout/include_navigation" />
 

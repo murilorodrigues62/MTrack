@@ -1,16 +1,18 @@
-package br.com.rodrigues.murilo.mtrack.ui;
+package br.com.rodrigues.murilo.mtrack.activity;
 
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
- * This Activity provides several settings. Activity contains {@link PreferenceFragment} as inner class.
+ * System Settings
  */
 public class SettingsActivity extends BaseActivity {
 
@@ -18,7 +20,13 @@ public class SettingsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        ButterKnife.bind(this);
         setupToolbar();
+    }
+
+    @OnClick(R.id.fab)
+    public void onFabClicked(View view) {
+        Snackbar.make(view, R.string.message_saved, Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
 
     private void setupToolbar() {
@@ -27,11 +35,7 @@ public class SettingsActivity extends BaseActivity {
         ab.setDisplayHomeAsUpEnabled(true);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.sample_actions, menu);
-        return true;
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -51,15 +55,5 @@ public class SettingsActivity extends BaseActivity {
     @Override
     public boolean providesActivityToolbar() {
         return true;
-    }
-
-    public static class SettingsFragment extends PreferenceFragment {
-        public SettingsFragment() {}
-
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.settings_prefs);
-        }
     }
 }

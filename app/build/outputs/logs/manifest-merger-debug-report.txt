@@ -112,7 +112,7 @@ ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest
 activity#br.com.rodrigues.murilo.mtrack.activity.ListOrderActivity
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:17:9-20:67
 	android:label
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:19:13-29
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:19:13-39
 	android:parentActivityName
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:20:13-64
 	android:name
@@ -120,7 +120,7 @@ ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest
 activity#br.com.rodrigues.murilo.mtrack.activity.OrderActivity
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:21:9-24:67
 	android:label
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:23:13-29
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:23:13-34
 	android:parentActivityName
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:24:13-64
 	android:name
@@ -133,22 +133,22 @@ ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:28:13-64
 	android:name
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:26:13-59
-activity#br.com.rodrigues.murilo.mtrack.ui.ViewSamplesActivity
+activity#br.com.rodrigues.murilo.mtrack.activity.SettingsActivity
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:29:9-32:67
 	android:label
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:31:13-36
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:31:13-37
 	android:parentActivityName
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:32:13-64
 	android:name
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:30:13-51
-activity#br.com.rodrigues.murilo.mtrack.ui.SettingsActivity
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:30:13-54
+activity#br.com.rodrigues.murilo.mtrack.activity.SyncActivity
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:33:9-36:67
 	android:label
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:35:13-37
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:35:13-33
 	android:parentActivityName
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:36:13-64
 	android:name
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:34:13-48
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:34:13-50
 uses-sdk
 INJECTED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:23.1.1] /home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/design/23.1.1/AndroidManifest.xml:20:5-43

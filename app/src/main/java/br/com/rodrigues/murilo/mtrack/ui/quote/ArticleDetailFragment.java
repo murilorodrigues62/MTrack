@@ -86,7 +86,7 @@ public class ArticleDetailFragment extends BaseFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.sample_actions, menu);
+        inflater.inflate(R.menu.settings_actions, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

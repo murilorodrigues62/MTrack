@@ -8,23 +8,11 @@
         <item
             android:id="@+id/nav_samples"
             android:icon="@drawable/ic_forum"
-            android:title="@string/navigation_samples" />
+            android:title="@string/navigation_sync" />
 
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_action_settings"
             android:title="@string/navigation_settings" />
     </group>
-
-    <item android:title="@string/navigation_sub_items">
-        <menu>
-            <item
-                android:icon="@drawable/ic_dashboard"
-                android:title="@string/navigation_dummy_item_1" />
-            <item
-                android:icon="@drawable/ic_dashboard"
-                android:title="@string/navigation_dummy_item_2" />
-        </menu>
-    </item>
-
 </menu>

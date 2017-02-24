@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/menu/sample_actions.xml",
-        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/menu/sample_actions.xml"
-    },
-    {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/menu/drawer_view.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/menu/drawer_view.xml"
+    },
+    {
+        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/menu/settings_actions.xml",
+        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/menu/settings_actions.xml"
     }
 ]

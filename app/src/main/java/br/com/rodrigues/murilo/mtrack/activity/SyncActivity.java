@@ -1,4 +1,4 @@
-package br.com.rodrigues.murilo.mtrack.ui;
+package br.com.rodrigues.murilo.mtrack.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -7,27 +7,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
- * Activity demonstrates some GUI functionalities from the Android support library.
+ * System Settings
  */
-public class ViewSamplesActivity extends BaseActivity {
+public class SyncActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_samples);
+        setContentView(R.layout.activity_sync);
         ButterKnife.bind(this);
         setupToolbar();
     }
 
     @OnClick(R.id.fab)
     public void onFabClicked(View view) {
-        Snackbar.make(view, "Hello Snackbar!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        Snackbar.make(view, R.string.message_saved, Snackbar.LENGTH_LONG).setAction("Action", null).show();
     }
 
     private void setupToolbar() {
@@ -38,7 +38,7 @@ public class ViewSamplesActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.sample_actions, menu);
+        getMenuInflater().inflate(R.menu.settings_actions, menu);
         return true;
     }
 
@@ -61,4 +61,5 @@ public class ViewSamplesActivity extends BaseActivity {
     public boolean providesActivityToolbar() {
         return true;
     }
+    // TODO: 23/02/17 continuar 
 }

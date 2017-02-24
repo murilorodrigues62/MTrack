@@ -112,7 +112,7 @@ public class OrderFragment extends BaseFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.sample_actions, menu);
+        inflater.inflate(R.menu.settings_actions, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -142,7 +142,7 @@ public class OrderFragment extends BaseFragment {
         recyclerView.setHasFixedSize(true);
 
         // Adiciona o adapter que irá anexar os objetos à lista.
-        // TODO: 11/02/17 substituir por class
+        // TODO: 11/02/17 buscar informações do banco
         ArrayList<Product> products = new ArrayList<>();
         products.add(new Product(1, "Product 1"));
         products.add(new Product(2, "Product 2"));
@@ -158,7 +158,7 @@ public class OrderFragment extends BaseFragment {
         myAdapter = new MyAdapter(products);
         recyclerView.setAdapter(myAdapter);
 
-        // Configurando um dividr entre linhas, para uma melhor visualização.
+        // Configurando um divider entre linhas, para uma melhor visualização.
         recyclerView.addItemDecoration(
                 new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
     }
@@ -212,21 +212,21 @@ public class OrderFragment extends BaseFragment {
             insertItem(product);
         }
 
-        // Método responsável por inserir um novo usuário na lista e notificar que há novos itens.
+        // Insert a new product
         private void insertItem(Product product) {
             products.add(product); // TODO: 13/02/17 ajustar
             notifyItemInserted(getItemCount());
         }
 
-        // Método responsável por atualizar um usuário já existente na lista.
+        // Update a product
         private void updateItem(int position) {
             Product product = products.get(position);
             //product.incrementRead(); // TODO: 10/02/17 Criar imcrementRead para incrementar quantidade lida do produto
             notifyItemChanged(position);
         }
 
-        // Método responsável por remover um usuário da lista.
-        private void removerItem(int position) { // TODO: 13/02/17 ajustar
+        // Remove a product
+        private void removerItem(int position) {
             products.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, products.size());
@@ -236,5 +236,4 @@ public class OrderFragment extends BaseFragment {
 
 
     public OrderFragment() {}
-    // TODO: 11/02/17 Verificar porque não está inflando cardview do recycle
 }

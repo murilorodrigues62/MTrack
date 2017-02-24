@@ -88,7 +88,7 @@ public class ListActivity extends BaseActivity implements ArticleListFragment.Ca
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.sample_actions, menu);
+        getMenuInflater().inflate(R.menu.settings_actions, menu);
         return true;
     }
 
