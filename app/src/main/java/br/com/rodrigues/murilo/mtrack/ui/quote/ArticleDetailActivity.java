@@ -3,7 +3,7 @@ package br.com.rodrigues.murilo.mtrack.ui.quote;
 import android.os.Bundle;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
+import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
 
 public class ArticleDetailActivity extends BaseActivity {
 

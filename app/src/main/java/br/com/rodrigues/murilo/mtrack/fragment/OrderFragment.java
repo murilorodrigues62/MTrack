@@ -19,10 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.R;
+import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
+import br.com.rodrigues.murilo.mtrack.activity.base.BaseFragment;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyContent;
 import br.com.rodrigues.murilo.mtrack.model.Product;
-import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
-import br.com.rodrigues.murilo.mtrack.ui.base.BaseFragment;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -78,7 +78,7 @@ public class OrderFragment extends BaseFragment {
             author.setText(dummyItem.author);
             quote.setText(dummyItem.content);
         }
-
+        // TODO: 02/03/17 ajustar toll bar, por include ou incluir aqui codigo e por toolbar do exemplo com texto 
         // call the Barcode Scanner app
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +120,7 @@ public class OrderFragment extends BaseFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                // your logic
+                // TODO: 02/03/17 implementar aqui o finalizar pedido
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -177,7 +177,6 @@ public class OrderFragment extends BaseFragment {
         }
     }
 
-
     private class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
         private final List<Product> products;
@@ -206,7 +205,7 @@ public class OrderFragment extends BaseFragment {
         /**
          * Método publico chamado para atualziar a lista.
          *
-         * @param product deve ser substituido pela classe
+         * @param product
          */
         public void updateList(Product product) {
             insertItem(product);
@@ -232,8 +231,6 @@ public class OrderFragment extends BaseFragment {
             notifyItemRangeChanged(position, products.size());
         }
     }
-
-
 
     public OrderFragment() {}
 }

@@ -1,14 +1,13 @@
 package br.com.rodrigues.murilo.mtrack.activity;
+
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
-import butterknife.Bind;
+import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -16,10 +15,7 @@ import butterknife.OnClick;
  * System Settings
  */
 public class SyncActivity extends BaseActivity {
-    private ProgressBar progress;
-
-    @Bind(R.id.progressBar)
-    public ProgressBar progressBar;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +27,16 @@ public class SyncActivity extends BaseActivity {
 
     @OnClick(R.id.fab)
     public void onFabClicked(View view) {
-       // Snackbar.make(view, R.string.message_saved, Snackbar.LENGTH_LONG).setAction("Action", null).show();
-        sync(view);
+
+       progress = ProgressDialog.show(this, "Synchronizing", "Updating database...", true, false);
+       sync();
+        //Snackbar.make(view, "Sync finished", Snackbar.LENGTH_LONG).setAction("Action", null).show(); // TODO: 02/03/17 Criar AsyncTask e incluir snackbar ao terminar processamento
     }
 
     private void setupToolbar() {
         final ActionBar ab = getActionBarToolbar();
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
         ab.setDisplayHomeAsUpEnabled(true);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.settings_actions, menu);
-        return true;
     }
 
     @Override
@@ -66,29 +58,25 @@ public class SyncActivity extends BaseActivity {
     public boolean providesActivityToolbar() {
         return true;
     }
-    // TODO: 23/02/17 continuar
 
-    public void sync(View view){
-        // TODO: 01/03/17 impĺementar progressbar 
+    public void sync(){
 
-        final int totalProgressTime = 100;
-        final Thread t = new Thread() {
+        new Thread() {
             @Override
             public void run() {
-                int jumpTime = 0;
 
-                while(jumpTime < totalProgressTime) {
-                    try {
-                        sleep(200);
-                        jumpTime += 5;
-                        progress.setProgress(jumpTime);
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+                try {
+                    // TODO: 02/03/17 Change to sync data with server
+                    sleep(5000);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    // close the ProgressDialog
+                    progress.dismiss();
                 }
             }
-        };
-        t.start();
+
+        }.start();
     }
 }

@@ -2,11 +2,10 @@ package br.com.rodrigues.murilo.mtrack.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
+import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -23,12 +22,6 @@ public class MainActivity extends BaseActivity {
         final ActionBar ab = getActionBarToolbar();
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
         ab.setDisplayHomeAsUpEnabled(true);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.settings_actions, menu);
-        return true;
     }
 
     @Override

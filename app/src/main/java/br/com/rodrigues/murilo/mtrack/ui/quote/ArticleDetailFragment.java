@@ -17,8 +17,8 @@ import com.bumptech.glide.Glide;
 import butterknife.Bind;
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyContent;
-import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
-import br.com.rodrigues.murilo.mtrack.ui.base.BaseFragment;
+import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
+import br.com.rodrigues.murilo.mtrack.activity.base.BaseFragment;
 
 /**
  * Shows the quote detail page.

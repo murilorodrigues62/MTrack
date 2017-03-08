@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
+import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -35,8 +35,6 @@ public class SettingsActivity extends BaseActivity {
         ab.setDisplayHomeAsUpEnabled(true);
     }
 
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -57,3 +55,5 @@ public class SettingsActivity extends BaseActivity {
         return true;
     }
 }
+
+// TODO: 02/03/17 [Wish] Use Preference layout (PreferenceScreen, SwitchPreference)

@@ -1,11 +1,10 @@
 package br.com.rodrigues.murilo.mtrack.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.fragment.OrderFragment;
-import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
+import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
 
 public class OrderActivity extends BaseActivity {
 

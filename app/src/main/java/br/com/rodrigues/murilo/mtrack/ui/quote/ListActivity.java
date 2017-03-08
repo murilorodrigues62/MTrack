@@ -9,7 +9,7 @@ import android.widget.ListView;
 
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyContent;
-import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
+import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
 import br.com.rodrigues.murilo.mtrack.util.LogUtil;
 
 /**
