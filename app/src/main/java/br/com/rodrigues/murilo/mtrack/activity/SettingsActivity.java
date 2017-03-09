@@ -44,16 +44,6 @@ public class SettingsActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    protected int getSelfNavDrawerItem() {
-        return R.id.nav_settings;
-    }
-
-    @Override
-    public boolean providesActivityToolbar() {
-        return true;
-    }
 }
 
 // TODO: 02/03/17 [Wish] Use Preference layout (PreferenceScreen, SwitchPreference)

@@ -17,9 +17,7 @@ public class OrderActivity extends BaseActivity {
         ButterKnife.bind(this);
         setupToolbar();
 
-
         OrderFragment fragment =  OrderFragment.newInstance(getIntent().getStringExtra(OrderFragment.ARG_ITEM_ID));
-
         getFragmentManager().beginTransaction().replace(R.id.activity_order_container, fragment).commit();
 
     }
@@ -28,10 +26,4 @@ public class OrderActivity extends BaseActivity {
         final ActionBar ab = getActionBarToolbar();
         ab.setDisplayHomeAsUpEnabled(true);
     }
-
-    @Override
-    public boolean providesActivityToolbar() {
-        return true;
-    }
-
 }

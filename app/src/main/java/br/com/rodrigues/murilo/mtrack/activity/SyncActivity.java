@@ -49,16 +49,6 @@ public class SyncActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected int getSelfNavDrawerItem() {
-        return R.id.nav_sync;
-    }
-
-    @Override
-    public boolean providesActivityToolbar() {
-        return true;
-    }
-
     public void sync(){
 
         new Thread() {

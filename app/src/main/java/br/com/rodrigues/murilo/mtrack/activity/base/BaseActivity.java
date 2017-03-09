@@ -46,18 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
             setupDrawerSelectListener(navigationView);
-            setSelectedItem(navigationView);
         }
-    }
-
-    /**
-     * Updated the checked item in the navigation drawer
-     * @param navigationView the navigation view
-     */
-    private void setSelectedItem(NavigationView navigationView) {
-        // Which navigation item should be selected?
-        int selectedItem = getSelfNavDrawerItem(); // subclass has to override this method
-        navigationView.setCheckedItem(selectedItem);
     }
 
     /**
@@ -123,7 +112,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         return getSupportActionBar();
     }
 
-
     /**
      * Returns the navigation drawer item that corresponds to this Activity. Subclasses
      * have to override this method.
@@ -146,10 +134,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         drawerLayout.closeDrawer(GravityCompat.START);
     }
 
-    public abstract boolean providesActivityToolbar();
 
-    public void setToolbar(Toolbar toolbar) {
+    protected void setToolbar(Toolbar toolbar) {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
 }

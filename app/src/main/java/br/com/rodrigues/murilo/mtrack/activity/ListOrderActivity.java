@@ -51,14 +51,4 @@ public class ListOrderActivity extends BaseActivity implements OrderListFragment
         }
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    protected int getSelfNavDrawerItem() {
-        return R.id.nav_sales_order;
-    }
-
-    @Override
-    public boolean providesActivityToolbar() {
-        return true;
-    }
 }

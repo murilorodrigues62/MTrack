@@ -19,7 +19,8 @@
             android:text="Sync Data With Web Service"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:id="@+id/textView"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.05" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/settings_transporter_layout"
@@ -35,7 +36,7 @@
             android:text="Update Sales Orders"
             android:id="@+id/switch1"
             android:checked="true"
-            android:layout_weight="0.05" />
+            android:layout_weight="0.10" />
 
         <Switch
             android:layout_width="180dp"
@@ -43,7 +44,7 @@
             android:text="Send Delivery"
             android:id="@+id/switch2"
             android:checked="true"
-            android:layout_weight="0.05" />
+            android:layout_weight="0.10" />
 
 
     </LinearLayout>
