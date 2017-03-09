@@ -51,7 +51,7 @@ public class SyncActivity extends BaseActivity {
 
     @Override
     protected int getSelfNavDrawerItem() {
-        return R.id.nav_samples;
+        return R.id.nav_sync;
     }
 
     @Override

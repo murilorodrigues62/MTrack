@@ -54,7 +54,7 @@ public class ListOrderActivity extends BaseActivity implements OrderListFragment
 
     @Override
     protected int getSelfNavDrawerItem() {
-        return R.id.nav_quotes;
+        return R.id.nav_sales_order;
     }
 
     @Override

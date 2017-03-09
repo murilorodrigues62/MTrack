@@ -6,16 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
-import br.com.rodrigues.murilo.mtrack.util.LogUtil;
 
-import static br.com.rodrigues.murilo.mtrack.util.LogUtil.makeLogTag;
 
 /**
  * The base class for all fragment classes.
  */
 public class BaseFragment extends Fragment {
-
-    private static final String TAG = makeLogTag(BaseFragment.class);
 
     /**
      * Inflates the layout and binds the view via ButterKnife.
@@ -28,7 +24,6 @@ public class BaseFragment extends Fragment {
         View view = inflater.inflate(layout, container, false);
         ButterKnife.bind(this, view);
 
-        LogUtil.logD(TAG, ">>> view inflated");
         return view;
     }
 }

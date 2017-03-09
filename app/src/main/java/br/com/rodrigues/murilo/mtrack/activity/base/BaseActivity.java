@@ -15,16 +15,12 @@ import br.com.rodrigues.murilo.mtrack.activity.ListOrderActivity;
 import br.com.rodrigues.murilo.mtrack.activity.SettingsActivity;
 import br.com.rodrigues.murilo.mtrack.activity.SyncActivity;
 
-import static br.com.rodrigues.murilo.mtrack.util.LogUtil.logD;
-import static br.com.rodrigues.murilo.mtrack.util.LogUtil.makeLogTag;
-
 /**
  * The base class for all Activity classes.
  * This class creates and provides the navigation drawer and toolbar.
  * The navigation logic is handled in {@link BaseActivity#goToNavDrawerItem(int)}
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    private static final String TAG = makeLogTag(BaseActivity.class);
 
     protected static final int NAV_DRAWER_ITEM_INVALID = -1;
 
@@ -52,8 +48,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             setupDrawerSelectListener(navigationView);
             setSelectedItem(navigationView);
         }
-
-        logD(TAG, "navigation drawer setup finished");
     }
 
     /**
@@ -102,11 +96,11 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     private void goToNavDrawerItem(int item) {
         switch (item) {
-            case R.id.nav_quotes:
+            case R.id.nav_sales_order:
                 startActivity(new Intent(this, ListOrderActivity.class));
                 finish();
                 break;
-            case R.id.nav_samples:
+            case R.id.nav_sync:
                 startActivity(new Intent(this, SyncActivity.class));
                 break;
             case R.id.nav_settings:

@@ -30,10 +30,6 @@
             android:label="Order"
             android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
         <activity
-            android:name="br.com.rodrigues.murilo.mtrack.ui.quote.ArticleDetailActivity"
-            android:label=""
-            android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
-        <activity
             android:name="br.com.rodrigues.murilo.mtrack.activity.SettingsActivity"
             android:label="Settings"
             android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
@@ -41,8 +37,6 @@
             android:name="br.com.rodrigues.murilo.mtrack.activity.SyncActivity"
             android:label="Sync"
             android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
-        <!-- android:parentActivityName=".ui.quote.ListActivity" /> -->
-
     </application>
 
 </manifest>

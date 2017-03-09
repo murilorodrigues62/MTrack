@@ -14,7 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.dummy.DummyContent;
+import br.com.rodrigues.murilo.mtrack.dummy.DummyOrder;
+import br.com.rodrigues.murilo.mtrack.model.Order;
 
 /**
  * Shows a list of all available quotes.
@@ -50,7 +51,7 @@ public class OrderListFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         // notify callback about the selected list item
-        callback.onItemSelected(DummyContent.ITEMS.get(position).id);
+        callback.onItemSelected(DummyOrder.ITEMS.get(position).getId());
     }
 
     /**
@@ -91,17 +92,17 @@ public class OrderListFragment extends ListFragment {
 
         @Override
         public int getCount() {
-            return DummyContent.ITEMS.size();
+            return DummyOrder.ITEMS.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return DummyContent.ITEMS.get(position);
+            return DummyOrder.ITEMS.get(position);
         }
 
         @Override
         public long getItemId(int position) {
-            return DummyContent.ITEMS.get(position).id.hashCode();
+            return DummyOrder.ITEMS.get(position).getId().hashCode();
         }
 
         @Override
@@ -110,9 +111,9 @@ public class OrderListFragment extends ListFragment {
                 convertView = LayoutInflater.from(getActivity()).inflate(R.layout.adapter_list_order, container, false);
             }
 
-            final DummyContent.DummyItem item = (DummyContent.DummyItem) getItem(position);
-            ((TextView) convertView.findViewById(R.id.article_title)).setText(item.title);
-            ((TextView) convertView.findViewById(R.id.article_subtitle)).setText(item.author);
+            final Order item = (Order) getItem(position);
+            ((TextView) convertView.findViewById(R.id.article_title)).setText(item.getOrder());
+            ((TextView) convertView.findViewById(R.id.article_subtitle)).setText(item.getClient());
 
             return convertView;
         }

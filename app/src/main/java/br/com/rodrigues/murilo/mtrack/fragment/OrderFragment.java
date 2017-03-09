@@ -20,7 +20,9 @@ import java.util.List;
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
 import br.com.rodrigues.murilo.mtrack.activity.base.BaseFragment;
-import br.com.rodrigues.murilo.mtrack.dummy.DummyContent;
+import br.com.rodrigues.murilo.mtrack.dummy.DummyOrder;
+import br.com.rodrigues.murilo.mtrack.dummy.DummyProduct;
+import br.com.rodrigues.murilo.mtrack.model.Order;
 import br.com.rodrigues.murilo.mtrack.model.Product;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,11 +36,14 @@ public class OrderFragment extends BaseFragment {
      * The argument represents the dummy item ID of this fragment.
      */
     public static final String ARG_ITEM_ID = "item_id";
+    public static final String QR_CODE_MODE = "QR_CODE_MODE";
+    public static final String SCAN_RESULT = "SCAN_RESULT";
 
     /**
      * The dummy content of this fragment.
      */
-    private DummyContent.DummyItem dummyItem;
+    private Order dummyOrder;
+
 
     @Bind(R.id.quote)
     TextView quote;
@@ -63,7 +68,7 @@ public class OrderFragment extends BaseFragment {
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             // load dummy item by using the passed item ID.
-            dummyItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+            dummyOrder = DummyOrder.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
         }
 
         setHasOptionsMenu(true);
@@ -73,17 +78,17 @@ public class OrderFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflateAndBind(inflater, container, R.layout.fragment_order);
 
-        if (dummyItem != null) {
-            author.setText(dummyItem.author);
-            quote.setText(dummyItem.content);
+        if (dummyOrder != null) {
+            author.setText(dummyOrder.getOrder());
+            quote.setText(dummyOrder.getClient());
         }
 
         // call the Barcode Scanner app
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-                intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE", "QR_CODE_MODE");
+                Intent intent = new Intent(getString(R.string.intent_barcode_scanner));
+                intent.putExtra(getString(R.string.intent_barcode_extra), QR_CODE_MODE);
 
                 PackageManager manager = view.getContext().getPackageManager();
                 if (manager.resolveActivity(intent, 0) != null){
@@ -105,7 +110,7 @@ public class OrderFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == 0) {
             if (resultCode == ((BaseActivity) getActivity()).RESULT_OK) {
-                String contents = intent.getStringExtra("SCAN_RESULT");
+                String contents = intent.getStringExtra(SCAN_RESULT);
                 //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 barcode.setText(contents);
 
@@ -133,18 +138,7 @@ public class OrderFragment extends BaseFragment {
         recyclerView.setHasFixedSize(true);
 
         // Adiciona o adapter que irá anexar os objetos à lista.
-        // TODO: 11/02/17 buscar informações do banco
-        ArrayList<Product> products = new ArrayList<>();
-        products.add(new Product(1, "Product 1"));
-        products.add(new Product(2, "Product 2"));
-        products.add(new Product(3, "Product 3"));
-        products.add(new Product(4, "Product 4"));
-        products.add(new Product(5, "Product 5"));
-        products.add(new Product(6, "Product 6"));
-        products.add(new Product(7, "Product 7"));
-        products.add(new Product(8, "Product 8"));
-        products.add(new Product(9, "Product 9"));
-        products.add(new Product(10, "Product 10"));
+        ArrayList<Product> products = (ArrayList<Product>) DummyProduct.ITEMS; // TODO: 11/02/17 buscar informações do banco filtrando por order
 
         myAdapter = new MyAdapter(products);
         recyclerView.setAdapter(myAdapter);
