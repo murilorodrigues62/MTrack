@@ -3125,20 +3125,21 @@ containing a value of this type.
         public static final int bottom_sheet_behavior=0x7f070024;
         public static final int character_counter_pattern=0x7f070025;
         public static final int lorem_ipsum=0x7f070026;
-        public static final int message_saved=0x7f070027;
-        public static final int navigation_quotes=0x7f070028;
-        public static final int navigation_settings=0x7f070029;
-        public static final int navigation_sync=0x7f07002a;
-        public static final int navigation_title=0x7f07002b;
-        public static final int password_toggle_content_description=0x7f07002c;
-        public static final int path_password_eye=0x7f07002d;
-        public static final int path_password_eye_mask_strike_through=0x7f07002e;
-        public static final int path_password_eye_mask_visible=0x7f07002f;
-        public static final int path_password_strike_through=0x7f070030;
+        public static final int message_barcode_scanner=0x7f070027;
+        public static final int message_saved=0x7f070028;
+        public static final int navigation_quotes=0x7f070029;
+        public static final int navigation_settings=0x7f07002a;
+        public static final int navigation_sync=0x7f07002b;
+        public static final int navigation_title=0x7f07002c;
+        public static final int password_toggle_content_description=0x7f07002d;
+        public static final int path_password_eye=0x7f07002e;
+        public static final int path_password_eye_mask_strike_through=0x7f07002f;
+        public static final int path_password_eye_mask_visible=0x7f070030;
+        public static final int path_password_strike_through=0x7f070031;
         public static final int search_menu_title=0x7f070013;
-        public static final int settings=0x7f070031;
-        public static final int settings_hint_transporter=0x7f070032;
-        public static final int settingss_hint_webservice=0x7f070033;
+        public static final int settings=0x7f070032;
+        public static final int settings_hint_transporter=0x7f070033;
+        public static final int settingss_hint_webservice=0x7f070034;
         public static final int status_bar_notification_info_overflow=0x7f070014;
     }
     public static final class style {

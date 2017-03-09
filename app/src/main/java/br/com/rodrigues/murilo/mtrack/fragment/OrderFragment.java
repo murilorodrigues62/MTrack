@@ -1,15 +1,14 @@
 package br.com.rodrigues.murilo.mtrack.fragment;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -78,14 +77,22 @@ public class OrderFragment extends BaseFragment {
             author.setText(dummyItem.author);
             quote.setText(dummyItem.content);
         }
-        // TODO: 02/03/17 ajustar toll bar, por include ou incluir aqui codigo e por toolbar do exemplo com texto 
+
         // call the Barcode Scanner app
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent("com.google.zxing.client.android.SCAN");
                 intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE", "QR_CODE_MODE");
-                startActivityForResult(intent, 0);
+
+                PackageManager manager = view.getContext().getPackageManager();
+                if (manager.resolveActivity(intent, 0) != null){
+                    startActivityForResult(intent, 0);
+                } else
+                {
+                    Snackbar.make(view, R.string.message_barcode_scanner, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }
+
             }
         });
 
@@ -108,22 +115,6 @@ public class OrderFragment extends BaseFragment {
                 barcode.setText("");
             }
         }
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.settings_actions, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                // TODO: 02/03/17 implementar aqui o finalizar pedido
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     public static OrderFragment newInstance(String itemID) {
