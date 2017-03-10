@@ -16,10 +16,6 @@
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/design/25.2.0/res/layout/design_layout_tab_text.xml"
     },
     {
-        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/include_list_view.xml",
-        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/include_list_view.xml"
-    },
-    {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.2.0/res/layout/abc_alert_dialog_material.xml"
     },
@@ -44,12 +40,12 @@
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/design/25.2.0/res/layout/design_text_input_password_icon.xml"
     },
     {
-        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_title_material.xml",
-        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.2.0/res/layout/abc_alert_dialog_title_material.xml"
-    },
-    {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/include_list_order_view.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/include_list_order_view.xml"
+    },
+    {
+        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_title_material.xml",
+        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.2.0/res/layout/abc_alert_dialog_title_material.xml"
     },
     {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
@@ -86,10 +82,6 @@
     {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.2.0/res/layout/select_dialog_singlechoice_material.xml"
-    },
-    {
-        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/activity_list.xml",
-        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/activity_list.xml"
     },
     {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/design_bottom_navigation_item.xml",
@@ -184,10 +176,6 @@
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/activity_sync.xml"
     },
     {
-        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/include_list_view_twopane.xml",
-        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/include_list_view_twopane.xml"
-    },
-    {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.2.0/res/layout/abc_action_menu_layout.xml"
     },
@@ -256,10 +244,6 @@
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/activity_detail.xml"
     },
     {
-        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/fragment_article_detail.xml",
-        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/fragment_article_detail.xml"
-    },
-    {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/design/25.2.0/res/layout/design_bottom_sheet_dialog.xml"
     },
@@ -282,10 +266,6 @@
     {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/notification_action.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.2.0/res/layout/notification_action.xml"
-    },
-    {
-        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/list_item_article.xml",
-        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/list_item_article.xml"
     },
     {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/adapter_product_count.xml",

@@ -15,17 +15,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
-import br.com.rodrigues.murilo.mtrack.activity.base.BaseFragment;
+import br.com.rodrigues.murilo.mtrack.adapter.ProductAdapter;
+import br.com.rodrigues.murilo.mtrack.base.BaseActivity;
+import br.com.rodrigues.murilo.mtrack.base.BaseFragment;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyOrder;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyProduct;
 import br.com.rodrigues.murilo.mtrack.model.Order;
 import br.com.rodrigues.murilo.mtrack.model.Product;
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Shows the order detail
@@ -60,7 +59,7 @@ public class OrderFragment extends BaseFragment {
     @Bind(R.id.recyclerview)
     RecyclerView recyclerView;
 
-    private MyAdapter myAdapter;
+    private ProductAdapter myAdapter;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -140,81 +139,12 @@ public class OrderFragment extends BaseFragment {
         // Adiciona o adapter que irá anexar os objetos à lista.
         ArrayList<Product> products = (ArrayList<Product>) DummyProduct.ITEMS; // TODO: 11/02/17 buscar informações do banco filtrando por order
 
-        myAdapter = new MyAdapter(products);
+        myAdapter = new ProductAdapter(products);
         recyclerView.setAdapter(myAdapter);
 
         // Configurando um divider entre linhas, para uma melhor visualização.
         recyclerView.addItemDecoration(
                 new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-    }
-
-    public class MyHolder extends RecyclerView.ViewHolder {
-
-        @Bind(R.id.product_name)
-        public TextView title;
-
-        @Bind(R.id.product_count)
-        public TextView count;
-
-        public MyHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-        }
-    }
-
-    private class MyAdapter extends RecyclerView.Adapter<MyHolder> {
-
-        private final List<Product> products;
-
-        public MyAdapter(ArrayList products) {
-            this.products = products;
-        }
-
-        @Override
-        public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new MyHolder(LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.adapter_product_count, parent, false));
-        }
-
-        @Override
-        public void onBindViewHolder(MyHolder holder, int position) {
-            holder.title.setText(products.get(position).getName());
-            holder.count.setText(String.valueOf(products.get(position).getId())); // TODO: 14/02/17 implementar campos corretos
-        }
-
-        @Override
-        public int getItemCount() {
-            return products != null ? products.size() : 0;
-        }
-
-        /**
-         * Método publico chamado para atualziar a lista.
-         *
-         * @param product
-         */
-        public void updateList(Product product) {
-            insertItem(product);
-        }
-
-        // Insert a new product
-        private void insertItem(Product product) {
-            products.add(product); // TODO: 13/02/17 ajustar
-            notifyItemInserted(getItemCount());
-        }
-
-        // Update a product
-        private void updateItem(int position) {
-            Product product = products.get(position);
-            //product.incrementRead(); // TODO: 10/02/17 Criar imcrementRead para incrementar quantidade lida do produto
-            notifyItemChanged(position);
-        }
-
-        // Remove a product
-        private void removerItem(int position) {
-            products.remove(position);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, products.size());
-        }
     }
 
     public OrderFragment() {}

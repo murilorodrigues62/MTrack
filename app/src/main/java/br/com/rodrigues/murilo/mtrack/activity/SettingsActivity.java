@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
+import br.com.rodrigues.murilo.mtrack.base.BaseActivity;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 

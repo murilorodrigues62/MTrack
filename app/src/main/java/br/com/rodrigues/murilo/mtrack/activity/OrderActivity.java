@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
+import br.com.rodrigues.murilo.mtrack.base.BaseActivity;
 import br.com.rodrigues.murilo.mtrack.fragment.OrderFragment;
 import butterknife.ButterKnife;
 

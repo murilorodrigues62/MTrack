@@ -5,7 +5,7 @@ import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.activity.base.BaseActivity;
+import br.com.rodrigues.murilo.mtrack.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
 
