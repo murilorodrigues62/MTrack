@@ -10,7 +10,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/include_toolbar" />
-        <include layout="@layout/include_list_order_view" />
+        <FrameLayout
+            android:id="@+id/activity_order_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android" />
     </LinearLayout>
     <include layout="@layout/include_navigation" />
 

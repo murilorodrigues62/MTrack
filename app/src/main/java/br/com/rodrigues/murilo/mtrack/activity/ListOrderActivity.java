@@ -1,39 +1,28 @@
 package br.com.rodrigues.murilo.mtrack.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.base.BaseActivity;
-import br.com.rodrigues.murilo.mtrack.fragment.OrderFragment;
 import br.com.rodrigues.murilo.mtrack.fragment.OrderListFragment;
+import butterknife.ButterKnife;
 
 /**
  * Lists all sales order
  */
-public class ListOrderActivity extends BaseActivity implements OrderListFragment.Callback {
+public class ListOrderActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_list); 
-
+        setContentView(R.layout.activity_order_list);
+        ButterKnife.bind(this);
         setupToolbar();
-    }
 
-    /**
-     * Called when an item has been selected
-     *
-     * @param id the selected quote ID
-     */
-    @Override
-    public void onItemSelected(String id) {
-        // Start the detail activity of order
-        Intent detailIntent = new Intent(this, OrderActivity.class);
-        detailIntent.putExtra(OrderFragment.ARG_ITEM_ID, id);
-        startActivity(detailIntent);
+        OrderListFragment fragment =  OrderListFragment.newInstance();
+        getFragmentManager().beginTransaction().replace(R.id.activity_order_list, fragment).commit();
     }
 
     private void setupToolbar() {

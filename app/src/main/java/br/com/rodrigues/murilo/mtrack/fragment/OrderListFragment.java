@@ -1,124 +1,88 @@
 package br.com.rodrigues.murilo.mtrack.fragment;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.ListFragment;
-import android.content.Context;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import br.com.rodrigues.murilo.mtrack.R;
+import br.com.rodrigues.murilo.mtrack.activity.OrderActivity;
+import br.com.rodrigues.murilo.mtrack.adapter.OrderAdapter;
+import br.com.rodrigues.murilo.mtrack.base.BaseFragment;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyOrder;
 import br.com.rodrigues.murilo.mtrack.model.Order;
+import butterknife.Bind;
 
 /**
  * Shows a list of all available quotes.
  */
-public class OrderListFragment extends ListFragment {
+public class OrderListFragment extends BaseFragment {
 
-    private Callback callback = dummyCallback;
+    @Bind(R.id.recyclerview_order_list)
+    RecyclerView recyclerView;
 
-    /**
-     * A callback interface. Called whenever a item has been selected.
-     */
-    public interface Callback {
-        void onItemSelected(String id);
-    }
-
-    /**
-     * A dummy no-op implementation of the Callback interface. Only used when no active Activity is present.
-     */
-    private static final Callback dummyCallback = new Callback() {
-        @Override
-        public void onItemSelected(String id) {
-        }
-    };
+    private OrderAdapter myAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setListAdapter(new MyListAdapter());
         setHasOptionsMenu(true);
     }
 
     @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        // notify callback about the selected list item
-        callback.onItemSelected(DummyOrder.ITEMS.get(position).getId());
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflateAndBind(inflater, container, R.layout.fragment_order_list);
+
+        setupRecycler();
+
+        return rootView;
     }
 
-    /**
-     * onAttach(Context) is not called on pre API 23 versions of Android.
-     * onAttach(Activity) is deprecated but still necessary on older devices.
-     */
-    @TargetApi(23)
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        onAttachToContext(context);
+    public static OrderListFragment newInstance() {
+        OrderListFragment fragment = new OrderListFragment();
+        return fragment;
     }
 
-    /**
-     * Deprecated on API 23 but still necessary for pre API 23 devices.
-     */
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            onAttachToContext(activity);
-        }
+    private void setupRecycler() {
+
+        // Configurando o gerenciador de layout para ser uma lista.
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        // Adiciona o adapter que irá anexar os objetos à lista.
+        ArrayList<Order> orders = (ArrayList<Order>) DummyOrder.ITEMS; // TODO: 11/02/17 buscar informações do banco filtrando por order
+
+        myAdapter = new OrderAdapter(orders, onClick());
+        recyclerView.setAdapter(myAdapter);
+
+        // Configurando um divider entre linhas, para uma melhor visualização.
+        recyclerView.addItemDecoration(
+                new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
     }
 
-    /**
-     * Called when the fragment attaches to the context
-     */
-    protected void onAttachToContext(Context context) {
-        if (!(context instanceof Callback)) {
-            throw new IllegalStateException("Activity must implement callback interface.");
-        }
-
-        callback = (Callback) context;
-    }
-
-    private class MyListAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return DummyOrder.ITEMS.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return DummyOrder.ITEMS.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return DummyOrder.ITEMS.get(position).getId().hashCode();
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup container) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getActivity()).inflate(R.layout.adapter_list_order, container, false);
+    private OrderAdapter.OrderOnClickListener onClick() {
+        return new OrderAdapter.OrderOnClickListener() {
+            @Override
+            public void onClickOrder(View view, int idx) {
+                Intent detailIntent = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    detailIntent = new Intent(getContext(), OrderActivity.class);
+                } else {
+                    detailIntent = new Intent(getActivity(), OrderActivity.class);
+                }
+                detailIntent.putExtra(OrderFragment.ARG_ITEM_ID, idx);
+                startActivity(detailIntent);
             }
-
-            final Order item = (Order) getItem(position);
-            ((TextView) convertView.findViewById(R.id.article_title)).setText(item.getOrder());
-            ((TextView) convertView.findViewById(R.id.article_subtitle)).setText(item.getClient());
-
-            return convertView;
-        }
+        };
     }
 
-    public OrderListFragment() {
-    }
+
+
 }

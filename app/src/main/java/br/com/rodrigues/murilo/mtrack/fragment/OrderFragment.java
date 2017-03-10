@@ -17,7 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.adapter.ProductAdapter;
+import br.com.rodrigues.murilo.mtrack.adapter.ProductCountAdapter;
 import br.com.rodrigues.murilo.mtrack.base.BaseActivity;
 import br.com.rodrigues.murilo.mtrack.base.BaseFragment;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyOrder;
@@ -59,7 +59,7 @@ public class OrderFragment extends BaseFragment {
     @Bind(R.id.recyclerview)
     RecyclerView recyclerView;
 
-    private ProductAdapter myAdapter;
+    private ProductCountAdapter myAdapter;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -139,7 +139,7 @@ public class OrderFragment extends BaseFragment {
         // Adiciona o adapter que irá anexar os objetos à lista.
         ArrayList<Product> products = (ArrayList<Product>) DummyProduct.ITEMS; // TODO: 11/02/17 buscar informações do banco filtrando por order
 
-        myAdapter = new ProductAdapter(products);
+        myAdapter = new ProductCountAdapter(products);
         recyclerView.setAdapter(myAdapter);
 
         // Configurando um divider entre linhas, para uma melhor visualização.
