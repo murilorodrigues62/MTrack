@@ -52,7 +52,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 ProductRepository.ID_PRODMATEEMBA + " , " +
                 ProductRepository.NM_PRODMATEEMBA + " ) VALUES ( " +
                 id.toString() + " , " +
-                "'00'" + id.toString() + " , " +
+                "'00" + id.toString() + "' , " +
                 " 'Product " + id.toString() + "');";
 
     }
@@ -62,12 +62,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         // Execute scripts to create database
 
         sqLiteDatabase.execSQL(CREATE_ORDER_V1);
+        sqLiteDatabase.execSQL(CREATE_PRODUCT_V1);
 
         for(int i = 1; i <=10; i++){
             sqLiteDatabase.execSQL(INSERT_ORDER(i));
 
             if (i <= 4) {
-                sqLiteDatabase.execSQL(INSERT_ORDER(i));
+                sqLiteDatabase.execSQL(INSERT_PRODUCT(i));
             }
         }
     }

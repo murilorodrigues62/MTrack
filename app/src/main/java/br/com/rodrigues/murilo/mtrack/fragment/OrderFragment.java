@@ -20,10 +20,10 @@ import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.adapter.ProductCountAdapter;
 import br.com.rodrigues.murilo.mtrack.base.BaseActivity;
 import br.com.rodrigues.murilo.mtrack.base.BaseFragment;
-import br.com.rodrigues.murilo.mtrack.domain.service.OrderService;
-import br.com.rodrigues.murilo.mtrack.dummy.DummyProduct;
 import br.com.rodrigues.murilo.mtrack.domain.model.Order;
 import br.com.rodrigues.murilo.mtrack.domain.model.Product;
+import br.com.rodrigues.murilo.mtrack.domain.service.OrderService;
+import br.com.rodrigues.murilo.mtrack.domain.service.ProductService;
 import butterknife.Bind;
 
 /**
@@ -133,7 +133,7 @@ public class OrderFragment extends BaseFragment {
         recyclerView.setHasFixedSize(true);
 
         // Adiciona o adapter que irá anexar os objetos à lista.
-        ArrayList<Product> products = (ArrayList<Product>) DummyProduct.ITEMS; // TODO: 11/02/17 buscar informações do banco filtrando por order
+        ArrayList<Product> products = (ArrayList<Product>) ProductService.findAll(getActivity()); // TODO: 11/02/17 filtrar por order
 
         myAdapter = new ProductCountAdapter(products);
         recyclerView.setAdapter(myAdapter);

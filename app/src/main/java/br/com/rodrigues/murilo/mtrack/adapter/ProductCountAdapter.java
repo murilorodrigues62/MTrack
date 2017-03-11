@@ -30,8 +30,8 @@ public class ProductCountAdapter extends RecyclerView.Adapter<ProductCountAdapte
 
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
-        holder.title.setText(products.get(position).getName());
-        holder.count.setText(String.valueOf(products.get(position).getId())); // TODO: 14/02/17 implementar campos corretos
+        holder.title.setText(products.get(position).toString());
+        holder.count.setText("Read 0 of 5"); // TODO: 14/02/17 implementar campos corretos
     }
 
     @Override

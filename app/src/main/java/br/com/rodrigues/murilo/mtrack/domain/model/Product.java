@@ -46,9 +46,7 @@ public class Product {
         if (o == null || getClass() != o.getClass()) return false;
 
         Product product = (Product) o;
-
         return id == product.id;
-
     }
 
     @Override

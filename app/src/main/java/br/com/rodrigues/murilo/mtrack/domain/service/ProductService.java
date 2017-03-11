@@ -13,7 +13,7 @@ import br.com.rodrigues.murilo.mtrack.domain.repository.ProductRepository;
 public class ProductService {
 
     // Get Orders from local Database
-    public static List<Product> getProducts(Context context) {
+    public static List<Product> findAll(Context context) {
 
         ProductRepository db = new ProductRepository(context);
 

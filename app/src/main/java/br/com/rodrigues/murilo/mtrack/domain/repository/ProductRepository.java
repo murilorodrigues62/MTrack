@@ -28,28 +28,10 @@ public class ProductRepository {
     }
 
     public List<Product> findAll(){
-
         database=dbHelper.getReadableDatabase();
         try {
-            List<Product> products = new ArrayList<Product>();
-
-            Cursor cursor = database.query(MATERIAL_EMBALAGEM,
-                    new String[]{ID_MATEEMBA, ID_PRODMATEEMBA, NM_PRODMATEEMBA}, null, null,
-                    null, null, ID_MATEEMBA);
-
-            if (cursor != null) {
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-                    Product product = new Product();
-                    product.setId(cursor.getInt(0));
-                    product.setCode(cursor.getString(1));
-                    product.setName(cursor.getString(2));
-                    products.add(product);
-                    cursor.moveToNext();
-                }
-                cursor.close();
-            }
-            return products;
+            Cursor cursor = database.query(MATERIAL_EMBALAGEM, new String[]{ID_MATEEMBA, ID_PRODMATEEMBA, NM_PRODMATEEMBA}, null, null, null, null, ID_MATEEMBA);
+            return toList(cursor);
         } finally {
             database.close();
         }
@@ -70,5 +52,24 @@ public class ProductRepository {
             database.close();
         }
         return true;
+    }
+
+    // TODO: 11/03/17 usar o toList 
+    // Read cursor and create list
+    private List<Product> toList(Cursor cursor) {
+        List<Product> products = new ArrayList<Product>();
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Product product = new Product();
+            // get attributes
+            product.setId(cursor.getInt(0));
+            product.setCode(cursor.getString(1));
+            product.setName(cursor.getString(2));
+
+            products.add(product);
+            cursor.moveToNext();
+        }
+        return products;
     }
 }
