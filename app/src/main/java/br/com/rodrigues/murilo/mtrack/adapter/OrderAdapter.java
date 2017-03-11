@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.model.Order;
+import br.com.rodrigues.murilo.mtrack.domain.Order;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -31,7 +31,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyHolder> {
 
     @Override
     public void onBindViewHolder(final MyHolder holder, final int position) {
-        holder.title.setText(orders.get(position).getOrder());
+        holder.title.setText(orders.get(position).toString());
         holder.subtitle.setText(orders.get(position).getClient()); // TODO: 14/02/17 implementar campos corretos
 
         // On Click

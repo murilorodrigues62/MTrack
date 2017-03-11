@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.com.rodrigues.murilo.mtrack.model.Product;
+import br.com.rodrigues.murilo.mtrack.domain.Product;
 
 /**
  * Created by root on 08/03/17.

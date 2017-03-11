@@ -22,8 +22,8 @@ import br.com.rodrigues.murilo.mtrack.base.BaseActivity;
 import br.com.rodrigues.murilo.mtrack.base.BaseFragment;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyOrder;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyProduct;
-import br.com.rodrigues.murilo.mtrack.model.Order;
-import br.com.rodrigues.murilo.mtrack.model.Product;
+import br.com.rodrigues.murilo.mtrack.domain.Order;
+import br.com.rodrigues.murilo.mtrack.domain.Product;
 import butterknife.Bind;
 
 /**
@@ -78,7 +78,7 @@ public class OrderFragment extends BaseFragment {
         View rootView = inflateAndBind(inflater, container, R.layout.fragment_order);
 
         if (dummyOrder != null) {
-            author.setText(dummyOrder.getOrder());
+            author.setText(dummyOrder.toString());
             quote.setText(dummyOrder.getClient());
         }
 

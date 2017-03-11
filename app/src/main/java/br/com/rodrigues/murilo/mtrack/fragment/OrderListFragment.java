@@ -15,8 +15,8 @@ import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.activity.OrderActivity;
 import br.com.rodrigues.murilo.mtrack.adapter.OrderAdapter;
 import br.com.rodrigues.murilo.mtrack.base.BaseFragment;
-import br.com.rodrigues.murilo.mtrack.dummy.DummyOrder;
-import br.com.rodrigues.murilo.mtrack.model.Order;
+import br.com.rodrigues.murilo.mtrack.domain.Order;
+import br.com.rodrigues.murilo.mtrack.domain.OrderService;
 import butterknife.Bind;
 
 /**
@@ -57,7 +57,7 @@ public class OrderListFragment extends BaseFragment {
         recyclerView.setHasFixedSize(true);
 
         // Adiciona o adapter que irá anexar os objetos à lista.
-        ArrayList<Order> orders = (ArrayList<Order>) DummyOrder.ITEMS; // TODO: 11/02/17 buscar informações do banco filtrando por order
+        ArrayList<Order> orders = (ArrayList<Order>) OrderService.getOrders(getActivity());
 
         myAdapter = new OrderAdapter(orders, onClick());
         recyclerView.setAdapter(myAdapter);

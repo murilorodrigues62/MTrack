@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.model.Product;
+import br.com.rodrigues.murilo.mtrack.domain.Product;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 

@@ -6,7 +6,9 @@
     android:paddingTop="5dp"
     android:paddingBottom="5dp"
     android:paddingLeft="10dp"
-    android:paddingRight="5dp">
+    android:paddingRight="5dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true">
 
     <TextView
         android:id="@+id/article_title"
