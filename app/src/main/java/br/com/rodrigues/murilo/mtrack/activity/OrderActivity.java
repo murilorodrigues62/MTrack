@@ -17,7 +17,7 @@ public class OrderActivity extends BaseActivity {
         ButterKnife.bind(this);
         setupToolbar();
 
-        OrderFragment fragment =  OrderFragment.newInstance(getIntent().getStringExtra(OrderFragment.ARG_ITEM_ID));
+        OrderFragment fragment =  OrderFragment.newInstance(getIntent().getLongExtra(OrderFragment.ORDER_ID,0));
         getFragmentManager().beginTransaction().replace(R.id.activity_order_container, fragment).commit();
 
     }

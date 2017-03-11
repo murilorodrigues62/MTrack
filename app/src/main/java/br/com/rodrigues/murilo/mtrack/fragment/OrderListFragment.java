@@ -15,8 +15,8 @@ import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.activity.OrderActivity;
 import br.com.rodrigues.murilo.mtrack.adapter.OrderAdapter;
 import br.com.rodrigues.murilo.mtrack.base.BaseFragment;
-import br.com.rodrigues.murilo.mtrack.domain.Order;
-import br.com.rodrigues.murilo.mtrack.domain.OrderService;
+import br.com.rodrigues.murilo.mtrack.domain.model.Order;
+import br.com.rodrigues.murilo.mtrack.domain.service.OrderService;
 import butterknife.Bind;
 
 /**
@@ -57,7 +57,7 @@ public class OrderListFragment extends BaseFragment {
         recyclerView.setHasFixedSize(true);
 
         // Adiciona o adapter que irá anexar os objetos à lista.
-        ArrayList<Order> orders = (ArrayList<Order>) OrderService.getOrders(getActivity());
+        ArrayList<Order> orders = (ArrayList<Order>) OrderService.findAll(getActivity());
 
         myAdapter = new OrderAdapter(orders, onClick());
         recyclerView.setAdapter(myAdapter);
@@ -70,14 +70,10 @@ public class OrderListFragment extends BaseFragment {
     private OrderAdapter.OrderOnClickListener onClick() {
         return new OrderAdapter.OrderOnClickListener() {
             @Override
-            public void onClickOrder(View view, int idx) {
+            public void onClickOrder(View view, long id) {
                 Intent detailIntent = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                    detailIntent = new Intent(getContext(), OrderActivity.class);
-                } else {
-                    detailIntent = new Intent(getActivity(), OrderActivity.class);
-                }
-                detailIntent.putExtra(OrderFragment.ARG_ITEM_ID, idx);
+                detailIntent = new Intent(getActivity(), OrderActivity.class);
+                detailIntent.putExtra(OrderFragment.ORDER_ID, id);
                 startActivity(detailIntent);
             }
         };

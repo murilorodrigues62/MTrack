@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.com.rodrigues.murilo.mtrack.domain.Order;
+import br.com.rodrigues.murilo.mtrack.domain.model.Order;
 
 public class DummyOrder {
 

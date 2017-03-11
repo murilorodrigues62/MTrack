@@ -2824,7 +2824,6 @@ containing a value of this type.
         public static final int article_list=0x7f0d0093;
         public static final int article_subtitle=0x7f0d0078;
         public static final int article_title=0x7f0d0077;
-        public static final int author=0x7f0d0088;
         public static final int auto=0x7f0d0025;
         public static final int barcode=0x7f0d008d;
         public static final int beginning=0x7f0d0038;
@@ -2906,7 +2905,6 @@ containing a value of this type.
         public static final int product_name=0x7f0d0079;
         public static final int progress_circular=0x7f0d0006;
         public static final int progress_horizontal=0x7f0d0007;
-        public static final int quote=0x7f0d0089;
         public static final int radio=0x7f0d005d;
         public static final int recyclerview=0x7f0d008e;
         public static final int recyclerview_order_list=0x7f0d0092;
@@ -2974,6 +2972,8 @@ containing a value of this type.
         public static final int touch_outside=0x7f0d007d;
         public static final int transition_current_scene=0x7f0d000b;
         public static final int transition_scene_layoutid_cache=0x7f0d000c;
+        public static final int txtClient=0x7f0d0089;
+        public static final int txtOrder=0x7f0d0088;
         public static final int up=0x7f0d000d;
         public static final int useLogo=0x7f0d0018;
         public static final int view_offset_helper=0x7f0d000e;

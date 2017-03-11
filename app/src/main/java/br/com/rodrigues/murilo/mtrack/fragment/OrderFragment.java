@@ -20,10 +20,10 @@ import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.adapter.ProductCountAdapter;
 import br.com.rodrigues.murilo.mtrack.base.BaseActivity;
 import br.com.rodrigues.murilo.mtrack.base.BaseFragment;
-import br.com.rodrigues.murilo.mtrack.dummy.DummyOrder;
+import br.com.rodrigues.murilo.mtrack.domain.service.OrderService;
 import br.com.rodrigues.murilo.mtrack.dummy.DummyProduct;
-import br.com.rodrigues.murilo.mtrack.domain.Order;
-import br.com.rodrigues.murilo.mtrack.domain.Product;
+import br.com.rodrigues.murilo.mtrack.domain.model.Order;
+import br.com.rodrigues.murilo.mtrack.domain.model.Product;
 import butterknife.Bind;
 
 /**
@@ -34,21 +34,18 @@ public class OrderFragment extends BaseFragment {
     /**
      * The argument represents the dummy item ID of this fragment.
      */
-    public static final String ARG_ITEM_ID = "item_id";
+    public static final String ORDER_ID = "ORDER_ID";
     public static final String QR_CODE_MODE = "QR_CODE_MODE";
     public static final String SCAN_RESULT = "SCAN_RESULT";
 
-    /**
-     * The dummy content of this fragment.
-     */
-    private Order dummyOrder;
+    private Order order;
 
 
-    @Bind(R.id.quote)
-    TextView quote;
+    @Bind(R.id.txtOrder)
+    TextView textOrder;
 
-    @Bind(R.id.author)
-    TextView author;
+    @Bind(R.id.txtClient)
+    TextView textClient;
 
     @Bind(R.id.fab)
     FloatingActionButton fab;
@@ -65,9 +62,8 @@ public class OrderFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // load dummy item by using the passed item ID.
-            dummyOrder = DummyOrder.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+        if (getArguments().containsKey(ORDER_ID)) {
+            order = OrderService.findById(getActivity(), getArguments().getLong(ORDER_ID));
         }
 
         setHasOptionsMenu(true);
@@ -77,9 +73,9 @@ public class OrderFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflateAndBind(inflater, container, R.layout.fragment_order);
 
-        if (dummyOrder != null) {
-            author.setText(dummyOrder.toString());
-            quote.setText(dummyOrder.getClient());
+        if (order != null) {
+            textOrder.setText(order.toString());
+            textClient.setText(order.getClient());
         }
 
         // call the Barcode Scanner app
@@ -121,10 +117,10 @@ public class OrderFragment extends BaseFragment {
         }
     }
 
-    public static OrderFragment newInstance(String itemID) {
+    public static OrderFragment newInstance(long itemID) {
         OrderFragment fragment = new OrderFragment();
         Bundle args = new Bundle();
-        args.putString(OrderFragment.ARG_ITEM_ID, itemID);
+        args.putLong(OrderFragment.ORDER_ID, itemID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -149,3 +145,5 @@ public class OrderFragment extends BaseFragment {
 
     public OrderFragment() {}
 }
+
+// TODO: 11/03/17 ajustar layout do card contendo dados do pedido, para ficar menor. 

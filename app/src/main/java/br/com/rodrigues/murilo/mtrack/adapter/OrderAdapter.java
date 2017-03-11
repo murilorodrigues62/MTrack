@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.domain.Order;
+import br.com.rodrigues.murilo.mtrack.domain.model.Order;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -40,7 +40,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyHolder> {
                 @Override
                 public void onClick(View v) {
                     // A variável position é final
-                    orderOnClickListener.onClickOrder(holder.itemView, position);
+                    orderOnClickListener.onClickOrder(holder.itemView, orders.get(position).getId());
+
                 }
             });
         }
@@ -66,7 +67,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyHolder> {
     }
 
     public interface OrderOnClickListener {
-       void onClickOrder(View view, int idx);
+       void onClickOrder(View view, long id);
+        // TODO: 11/03/17 change long id for Order serealizable
     }
 }
-// TODO: 10/03/17 PAREI AQUI - VERIFICAR PORQUE SÓ APARECE 1 PEDIDO 

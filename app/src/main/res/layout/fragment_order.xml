@@ -36,7 +36,7 @@
                     android:paddingRight="20dp">
 
                     <TextView
-                        android:id="@+id/author"
+                        android:id="@+id/txtOrder"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -45,13 +45,13 @@
                         android:layout_alignParentStart="true" />
 
                     <TextView
-                        android:id="@+id/quote"
+                        android:id="@+id/txtClient"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/author"
-                        android:layout_alignStart="@+id/author"
-                        android:layout_below="@+id/author" />
+                        android:layout_alignLeft="@+id/txtOrder"
+                        android:layout_alignStart="@+id/txtOrder"
+                        android:layout_below="@+id/txtOrder" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -60,8 +60,8 @@
                         android:id="@+id/buttonFinish"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:textColor="@android:color/holo_orange_dark"
-                        android:layout_alignLeft="@+id/quote"
-                        android:layout_alignStart="@+id/quote"
+                        android:layout_alignLeft="@+id/txtClient"
+                        android:layout_alignStart="@+id/txtClient"
                         android:layout_below="@+id/text_barcode_layout"
                         android:layout_marginTop="8dp" />
 
@@ -73,7 +73,7 @@
                         android:layout_alignStart="@+id/buttonFinish"
                         android:layout_toLeftOf="@+id/buttonInsert"
                         android:layout_toStartOf="@+id/buttonInsert"
-                        android:layout_below="@+id/quote"
+                        android:layout_below="@+id/txtClient"
                         android:layout_marginTop="5dp">
 
                         <EditText

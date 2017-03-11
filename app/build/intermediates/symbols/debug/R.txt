@@ -752,7 +752,6 @@ int id article_detail_container 0x7f0d0073
 int id article_list 0x7f0d0093
 int id article_subtitle 0x7f0d0078
 int id article_title 0x7f0d0077
-int id author 0x7f0d0088
 int id auto 0x7f0d0025
 int id barcode 0x7f0d008d
 int id beginning 0x7f0d0038
@@ -834,7 +833,6 @@ int id product_count 0x7f0d007a
 int id product_name 0x7f0d0079
 int id progress_circular 0x7f0d0006
 int id progress_horizontal 0x7f0d0007
-int id quote 0x7f0d0089
 int id radio 0x7f0d005d
 int id recyclerview 0x7f0d008e
 int id recyclerview_order_list 0x7f0d0092
@@ -902,6 +900,8 @@ int id topPanel 0x7f0d0056
 int id touch_outside 0x7f0d007d
 int id transition_current_scene 0x7f0d000b
 int id transition_scene_layoutid_cache 0x7f0d000c
+int id txtClient 0x7f0d0089
+int id txtOrder 0x7f0d0088
 int id up 0x7f0d000d
 int id useLogo 0x7f0d0018
 int id view_offset_helper 0x7f0d000e
