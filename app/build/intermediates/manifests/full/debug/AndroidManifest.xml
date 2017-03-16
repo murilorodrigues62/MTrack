@@ -13,7 +13,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Main" >
-        <activity android:name="br.com.rodrigues.murilo.mtrack.activity.MainActivity" >
+        <activity
+            android:name="br.com.rodrigues.murilo.mtrack.ui.activity.MainActivity"
+            android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,21 +24,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.com.rodrigues.murilo.mtrack.activity.ListOrderActivity"
+            android:name="br.com.rodrigues.murilo.mtrack.ui.activity.ListOrderActivity"
             android:label="Order List"
-            android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
+            android:launchMode="singleTask"
+            android:parentActivityName="br.com.rodrigues.murilo.mtrack.ui.activity.MainActivity" />
         <activity
-            android:name="br.com.rodrigues.murilo.mtrack.activity.OrderActivity"
+            android:name="br.com.rodrigues.murilo.mtrack.ui.activity.OrderActivity"
             android:label="Order"
-            android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
+            android:launchMode="singleTask"
+            android:parentActivityName="br.com.rodrigues.murilo.mtrack.ui.activity.ListOrderActivity" />
         <activity
-            android:name="br.com.rodrigues.murilo.mtrack.activity.SettingsActivity"
+            android:name="br.com.rodrigues.murilo.mtrack.ui.activity.SettingsActivity"
             android:label="Settings"
-            android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
+            android:launchMode="singleTask"
+            android:parentActivityName="br.com.rodrigues.murilo.mtrack.ui.activity.MainActivity" />
         <activity
-            android:name="br.com.rodrigues.murilo.mtrack.activity.SyncActivity"
+            android:name="br.com.rodrigues.murilo.mtrack.ui.activity.SyncActivity"
             android:label="Sync"
-            android:parentActivityName="br.com.rodrigues.murilo.mtrack.activity.MainActivity" />
+            android:launchMode="singleTask"
+            android:parentActivityName="br.com.rodrigues.murilo.mtrack.ui.activity.MainActivity" />
     </application>
 
 </manifest>

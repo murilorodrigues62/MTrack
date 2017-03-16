@@ -22,10 +22,17 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
     // Create table PEDIDO_VENDA
-    public static final String CREATE_ORDER_V1 = "CREATE TABLE "+ OrderRepository.PEDIDO_VENDA +" (" +
-            OrderRepository.ID_PEDIVEND + " INTEGER PRIMARY KEY, " +
-            OrderRepository.ID_CARGEXPE + " TEXT, " +
-            OrderRepository.NM_CLIENTE  + " TEXT);";
+    public static final String CREATE_ORDER_V1 = "CREATE TABLE " + OrderRepository.PEDIDO_VENDA +" (" +
+            OrderRepository.ID_PEDIVEND     + " DECIMAL(12,0), " +
+            OrderRepository.ID_CARGEXPE     + " DECIMAL(12,0), " +
+            OrderRepository.ID_CLIENTE      + " DECIMAL(12,0), " +
+            OrderRepository.NM_CLIENTE      + " VARCHAR(255),  " +
+            OrderRepository.ID_ITEMPEDIVEND + " DECIMAL(12,0), " +
+            OrderRepository.ID_MATEEMBA     + " DECIMAL(12,0), " +
+            OrderRepository.ID_PRODMATEEMBA + " VARCHAR(255),  " +
+            OrderRepository.NM_PRODMATEEMBA + " VARCHAR(255),  " +
+            OrderRepository.NR_EMBAEXPE     + " DECIMAL(12,0), " +
+            OrderRepository.FL_DELIVERED    + " INTEGER );     ";
 
     // Create table MATERIAL_EMBALAGEM
     public static final String CREATE_PRODUCT_V1 = "CREATE TABLE "+ ProductRepository.MATERIAL_EMBALAGEM +" (" +
@@ -34,14 +41,25 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             ProductRepository.NM_PRODMATEEMBA  + " TEXT);";
 
     // insert fake data
-    public static final String INSERT_ORDER(Integer id) {
-        return "INSERT INTO " + OrderRepository.PEDIDO_VENDA + " ( " +
-                OrderRepository.ID_PEDIVEND + " , " +
-                OrderRepository.ID_CARGEXPE + " , " +
-                OrderRepository.NM_CLIENTE + " ) VALUES ( " +
-                id.toString() + " , " +
-                " '1', " +
-                " 'Client " + id.toString() + "');";
+    public static final String INSERT_ORDER() {
+        return "INSERT INTO " + OrderRepository.PEDIDO_VENDA +
+               " (ID_PEDIVEND, ID_CARGEXPE, ID_CLIENTE, NM_CLIENTE, ID_ITEMPEDIVEND, ID_MATEEMBA, " +
+               "  ID_PRODMATEEMBA, NM_PRODMATEEMBA, NR_EMBAEXPE) VALUES " +
+               " (279728, 29797, 2036, 'SHOPPING FRUTAS GUARANY LTDA.', 1066290, 13, '0005', 'COXA/SOBRE RF'  , 2) ,  " +
+               " (279728, 29797, 2036, 'SHOPPING FRUTAS GUARANY LTDA.', 1066291, 14, '0006', 'ASA RF'         , 3) ,  " +
+               " (279728, 29797, 2036, 'SHOPPING FRUTAS GUARANY LTDA.', 1066292, 15, '0007', 'FRANGO INTEIRO ', 5) ,  " +
+               " (279728, 29797, 2036, 'SHOPPING FRUTAS GUARANY LTDA.', 1066293, 16, '0008', 'PEITO CONGELADO', 1) ,  " +
+               " (279728, 29797, 2036, 'SHOPPING FRUTAS GUARANY LTDA.', 1066294, 17, '0009', 'CORACAO'        , 1) ,  " +
+               " (279729, 29797, 2037, 'SUPERMERCADO LIDER LTDA.'     , 1066295, 13, '0005', 'COXA/SOBRE RF'  , 10),  " +
+               " (279730, 29797, 2038, 'CASA DE CARNES POPULAR LTDA.' , 1066296, 13, '0005', 'COXA/SOBRE RF'  , 3) ,  " +
+               " (279730, 29797, 2038, 'CASA DE CARNES POPULAR LTDA.' , 1066297, 13, '0007', 'FRANGO INTEIRO', 3)  ,  " +
+               " (279730, 29797, 2038, 'CASA DE CARNES POPULAR LTDA.' , 1066298, 13, '0006', 'ASA RF'        , 3)  ,  " +
+               " (279731, 29797, 2039, 'AA COMERCIO DE CARNES LTDA.'  , 1066299, 13, '0005', 'COXA/SOBRE RF' , 1)  ,  " +
+               " (279731, 29797, 2039, 'AA COMERCIO DE CARNES LTDA.'  , 1066300, 13, '0006', 'ASA RF'        , 3)  ,  " +
+               " (279731, 29797, 2039, 'AA COMERCIO DE CARNES LTDA.'  , 1066301, 13, '0007', 'FRANGO INTEIRO', 5)  ,  " +
+               " (279731, 29797, 2039, 'AA COMERCIO DE CARNES LTDA.'  , 1066302, 13, '0008', 'PEITO CONGELADO', 1) ,  " +
+               " (279731, 29797, 2039, 'AA COMERCIO DE CARNES LTDA.'  , 1066303, 13, '0009', 'CORACAO'        , 1) ,  " +
+               " (279732, 29798, 2036, 'SHOPPING FRUTAS GUARANY LTDA.', 1066305, 13, '0005', 'COXA/SOBRE RF'  , 1);   ";
 
     }
 
@@ -64,8 +82,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_ORDER_V1);
         sqLiteDatabase.execSQL(CREATE_PRODUCT_V1);
 
+        sqLiteDatabase.execSQL(INSERT_ORDER());
+
         for(int i = 1; i <=10; i++){
-            sqLiteDatabase.execSQL(INSERT_ORDER(i));
+
 
             if (i <= 4) {
                 sqLiteDatabase.execSQL(INSERT_PRODUCT(i));

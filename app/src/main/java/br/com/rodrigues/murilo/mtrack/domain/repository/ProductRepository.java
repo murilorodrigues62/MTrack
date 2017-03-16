@@ -54,7 +54,6 @@ public class ProductRepository {
         return true;
     }
 
-    // TODO: 11/03/17 usar o toList 
     // Read cursor and create list
     private List<Product> toList(Cursor cursor) {
         List<Product> products = new ArrayList<Product>();
