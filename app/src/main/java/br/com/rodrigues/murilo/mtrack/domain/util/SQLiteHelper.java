@@ -5,7 +5,7 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import br.com.rodrigues.murilo.mtrack.domain.repository.OrderRepository;
+import br.com.rodrigues.murilo.mtrack.domain.repository.SalesOrderRepository;
 import br.com.rodrigues.murilo.mtrack.domain.repository.ProductRepository;
 
 
@@ -22,17 +22,17 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
     // Create table PEDIDO_VENDA
-    public static final String CREATE_ORDER_V1 = "CREATE TABLE " + OrderRepository.PEDIDO_VENDA +" (" +
-            OrderRepository.ID_PEDIVEND     + " DECIMAL(12,0), " +
-            OrderRepository.ID_CARGEXPE     + " DECIMAL(12,0), " +
-            OrderRepository.ID_CLIENTE      + " DECIMAL(12,0), " +
-            OrderRepository.NM_CLIENTE      + " VARCHAR(255),  " +
-            OrderRepository.ID_ITEMPEDIVEND + " DECIMAL(12,0), " +
-            OrderRepository.ID_MATEEMBA     + " DECIMAL(12,0), " +
-            OrderRepository.ID_PRODMATEEMBA + " VARCHAR(255),  " +
-            OrderRepository.NM_PRODMATEEMBA + " VARCHAR(255),  " +
-            OrderRepository.NR_EMBAEXPE     + " DECIMAL(12,0), " +
-            OrderRepository.FL_DELIVERED    + " INTEGER );     ";
+    public static final String CREATE_ORDER_V1 = "CREATE TABLE " + SalesOrderRepository.PEDIDO_VENDA +" (" +
+            SalesOrderRepository.ID_PEDIVEND     + " DECIMAL(12,0), " +
+            SalesOrderRepository.ID_CARGEXPE     + " DECIMAL(12,0), " +
+            SalesOrderRepository.ID_CLIENTE      + " DECIMAL(12,0), " +
+            SalesOrderRepository.NM_CLIENTE      + " VARCHAR(255),  " +
+            SalesOrderRepository.ID_ITEMPEDIVEND + " DECIMAL(12,0), " +
+            SalesOrderRepository.ID_MATEEMBA     + " DECIMAL(12,0), " +
+            SalesOrderRepository.ID_PRODMATEEMBA + " VARCHAR(255),  " +
+            SalesOrderRepository.NM_PRODMATEEMBA + " VARCHAR(255),  " +
+            SalesOrderRepository.NR_EMBAEXPE     + " DECIMAL(12,0), " +
+            SalesOrderRepository.FL_DELIVERED    + " INTEGER );     ";
 
     // Create table MATERIAL_EMBALAGEM
     public static final String CREATE_PRODUCT_V1 = "CREATE TABLE "+ ProductRepository.MATERIAL_EMBALAGEM +" (" +
@@ -42,7 +42,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     // insert fake data
     public static final String INSERT_ORDER() {
-        return "INSERT INTO " + OrderRepository.PEDIDO_VENDA +
+        return "INSERT INTO " + SalesOrderRepository.PEDIDO_VENDA +
                " (ID_PEDIVEND, ID_CARGEXPE, ID_CLIENTE, NM_CLIENTE, ID_ITEMPEDIVEND, ID_MATEEMBA, " +
                "  ID_PRODMATEEMBA, NM_PRODMATEEMBA, NR_EMBAEXPE) VALUES " +
                " (279728, 29797, 2036, 'SHOPPING FRUTAS GUARANY LTDA.', 1066290, 13, '0005', 'COXA/SOBRE RF'  , 2) ,  " +

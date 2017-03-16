@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.domain.model.Product;
+import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class ProductCountAdapter extends RecyclerView.Adapter<ProductCountAdapter.MyHolder> {
 
-    private final List<Product> products;
+    private final List<SalesOrder> products;
 
     public ProductCountAdapter(ArrayList products) {
         this.products = products;
@@ -30,8 +30,8 @@ public class ProductCountAdapter extends RecyclerView.Adapter<ProductCountAdapte
 
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
-        holder.title.setText(products.get(position).toString());
-        holder.count.setText("Read 0 of 5"); // TODO: 14/02/17 implementar campos corretos
+        holder.title.setText(products.get(position).getProductCode() + " - " + products.get(position).getProductName());
+        holder.count.setText(String.valueOf(products.get(position).getQuantity()));
     }
 
     @Override
@@ -44,19 +44,19 @@ public class ProductCountAdapter extends RecyclerView.Adapter<ProductCountAdapte
      *
      * @param product
      */
-    public void updateList(Product product) {
+    public void updateList(SalesOrder product) {
         insertItem(product);
     }
 
     // Insert a new product
-    private void insertItem(Product product) {
+    private void insertItem(SalesOrder product) {
         products.add(product); // TODO: 13/02/17 ajustar
         notifyItemInserted(getItemCount());
     }
 
     // Update a product
     private void updateItem(int position) {
-        Product product = products.get(position);
+        SalesOrder product = products.get(position);
         //product.incrementRead(); // TODO: 10/02/17 Criar imcrementRead para incrementar quantidade lida do produto
         notifyItemChanged(position);
     }

@@ -2,7 +2,7 @@ package br.com.rodrigues.murilo.mtrack.domain.model;
 
 public class SalesOrder {
     private long idSalesOrder;
-    private String idDelivery;
+    private long idDelivery;
     private long idCustomer;
     private String customerName;
     private long idProduct;
@@ -15,13 +15,14 @@ public class SalesOrder {
 
     }
 
-    public SalesOrder(long idSalesOrder, String IdDelivery, String customerName) {
+    // TODO: 16/03/17 remove this
+    public SalesOrder(long idSalesOrder, long IdDelivery, String customerName) {
         this.idSalesOrder = idSalesOrder;
         this.idDelivery = IdDelivery;
         this.customerName = customerName;
     }
 
-    public SalesOrder(long idSalesOrder, String idDelivery, long idCustomer, String customerName, long idProduct, String productCode, String productName, long quantity, boolean delivered) {
+    public SalesOrder(long idSalesOrder, long idDelivery, long idCustomer, String customerName, long idProduct, String productCode, String productName, long quantity, boolean delivered) {
         this.idSalesOrder = idSalesOrder;
         this.idDelivery = idDelivery;
         this.idCustomer = idCustomer;
@@ -46,11 +47,11 @@ public class SalesOrder {
         this.idSalesOrder = idSalesOrder;
     }
 
-    public String getIdDelivery() {
+    public long getIdDelivery() {
         return idDelivery;
     }
 
-    public void setIdDelivery(String idDelivery) {
+    public void setIdDelivery(long idDelivery) {
         this.idDelivery = idDelivery;
     }
 

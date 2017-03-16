@@ -17,13 +17,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import br.com.rodrigues.murilo.mtrack.R;
+import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
+import br.com.rodrigues.murilo.mtrack.domain.service.SalesOrderService;
 import br.com.rodrigues.murilo.mtrack.ui.adapter.ProductCountAdapter;
 import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
 import br.com.rodrigues.murilo.mtrack.ui.base.BaseFragment;
-import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
-import br.com.rodrigues.murilo.mtrack.domain.model.Product;
-import br.com.rodrigues.murilo.mtrack.domain.service.OrderService;
-import br.com.rodrigues.murilo.mtrack.domain.service.ProductService;
 import butterknife.Bind;
 
 /**
@@ -63,7 +61,7 @@ public class OrderFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey(ORDER_ID)) {
-            salesOrder = OrderService.findById(getActivity(), getArguments().getLong(ORDER_ID));
+            salesOrder = SalesOrderService.findSalesOrder(getActivity(), getArguments().getLong(ORDER_ID));
         }
 
         setHasOptionsMenu(true);
@@ -127,18 +125,18 @@ public class OrderFragment extends BaseFragment {
 
     private void setupRecycler() {
 
-        // Configurando o gerenciador de layout para ser uma lista.
+        // Config layout manager to create products list
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        // Adiciona o adapter que irá anexar os objetos à lista.
-        ArrayList<Product> products = (ArrayList<Product>) ProductService.findAll(getActivity()); // TODO: 11/02/17 filtrar por salesOrder
+        // Adapter to add products in list
+        ArrayList<SalesOrder> products = (ArrayList<SalesOrder>) SalesOrderService.findProducts(getActivity(), salesOrder.getIdSalesOrder());
 
         myAdapter = new ProductCountAdapter(products);
         recyclerView.setAdapter(myAdapter);
 
-        // Configurando um divider entre linhas, para uma melhor visualização.
+        // Add divider line
         recyclerView.addItemDecoration(
                 new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
     }
