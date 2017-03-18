@@ -1,37 +1,14 @@
 package br.com.rodrigues.murilo.mtrack.domain.model;
 
 public class SalesOrder {
-    private long idSalesOrder;
-    private long idDelivery;
-    private long idCustomer;
-    private String customerName;
-    private long idProduct;
-    private String productCode;
-    private String productName;
-    private long quantity;
+    private int idSalesOrder;
+    private int idDelivery;
+    private Customer customer = null;
+    private int idProduct;
     private boolean delivered;
 
     public SalesOrder() {
 
-    }
-
-    // TODO: 16/03/17 remove this
-    public SalesOrder(long idSalesOrder, long IdDelivery, String customerName) {
-        this.idSalesOrder = idSalesOrder;
-        this.idDelivery = IdDelivery;
-        this.customerName = customerName;
-    }
-
-    public SalesOrder(long idSalesOrder, long idDelivery, long idCustomer, String customerName, long idProduct, String productCode, String productName, long quantity, boolean delivered) {
-        this.idSalesOrder = idSalesOrder;
-        this.idDelivery = idDelivery;
-        this.idCustomer = idCustomer;
-        this.customerName = customerName;
-        this.idProduct = idProduct;
-        this.productCode = productCode;
-        this.productName = productName;
-        this.quantity = quantity;
-        this.delivered = delivered;
     }
 
     @Override
@@ -39,68 +16,28 @@ public class SalesOrder {
         return "Order " + idSalesOrder;
     }
 
-    public long getIdSalesOrder() {
+    public int getIdSalesOrder() {
         return idSalesOrder;
     }
 
-    public void setIdSalesOrder(long idSalesOrder) {
+    public void setIdSalesOrder(int idSalesOrder) {
         this.idSalesOrder = idSalesOrder;
     }
 
-    public long getIdDelivery() {
+    public int getIdDelivery() {
         return idDelivery;
     }
 
-    public void setIdDelivery(long idDelivery) {
+    public void setIdDelivery(int idDelivery) {
         this.idDelivery = idDelivery;
     }
 
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public long getIdCustomer() {
-        return idCustomer;
-    }
-
-    public void setIdCustomer(long idCustomer) {
-        this.idCustomer = idCustomer;
-    }
-
-    public long getIdProduct() {
+    public int getIdProduct() {
         return idProduct;
     }
 
-    public void setIdProduct(long idProduct) {
+    public void setIdProduct(int idProduct) {
         this.idProduct = idProduct;
-    }
-
-    public String getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public long getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(long quantity) {
-        this.quantity = quantity;
     }
 
     public boolean isDelivered() {
@@ -109,6 +46,14 @@ public class SalesOrder {
 
     public void setDelivered(boolean delivered) {
         this.delivered = delivered;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override

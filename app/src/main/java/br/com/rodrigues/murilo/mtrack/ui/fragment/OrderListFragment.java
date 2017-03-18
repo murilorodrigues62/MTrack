@@ -57,7 +57,7 @@ public class OrderListFragment extends BaseFragment {
         recyclerView.setHasFixedSize(true);
 
         // Adiciona o adapter que irá anexar os objetos à lista.
-        ArrayList<SalesOrder> salesOrders = (ArrayList<SalesOrder>) SalesOrderService.findAllGrouped(getActivity());
+        ArrayList<SalesOrder> salesOrders = (ArrayList<SalesOrder>) SalesOrderService.findAll(getActivity());
 
         myAdapter = new OrderAdapter(salesOrders, onClick());
         recyclerView.setAdapter(myAdapter);
@@ -70,7 +70,7 @@ public class OrderListFragment extends BaseFragment {
     private OrderAdapter.OrderOnClickListener onClick() {
         return new OrderAdapter.OrderOnClickListener() {
             @Override
-            public void onClickOrder(View view, long id) {
+            public void onClickOrder(View view, int id) {
                 Intent detailIntent = null;
                 detailIntent = new Intent(getActivity(), OrderActivity.class);
                 detailIntent.putExtra(OrderFragment.ORDER_ID, id);

@@ -9,21 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
+import br.com.rodrigues.murilo.mtrack.domain.service.CustomerService;
 import br.com.rodrigues.murilo.mtrack.domain.util.SQLiteHelper;
 
 public class SalesOrderRepository {
     // Name in DataBase
-    public static final String PEDIDO_VENDA = "PEDIDO_VENDA";
-    public static final String ID_PEDIVEND = "ID_PEDIVEND";
-    public static final String ID_CARGEXPE = "ID_CARGEXPE";
-    public static final String ID_CLIENTE = "ID_CLIENTE";
-    public static final String NM_CLIENTE = "NM_CLIENTE";
-    public static final String ID_ITEMPEDIVEND = "ID_ITEMPEDIVEND";
-    public static final String ID_MATEEMBA = "ID_MATEEMBA";
-    public static final String ID_PRODMATEEMBA = "ID_PRODMATEEMBA";
-    public static final String NM_PRODMATEEMBA = "NM_PRODMATEEMBA";
-    public static final String NR_EMBAEXPE = "NR_EMBAEXPE";
-    public static final String FL_DELIVERED = "FL_DELIVERED";
+    public static final String TABLE = "PEDIDO_VENDA";
+    public static final String IDSALESORDER = "ID_PEDIVEND";
+    public static final String IDDELIVERY = "ID_CARGEXPE";
+    public static final String IDCUSTOMER = "ID_CLIENTE";
+    public static final String DELIVERED = "FL_DELIVERED";
+    private static final String[] ALLCOLUMNS = {IDDELIVERY, IDSALESORDER, IDCUSTOMER, DELIVERED};
 
     private Context context;
     private SQLiteDatabase database;
@@ -37,48 +33,23 @@ public class SalesOrderRepository {
     public List<SalesOrder> findAll(){
         database=dbHelper.getReadableDatabase();
         try {
-            Cursor cursor = database.query(PEDIDO_VENDA, new String[]{ID_PEDIVEND, ID_CARGEXPE, NM_CLIENTE}, null, null, null, null, ID_PEDIVEND);
+            Cursor cursor = database.query(TABLE, ALLCOLUMNS, null, null, null, null, IDSALESORDER);
             return toList(cursor);
         } finally {
             database.close();
         }
     }
 
-    public List<SalesOrder> findByProducts(long idSalesOrder){
+    public SalesOrder findById(long idSalesOrder){
 
         database=dbHelper.getReadableDatabase();
         try {
-            Cursor cursor = database.query(PEDIDO_VENDA, new String[]{ID_PEDIVEND, ID_ITEMPEDIVEND, ID_MATEEMBA, ID_PRODMATEEMBA, NM_PRODMATEEMBA},
-                    ID_PEDIVEND + " = ?", new String[]{String.valueOf(idSalesOrder)}, null, null, ID_PRODMATEEMBA);
-
-            return toList(cursor);
-        } finally {
-            database.close();
-        }
-    }
-
-    public SalesOrder findSalesOrder(long idSalesOrder){
-
-        database=dbHelper.getReadableDatabase();
-        try {
-            Cursor cursor = database.query(PEDIDO_VENDA, new String[]{ID_PEDIVEND, ID_CARGEXPE, NM_CLIENTE},
-                                           ID_PEDIVEND + " = ?", new String[]{String.valueOf(idSalesOrder)},
-                                           ID_PEDIVEND + ", " + ID_CARGEXPE +", " + NM_CLIENTE, null, ID_PEDIVEND);
+            Cursor cursor = database.query(TABLE, ALLCOLUMNS,
+                                           IDSALESORDER + " = ?", new String[]{String.valueOf(idSalesOrder)},
+                                           null, null, IDSALESORDER);
 
             List<SalesOrder> salesOrders = toList(cursor);
             return salesOrders.isEmpty() ? null : salesOrders.get(0);
-        } finally {
-            database.close();
-        }
-    }
-
-    // TODO: 15/03/17 Terminar implementação, ver como agrupar por mais de uma coluna
-
-    public List<SalesOrder> findAllGrouped(){
-        database=dbHelper.getReadableDatabase();
-        try {
-            Cursor cursor = database.query(PEDIDO_VENDA, new String[]{ID_PEDIVEND, ID_CARGEXPE, NM_CLIENTE}, null, null, ID_PEDIVEND + ", " + ID_CARGEXPE +", " + NM_CLIENTE, null, ID_PEDIVEND);
-            return toList(cursor);
         } finally {
             database.close();
         }
@@ -90,11 +61,10 @@ public class SalesOrderRepository {
         try {
             ContentValues values = new ContentValues();
 
-            values.put(ID_PEDIVEND, salesOrder.getIdSalesOrder());
-            values.put(ID_CARGEXPE, salesOrder.getIdDelivery());
-            values.put(NM_CLIENTE, salesOrder.getCustomerName());
+            values.put(IDSALESORDER, salesOrder.getIdSalesOrder());
+            values.put(IDSALESORDER, salesOrder.getIdDelivery());
 
-            database.insert(PEDIDO_VENDA, null, values);
+            database.insert(TABLE, null, values);
         } finally {
             database.close();
         }
@@ -111,25 +81,18 @@ public class SalesOrderRepository {
 
             for(int i = 0; i < cursor.getColumnCount(); i++){
                 switch (cursor.getColumnName(i)){
-                    case ID_PEDIVEND:
-                        salesOrder.setIdSalesOrder(cursor.getLong(i));
+                    case IDSALESORDER:
+                        salesOrder.setIdSalesOrder(cursor.getInt(i));
                         break;
-                    case ID_CARGEXPE:
-                        salesOrder.setIdDelivery(cursor.getLong(i));
+                    case IDDELIVERY:
+                        salesOrder.setIdDelivery(cursor.getInt(i));
                         break;
-                    case NM_CLIENTE:
-                        salesOrder.setCustomerName(cursor.getString(i));
+                    case IDCUSTOMER:
+                        salesOrder.setCustomer(CustomerService.findById(this.context, cursor.getLong(i)));
                         break;
-                    case ID_PRODMATEEMBA:
-                        salesOrder.setProductCode(cursor.getString(i));
+                    case DELIVERED:
+                        salesOrder.setDelivered((cursor.getInt(i) == 1));
                         break;
-                    case NM_PRODMATEEMBA:
-                        salesOrder.setProductName(cursor.getString(i));
-                        break;
-                    case NR_EMBAEXPE:
-                        salesOrder.setQuantity(cursor.getLong(i));
-                        break;
-                    // TODO: 16/03/17 continue and change of Products ...
                 }
             }
 

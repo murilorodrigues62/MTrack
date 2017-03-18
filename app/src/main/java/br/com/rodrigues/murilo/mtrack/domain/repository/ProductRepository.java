@@ -13,10 +13,11 @@ import br.com.rodrigues.murilo.mtrack.domain.util.SQLiteHelper;
 
 public class ProductRepository {
     // Name in DataBase
-    public static final String MATERIAL_EMBALAGEM = "MATERIAL_EMBALAGEM";
-    public static final String ID_MATEEMBA = "ID_MATEEMBA";
-    public static final String ID_PRODMATEEMBA = "ID_PRODMATEEMBA";
-    public static final String NM_PRODMATEEMBA = "NM_PRODMATEEMBA";
+    public static final String TABLE = "MATERIAL_EMBALAGEM";
+    public static final String IDPRODUCT = "ID_MATEEMBA";
+    public static final String PRODUCTCODE = "ID_PRODMATEEMBA";
+    public static final String PRODUCTNAME = "NM_PRODMATEEMBA";
+    private static final String[] ALLCOLUMNS = {IDPRODUCT, PRODUCTCODE, PRODUCTNAME};
 
     private Context context;
     private SQLiteDatabase database;
@@ -30,7 +31,7 @@ public class ProductRepository {
     public List<Product> findAll(){
         database=dbHelper.getReadableDatabase();
         try {
-            Cursor cursor = database.query(MATERIAL_EMBALAGEM, new String[]{ID_MATEEMBA, ID_PRODMATEEMBA, NM_PRODMATEEMBA}, null, null, null, null, ID_MATEEMBA);
+            Cursor cursor = database.query(TABLE, ALLCOLUMNS, null, null, null, null, IDPRODUCT);
             return toList(cursor);
         } finally {
             database.close();
@@ -43,15 +44,29 @@ public class ProductRepository {
         try {
             ContentValues values = new ContentValues();
 
-            values.put(ID_MATEEMBA, Product.getId());
-            values.put(ID_PRODMATEEMBA, Product.getCode());
-            values.put(NM_PRODMATEEMBA, Product.getName());
+            values.put(IDPRODUCT, Product.getId());
+            values.put(PRODUCTCODE, Product.getCode());
+            values.put(PRODUCTNAME, Product.getName());
 
-            database.insert(MATERIAL_EMBALAGEM, null, values);
+            database.insert(TABLE, null, values);
         } finally {
             database.close();
         }
         return true;
+    }
+
+    public Product findById(int idProduct){
+
+        database=dbHelper.getReadableDatabase();
+        try {
+            Cursor cursor = database.query(TABLE, ALLCOLUMNS,
+                    IDPRODUCT + " = ?", new String[]{String.valueOf(idProduct)}, null, null, null);
+
+            List<Product> products = toList(cursor);
+            return products.isEmpty() ? null : products.get(0);
+        } finally {
+            database.close();
+        }
     }
 
     // Read cursor and create list
@@ -65,7 +80,6 @@ public class ProductRepository {
             product.setId(cursor.getInt(0));
             product.setCode(cursor.getString(1));
             product.setName(cursor.getString(2));
-
             products.add(product);
             cursor.moveToNext();
         }

@@ -22,4 +22,12 @@ public class ProductService {
         return products;
     }
 
+    // Get Customer from local Database
+    public static Product findById(Context context, int idProduct) {
+
+        ProductRepository db = new ProductRepository(context);
+        Product product = db.findById(idProduct);
+        return product;
+    }
+
 }

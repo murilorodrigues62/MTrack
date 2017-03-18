@@ -29,10 +29,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyHolder> {
                 .inflate(R.layout.adapter_list_order, parent, false));
     }
 
+    // TODO: 18/03/17 PAREI AQUI - Refactoring
     @Override
     public void onBindViewHolder(final MyHolder holder, final int position) {
         holder.title.setText(salesOrders.get(position).toString());
-        holder.subtitle.setText(salesOrders.get(position).getCustomerName());
+        holder.subtitle.setText(salesOrders.get(position).getCustomer().getCustomerName());
 
         // On Click
         if (orderOnClickListener != null) {
@@ -67,7 +68,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyHolder> {
     }
 
     public interface OrderOnClickListener {
-       void onClickOrder(View view, long id);
-        // TODO: 11/03/17 change long id for SalesOrder serealizable
+       void onClickOrder(View view, int id);
+        // TODO: 11/03/17 change id id for SalesOrder serealizable
     }
 }

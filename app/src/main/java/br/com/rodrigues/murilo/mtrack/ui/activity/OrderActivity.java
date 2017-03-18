@@ -17,7 +17,7 @@ public class OrderActivity extends BaseActivity {
         ButterKnife.bind(this);
         setupToolbar();
 
-        OrderFragment fragment =  OrderFragment.newInstance(getIntent().getLongExtra(OrderFragment.ORDER_ID,0));
+        OrderFragment fragment =  OrderFragment.newInstance(getIntent().getIntExtra(OrderFragment.ORDER_ID,0));
         getFragmentManager().beginTransaction().replace(R.id.activity_order_container, fragment).commit();
 
     }
@@ -29,3 +29,4 @@ public class OrderActivity extends BaseActivity {
 }
 
 // TODO: 15/03/17 Implementar quantidade digitos da identificação para ler automatico
+// TODO: 18/03/17 exibir pedido e cliente no title e subtitle da tollbar (subtitle não está aparecendo)

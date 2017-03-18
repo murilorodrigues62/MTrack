@@ -61,7 +61,7 @@ public class OrderFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey(ORDER_ID)) {
-            salesOrder = SalesOrderService.findSalesOrder(getActivity(), getArguments().getLong(ORDER_ID));
+            salesOrder = SalesOrderService.findById(getActivity(), getArguments().getInt(ORDER_ID));
         }
 
         setHasOptionsMenu(true);
@@ -73,7 +73,8 @@ public class OrderFragment extends BaseFragment {
 
         if (salesOrder != null) {
             textOrder.setText(salesOrder.toString());
-            textClient.setText(salesOrder.getCustomerName());
+            textClient.setText(salesOrder.getCustomer().getCustomerName());
+
         }
 
         // call the Barcode Scanner app
@@ -115,10 +116,10 @@ public class OrderFragment extends BaseFragment {
         }
     }
 
-    public static OrderFragment newInstance(long itemID) {
+    public static OrderFragment newInstance(int itemID) {
         OrderFragment fragment = new OrderFragment();
         Bundle args = new Bundle();
-        args.putLong(OrderFragment.ORDER_ID, itemID);
+        args.putInt(OrderFragment.ORDER_ID, itemID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -131,7 +132,8 @@ public class OrderFragment extends BaseFragment {
         recyclerView.setHasFixedSize(true);
 
         // Adapter to add products in list
-        ArrayList<SalesOrder> products = (ArrayList<SalesOrder>) SalesOrderService.findProducts(getActivity(), salesOrder.getIdSalesOrder());
+        // TODO: 18/03/17
+        ArrayList<SalesOrder> products = (ArrayList<SalesOrder>) SalesOrderService.findAll(getActivity());//, salesOrder.getIdSalesOrder());
 
         myAdapter = new ProductCountAdapter(products);
         recyclerView.setAdapter(myAdapter);
