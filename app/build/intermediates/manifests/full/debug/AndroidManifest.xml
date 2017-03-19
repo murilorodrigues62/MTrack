@@ -24,15 +24,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.com.rodrigues.murilo.mtrack.ui.activity.ListOrderActivity"
+            android:name="br.com.rodrigues.murilo.mtrack.ui.activity.SalesOrderListActivity"
             android:label="Order List"
             android:launchMode="singleTask"
             android:parentActivityName="br.com.rodrigues.murilo.mtrack.ui.activity.MainActivity" />
         <activity
-            android:name="br.com.rodrigues.murilo.mtrack.ui.activity.OrderActivity"
+            android:name="br.com.rodrigues.murilo.mtrack.ui.activity.SalesOrderActivity"
             android:label="Order"
             android:launchMode="singleTask"
-            android:parentActivityName="br.com.rodrigues.murilo.mtrack.ui.activity.ListOrderActivity" />
+            android:parentActivityName="br.com.rodrigues.murilo.mtrack.ui.activity.SalesOrderListActivity" />
         <activity
             android:name="br.com.rodrigues.murilo.mtrack.ui.activity.SettingsActivity"
             android:label="Settings"

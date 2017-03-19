@@ -16,14 +16,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.ListOrderActivity"
+            android:name=".ui.activity.SalesOrderListActivity"
             android:label="Order List"
             android:parentActivityName=".ui.activity.MainActivity"
             android:launchMode="singleTask"/>
         <activity
-            android:name=".ui.activity.OrderActivity"
+            android:name=".ui.activity.SalesOrderActivity"
             android:label="Order"
-            android:parentActivityName=".ui.activity.ListOrderActivity"
+            android:parentActivityName=".ui.activity.SalesOrderListActivity"
             android:launchMode="singleTask"/>
         <activity
             android:name=".ui.activity.SettingsActivity"

@@ -40,7 +40,7 @@ public class SalesOrderRepository {
         }
     }
 
-    public SalesOrder findById(long idSalesOrder){
+    public SalesOrder findById(int idSalesOrder){
 
         database=dbHelper.getReadableDatabase();
         try {
@@ -88,7 +88,7 @@ public class SalesOrderRepository {
                         salesOrder.setIdDelivery(cursor.getInt(i));
                         break;
                     case IDCUSTOMER:
-                        salesOrder.setCustomer(CustomerService.findById(this.context, cursor.getLong(i)));
+                        salesOrder.setCustomer(CustomerService.findById(this.context, cursor.getInt(i)));
                         break;
                     case DELIVERED:
                         salesOrder.setDelivered((cursor.getInt(i) == 1));

@@ -36,7 +36,7 @@ public class CustomerRepository {
         }
     }
 
-    public Customer findById(long idCustomer){
+    public Customer findById(int idCustomer){
 
         database=dbHelper.getReadableDatabase();
         try {

@@ -18,7 +18,7 @@ public class SalesOrderItemRepository {
     public static final String IDSALESORDERITEM = "ID_ITEMPEDIVEND";
     public static final String IDSALESORDER = "ID_PEDIVEND";
     public static final String IDPRODUCT = "ID_MATEEMBA";
-    public static final String QUANTITY = "FL_DELIVERED";
+    public static final String QUANTITY = "NR_EMBAEXPE";
     private static final String[] ALLCOLUMNS = {IDSALESORDERITEM, IDSALESORDER, IDPRODUCT, QUANTITY};
 
     private Context context;
@@ -40,16 +40,13 @@ public class SalesOrderItemRepository {
         }
     }
 
-    public SalesOrderItem findByOrder(long idSalesOrder){
-
+    public List<SalesOrderItem> findByOrder(int idSalesOrder){
         database=dbHelper.getReadableDatabase();
         try {
             Cursor cursor = database.query(TABLE, ALLCOLUMNS,
                                            IDSALESORDER + " = ?", new String[]{String.valueOf(idSalesOrder)},
                                            null, null, IDSALESORDER);
-
-            List<SalesOrderItem> salesOrdersItems = toList(cursor);
-            return salesOrdersItems.isEmpty() ? null : salesOrdersItems.get(0);
+            return toList(cursor);
         } finally {
             database.close();
         }

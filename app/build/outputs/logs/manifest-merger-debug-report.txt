@@ -128,7 +128,7 @@ category#android.intent.category.LAUNCHER
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:15:17-77
 	android:name
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:15:27-74
-activity#br.com.rodrigues.murilo.mtrack.ui.activity.ListOrderActivity
+activity#br.com.rodrigues.murilo.mtrack.ui.activity.SalesOrderListActivity
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:18:9-22:46
 	android:label
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:20:13-39
@@ -137,17 +137,17 @@ ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest
 	android:launchMode
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:22:13-44
 	android:name
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:19:13-58
-activity#br.com.rodrigues.murilo.mtrack.ui.activity.OrderActivity
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:19:13-63
+activity#br.com.rodrigues.murilo.mtrack.ui.activity.SalesOrderActivity
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:23:9-27:46
 	android:label
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:25:13-34
 	android:parentActivityName
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:26:13-72
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:26:13-77
 	android:launchMode
 		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:27:13-44
 	android:name
-		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:24:13-54
+		ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:24:13-59
 activity#br.com.rodrigues.murilo.mtrack.ui.activity.SettingsActivity
 ADDED from /home/rodrigues/Área de Trabalho/MTrack/app/src/main/AndroidManifest.xml:28:9-32:46
 	android:label

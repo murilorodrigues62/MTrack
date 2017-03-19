@@ -1,6 +1,5 @@
 package br.com.rodrigues.murilo.mtrack.domain.repository;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -38,23 +37,6 @@ public class ProductRepository {
         }
     }
 
-    public boolean insert(Product Product){
-        database=dbHelper.getWritableDatabase();
-
-        try {
-            ContentValues values = new ContentValues();
-
-            values.put(IDPRODUCT, Product.getId());
-            values.put(PRODUCTCODE, Product.getCode());
-            values.put(PRODUCTNAME, Product.getName());
-
-            database.insert(TABLE, null, values);
-        } finally {
-            database.close();
-        }
-        return true;
-    }
-
     public Product findById(int idProduct){
 
         database=dbHelper.getReadableDatabase();
@@ -76,10 +58,20 @@ public class ProductRepository {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Product product = new Product();
-            // get attributes
-            product.setId(cursor.getInt(0));
-            product.setCode(cursor.getString(1));
-            product.setName(cursor.getString(2));
+
+            for(int i = 0; i < cursor.getColumnCount(); i++){
+                switch (cursor.getColumnName(i)){
+                    case IDPRODUCT:
+                        product.setIdProduct(cursor.getInt(i));
+                        break;
+                    case PRODUCTCODE:
+                        product.setProductCode(cursor.getString(i));
+                        break;
+                    case PRODUCTNAME:
+                        product.setProductName(cursor.getString(i));
+                        break;
+                }
+            }
             products.add(product);
             cursor.moveToNext();
         }

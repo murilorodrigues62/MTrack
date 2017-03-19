@@ -23,7 +23,7 @@ public class CustomerService {
     }
 
     // Get Customer from local Database
-    public static Customer findById(Context context, long idCustomer) {
+    public static Customer findById(Context context, int idCustomer) {
 
         CustomerRepository db = new CustomerRepository(context);
         Customer customer = db.findById(idCustomer);

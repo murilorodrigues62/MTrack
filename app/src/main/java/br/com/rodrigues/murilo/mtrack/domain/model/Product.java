@@ -4,40 +4,40 @@ package br.com.rodrigues.murilo.mtrack.domain.model;
  * Created by root on 13/02/17.
  */
 public class Product {
-    private int id;
-    private String code;
-    private String name;
+    private int idProduct;
+    private String productCode;
+    private String productName;
 
     public Product() {
     }
 
-    public Product(int id, String code, String name) {
-        this.id = id;
-        this.name = name;
-        this.code = code;
+    public Product(int idProduct, String productCode, String productName) {
+        this.idProduct = idProduct;
+        this.productName = productName;
+        this.productCode = productCode;
     }
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
+    public String getProductCode() {
+        return productCode;
     }
 
-    public int getId() {
-        return id;
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getIdProduct() {
+        return idProduct;
     }
 
-    public String getName() {
-        return name;
+    public void setIdProduct(int idProduct) {
+        this.idProduct = idProduct;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     @Override
@@ -46,17 +46,17 @@ public class Product {
         if (o == null || getClass() != o.getClass()) return false;
 
         Product product = (Product) o;
-        return id == product.id;
+        return idProduct == product.idProduct;
     }
 
     @Override
     public int hashCode() {
-        return id;
+        return idProduct;
     }
 
     @Override
     public String toString() {
-        return code +
-               " - " + name;
+        return productCode +
+               " - " + productName;
     }
 }

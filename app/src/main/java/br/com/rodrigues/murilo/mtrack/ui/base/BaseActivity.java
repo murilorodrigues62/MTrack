@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.ui.activity.ListOrderActivity;
+import br.com.rodrigues.murilo.mtrack.ui.activity.SalesOrderListActivity;
 import br.com.rodrigues.murilo.mtrack.ui.activity.SettingsActivity;
 import br.com.rodrigues.murilo.mtrack.ui.activity.SyncActivity;
 
@@ -86,7 +86,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void goToNavDrawerItem(int item) {
         switch (item) {
             case R.id.nav_sales_order:
-                startActivity(new Intent(this, ListOrderActivity.class));
+                startActivity(new Intent(this, SalesOrderListActivity.class));
                 finish();
                 break;
             case R.id.nav_sync:
