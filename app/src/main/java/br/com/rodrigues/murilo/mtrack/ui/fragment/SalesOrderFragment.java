@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -51,7 +52,12 @@ public class SalesOrderFragment extends BaseFragment {
     @Bind(R.id.recyclerview)
     RecyclerView recyclerView;
 
+    @Bind(R.id.buttonRead)
+    Button buttonRead;
+
     private SalesOrderItemAdapter myAdapter;
+
+    public SalesOrderFragment() {}
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,6 +92,13 @@ public class SalesOrderFragment extends BaseFragment {
                 {
                     Snackbar.make(view, R.string.message_barcode_scanner, Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }
+            }
+        });
+
+        buttonRead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: 21/03/17 CONTINUE...  salesOrder.readBarcode(barcode.getText());
             }
         });
 
@@ -125,7 +138,6 @@ public class SalesOrderFragment extends BaseFragment {
         recyclerView.setHasFixedSize(true);
 
         // Adapter to add products in list
-        // TODO: 18/03/17
         ArrayList<SalesOrderItem> salesOrderItems = (ArrayList<SalesOrderItem>) SalesOrderItemService.findByIdOrder(getActivity(), salesOrder.getIdSalesOrder());
 
         myAdapter = new SalesOrderItemAdapter(salesOrderItems);
@@ -135,7 +147,6 @@ public class SalesOrderFragment extends BaseFragment {
         recyclerView.addItemDecoration(
                 new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
     }
-    public SalesOrderFragment() {}
 }
 
-// TODO: 11/03/17 ajustar layout do card contendo dados do pedido, para ficar menor. 
+// TODO: 11/03/17 ajustar layout do card contendo dados do pedido, para ficar menor.

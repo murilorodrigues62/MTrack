@@ -60,6 +60,3 @@ public class SalesOrderItem {
         return idSalesOrderItem;
     }
 }
-
-// TODO: 18/03/17 PAREI AQUI, terminar domain do item do pedido
-

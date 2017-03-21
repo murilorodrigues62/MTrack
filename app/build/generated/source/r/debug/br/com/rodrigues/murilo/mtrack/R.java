@@ -2829,7 +2829,7 @@ containing a value of this type.
         public static final int beginning=0x7f0d0038;
         public static final int bottom=0x7f0d0026;
         public static final int buttonFinish=0x7f0d008a;
-        public static final int buttonInsert=0x7f0d008c;
+        public static final int buttonRead =0x7f0d008c;
         public static final int buttonPanel=0x7f0d004b;
         public static final int cancel_action=0x7f0d00a2;
         public static final int center=0x7f0d0027;

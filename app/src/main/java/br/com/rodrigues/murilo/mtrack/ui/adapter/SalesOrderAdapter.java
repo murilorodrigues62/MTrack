@@ -29,7 +29,6 @@ public class SalesOrderAdapter extends RecyclerView.Adapter<SalesOrderAdapter.My
                 .inflate(R.layout.adapter_sales_order_list, parent, false));
     }
 
-    // TODO: 18/03/17 PAREI AQUI - Refactoring
     @Override
     public void onBindViewHolder(final MyHolder holder, final int position) {
         holder.title.setText(salesOrders.get(position).toString());

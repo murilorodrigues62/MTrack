@@ -10,6 +10,7 @@ import br.com.rodrigues.murilo.mtrack.domain.repository.ProductRepository;
 import br.com.rodrigues.murilo.mtrack.domain.repository.SalesOrderItemRepository;
 import br.com.rodrigues.murilo.mtrack.domain.repository.SalesOrderPackageRepository;
 import br.com.rodrigues.murilo.mtrack.domain.repository.SalesOrderRepository;
+import br.com.rodrigues.murilo.mtrack.domain.repository.SettingsRepository;
 
 
 public class SQLiteHelper extends SQLiteOpenHelper {
@@ -56,6 +57,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             SalesOrderPackageRepository.IDPRODUCT         + " INTEGER NOT NULL,             " +
             SalesOrderPackageRepository.IDSALESORDERREAL  + " INTEGER NOT NULL,             " +
             SalesOrderPackageRepository.BARCODE           + " TEXT NOT NULL);               ";
+
+    // Create table SETTINGS
+    public static final String CREATE_SETTINGS = "CREATE TABLE " + SettingsRepository.TABLE +" (" +
+            SettingsRepository.IDSETTINGS      + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+            SettingsRepository.TRANSPORTERCODE + " TEXT,  " +
+            SettingsRepository.URLEDATA        + " TEXT); ";
 
     public static final String INSERT_CUSTOMER(){
         return "INSERT INTO "+ CustomerRepository.TABLE +
@@ -110,6 +117,31 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 " (13,279732, 3, 20); " ;
     }
 
+    // insert fake data
+    public static final String INSERT_SALES_ORDER_PACKAGE() {
+        return "INSERT INTO " + SalesOrderPackageRepository.TABLE + " ( " +
+                SalesOrderPackageRepository.IDSALESORDER + " , " +
+                SalesOrderPackageRepository.IDDELIVERY   + " , " +
+                SalesOrderPackageRepository.IDPRODUCT    + " , " +
+                SalesOrderPackageRepository.BARCODE      + " ) VALUES " +
+                "(279728, 29797, 1, '006'), " +
+                "(279728, 29797, 1, '007'), " +
+                "(279731, 29797, 1, '001'), " +
+                "(279731, 29797, 1, '002'), " +
+                "(279731, 29797, 1, '003'), " +
+                "(279731, 29797, 1, '004'), " +
+                "(279731, 29797, 1, '005');";
+    }
+
+    // insert data
+    public static final String INSERT_SETTINGS() {
+        return "INSERT INTO " + SettingsRepository.TABLE + " ( " +
+                SettingsRepository.TRANSPORTERCODE + " , " +
+                SettingsRepository.URLEDATA        + " ) VALUES " +
+                "('', '');";
+    }
+
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // Execute scripts to create database
@@ -118,13 +150,15 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_SALES_ORDER);
         sqLiteDatabase.execSQL(CREATE_SALES_ORDER_ITEM);
         sqLiteDatabase.execSQL(CREATE_SALES_ORDER_PACKAGE);
+        sqLiteDatabase.execSQL(CREATE_SETTINGS);
+        sqLiteDatabase.execSQL(INSERT_SETTINGS());
 
+        // fake
         sqLiteDatabase.execSQL(INSERT_CUSTOMER());
         sqLiteDatabase.execSQL(INSERT_PRODUCT());
         sqLiteDatabase.execSQL(INSERT_SALES_ORDER());
         sqLiteDatabase.execSQL(INSERT_SALES_ORDER_ITEM());
-
-        // TODO: 19/03/17 add data to package and config table 
+        sqLiteDatabase.execSQL(INSERT_SALES_ORDER_PACKAGE());
     }
 
     @Override

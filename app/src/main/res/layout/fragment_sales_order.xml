@@ -71,8 +71,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignLeft="@+id/buttonFinish"
                         android:layout_alignStart="@+id/buttonFinish"
-                        android:layout_toLeftOf="@+id/buttonInsert"
-                        android:layout_toStartOf="@+id/buttonInsert"
+                        android:layout_toLeftOf="@+id/buttonRead"
+                        android:layout_toStartOf="@+id/buttonRead"
                         android:layout_below="@+id/txtClient"
                         android:layout_marginTop="5dp">
 
@@ -87,7 +87,7 @@
                         android:layout_width="56dp"
                         android:layout_height="50dp"
                         android:text="Ok"
-                        android:id="@+id/buttonInsert"
+                        android:id="@+id/buttonRead"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:textColor="@color/theme_primary_dark"
                         android:layout_alignParentRight="true"
