@@ -1,15 +1,21 @@
 package br.com.rodrigues.murilo.mtrack.domain.model;
 
+import android.content.Context;
+
+import java.util.List;
+
+import br.com.rodrigues.murilo.mtrack.R;
+import br.com.rodrigues.murilo.mtrack.domain.service.SalesOrderItemService;
+import br.com.rodrigues.murilo.mtrack.domain.service.SalesOrderPackageService;
+
 public class SalesOrder {
     private int idSalesOrder;
     private int idDelivery;
     private Customer customer = null;
     private int idProduct;
     private boolean delivered;
-
-    public SalesOrder() {
-
-    }
+    private List<SalesOrderItem> salesOrderItems = null;
+    public SalesOrder() { }
 
     @Override
     public String toString() {
@@ -54,6 +60,44 @@ public class SalesOrder {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public String readPackage(Context context, String barcode){
+
+        // Search for package barcode
+        SalesOrderPackage salesOrderPackage = SalesOrderPackageService.findByBarcode(context, this.getIdDelivery(), barcode);
+        if (salesOrderPackage == null){
+            return context.getString(R.string.msg_package_not_found);
+        } else {
+            
+            if (salesOrderItems == null) {
+                salesOrderItems = SalesOrderItemService.findByIdOrder(context, this.getIdSalesOrder());
+            }
+
+            // Search for product in items
+            Boolean productInOrder = false;
+            for (SalesOrderItem salesOrderItem: salesOrderItems) {
+
+                if (salesOrderItem.getProduct().equals(salesOrderPackage.getProduct())){
+                    productInOrder = true;
+
+                    // Check total packages read
+                    if (SalesOrderPackageService.findBySalesOrderReal(context, this.getIdSalesOrder()).size() >=
+                            salesOrderItem.getQuantity()){
+                        return context.getString(R.string.msg_packages_read);
+                    }
+
+                    // TODO: 21/03/17 CONTINUE - Update Order Real on package
+
+
+                }
+            }
+
+            if (!productInOrder){
+                return context.getString(R.string.msg_product_not_found);
+            }
+        }
+        return context.getString(R.string.msg_package_not_found);
     }
 
     @Override

@@ -52,11 +52,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     // Create table EXPEDICAO_CARGA_IDENTIFICACAO
     public static final String CREATE_SALES_ORDER_PACKAGE = "CREATE TABLE "+ SalesOrderPackageRepository.TABLE +" (" +
-            SalesOrderPackageRepository.IDDELIVERY        + " INTEGER NOT NULL PRIMARY KEY, " +
-            SalesOrderPackageRepository.IDSALESORDER      + " INTEGER,                      " +
-            SalesOrderPackageRepository.IDPRODUCT         + " INTEGER NOT NULL,             " +
-            SalesOrderPackageRepository.IDSALESORDERREAL  + " INTEGER NOT NULL,             " +
-            SalesOrderPackageRepository.BARCODE           + " TEXT NOT NULL);               ";
+            SalesOrderPackageRepository.IDDELIVERY        + " INTEGER NOT NULL, " +
+            SalesOrderPackageRepository.IDSALESORDER      + " INTEGER,          " +
+            SalesOrderPackageRepository.IDPRODUCT         + " INTEGER NOT NULL, " +
+            SalesOrderPackageRepository.IDSALESORDERREAL  + " INTEGER,          " +
+            SalesOrderPackageRepository.BARCODE           + " TEXT NOT NULL);   ";
 
     // Create table SETTINGS
     public static final String CREATE_SETTINGS = "CREATE TABLE " + SettingsRepository.TABLE +" (" +

@@ -63,12 +63,12 @@ public class SalesOrderPackageRepository {
         }
     }
 
-    public SalesOrderPackage findByBarCode(String barcode){
+    public SalesOrderPackage findByBarCode(int idDelivery, String barcode){
 
         database=dbHelper.getReadableDatabase();
         try {
             Cursor cursor = database.query(TABLE, ALLCOLUMNS,
-                    BARCODE + " = ?", new String[]{String.valueOf(barcode)}, null, null, null);
+                    BARCODE + " = ? AND " + IDDELIVERY + " = ? ", new String[]{barcode, String.valueOf(idDelivery)}, null, null, null);
 
             List<SalesOrderPackage> salesOrderPackages = toList(cursor);
             return salesOrderPackages.isEmpty() ? null : salesOrderPackages.get(0);

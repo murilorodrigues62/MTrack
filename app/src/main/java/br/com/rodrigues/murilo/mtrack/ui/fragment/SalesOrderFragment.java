@@ -98,7 +98,9 @@ public class SalesOrderFragment extends BaseFragment {
         buttonRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: 21/03/17 CONTINUE...  salesOrder.readBarcode(barcode.getText());
+                // TODO: 21/03/17 CONTINUE...
+                String message = salesOrder.readPackage(view.getContext(), String.valueOf(barcode.getText()));
+                Snackbar.make(view, message, Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
 

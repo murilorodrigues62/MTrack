@@ -13,4 +13,7 @@
     <string name="message_barcode_scanner">Barcode Scanner not installed</string>
     <string name="intent_barcode_scanner">com.google.zxing.client.android.SCAN</string>
     <string name="intent_barcode_extra">com.google.zxing.client.android.SCAN.SCAN_MODE</string>
+    <string name="msg_package_not_found">Package not found for this delivery</string>
+    <string name="msg_product_not_found">Product not found for this sales order</string>
+    <string name="msg_packages_read">All packages was read for this product</string>
 </resources>

@@ -28,9 +28,9 @@ public class SalesOrderPackageService {
         return salesOrderPackages;
     }
 
-    public static SalesOrderPackage findByBarcode(Context context, String barcode) {
+    public static SalesOrderPackage findByBarcode(Context context, int idDelivery,  String barcode) {
         SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
-        SalesOrderPackage salesOrderPackage = db.findByBarCode(barcode);
+        SalesOrderPackage salesOrderPackage = db.findByBarCode(idDelivery, barcode);
         return salesOrderPackage;
     }
 }
