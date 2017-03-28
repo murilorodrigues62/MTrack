@@ -101,6 +101,7 @@ public class SalesOrderFragment extends BaseFragment {
                 // TODO: 21/03/17 CONTINUE...
                 String message = salesOrder.readPackage(view.getContext(), String.valueOf(barcode.getText()));
                 Snackbar.make(view, message, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                barcode.setText("");
             }
         });
 

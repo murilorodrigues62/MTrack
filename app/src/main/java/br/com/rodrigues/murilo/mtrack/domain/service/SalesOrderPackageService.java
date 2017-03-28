@@ -1,5 +1,6 @@
 package br.com.rodrigues.murilo.mtrack.domain.service;
 
+import android.content.ContentValues;
 import android.content.Context;
 
 import java.util.List;
@@ -32,5 +33,16 @@ public class SalesOrderPackageService {
         SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
         SalesOrderPackage salesOrderPackage = db.findByBarCode(idDelivery, barcode);
         return salesOrderPackage;
+    }
+
+    public static int updateSalesOrderReal(Context context, SalesOrderPackage salesOrderPackage){
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        ContentValues values = new ContentValues();
+        values.put(db.IDSALESORDERREAL, salesOrderPackage.getSalesOrderReal().getIdSalesOrder());
+        String[] whereArgs = {String.valueOf(salesOrderPackage.getSalesOrder().getIdSalesOrder()),
+                              String.valueOf(salesOrderPackage.getProduct().getIdProduct()),
+                              salesOrderPackage.getBarcode()};
+        return db.update(values, db.IDSALESORDER +" =?  AND "+ db.IDPRODUCT +" =?  AND " + db.BARCODE + " =? ", whereArgs);
+        // TODO: 24/03/17 CONTINUE 
     }
 }

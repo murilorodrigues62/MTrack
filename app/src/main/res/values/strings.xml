@@ -16,4 +16,6 @@
     <string name="msg_package_not_found">Package not found for this delivery</string>
     <string name="msg_product_not_found">Product not found for this sales order</string>
     <string name="msg_packages_read">All packages was read for this product</string>
+    <string name="msg_package_read">"Package was read for sales order "</string>
+    <string name="msg_package_read_ok">Package read!</string>
 </resources>

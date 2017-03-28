@@ -87,7 +87,18 @@ public class SalesOrder {
                         return context.getString(R.string.msg_packages_read);
                     }
 
-                    // TODO: 21/03/17 CONTINUE - Update Order Real on package
+                    if (salesOrderPackage.getSalesOrderReal() != null){
+                        return context.getString(R.string.msg_package_read) + salesOrderPackage.getSalesOrderReal().getIdSalesOrder();
+                    } else {
+                        salesOrderPackage.setSalesOrderReal(this);
+                    }
+
+                    // Update Sales Order Real of package
+                    SalesOrderPackageService.updateSalesOrderReal(context, salesOrderPackage);
+
+                    // TODO: 28/03/17   inc qtde read on the list
+
+                    return context.getString(R.string.msg_package_read_ok);
 
 
                 }

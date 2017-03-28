@@ -362,6 +362,8 @@
     <string name="message_barcode_scanner">Barcode Scanner not installed</string>
     <string name="message_saved">Saved successfully</string>
     <string name="msg_package_not_found">Package not found for this delivery</string>
+    <string name="msg_package_read">"Package was read for sales order "</string>
+    <string name="msg_package_read_ok">Package read!</string>
     <string name="msg_packages_read">All packages was read for this product</string>
     <string name="msg_product_not_found">Product not found for this sales order</string>
     <string name="navigation_quotes">Sales Order</string>

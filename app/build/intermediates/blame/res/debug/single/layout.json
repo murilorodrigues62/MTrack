@@ -232,12 +232,12 @@
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/design/25.2.0/res/layout/design_navigation_item.xml"
     },
     {
-        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
-        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/activity_main.xml"
-    },
-    {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/adapter_sales_order_list.xml",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/adapter_sales_order_list.xml"
+    },
+    {
+        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/layout/activity_main.xml"
     },
     {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/layout/activity_sales_order.xml",

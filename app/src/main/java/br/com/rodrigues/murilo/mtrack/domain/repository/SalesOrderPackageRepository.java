@@ -1,5 +1,6 @@
 package br.com.rodrigues.murilo.mtrack.domain.repository;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -78,6 +79,16 @@ public class SalesOrderPackageRepository {
     }
 
     // TODO: 19/03/17 Add update SalesOrder
+    public int update(ContentValues values, String where, String[] whereArgs) {
+        database = dbHelper.getWritableDatabase();
+        try {
+            // update TABLE set values = ... where _id=?
+            int count = database.update(TABLE, values, where, whereArgs);
+            return count;
+        } finally {
+            database.close();
+        }
+    }
 
     // Read cursor and create list
     private List<SalesOrderPackage> toList(Cursor cursor) {
