@@ -1,5 +1,6 @@
 package br.com.rodrigues.murilo.mtrack.ui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -9,8 +10,12 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -37,8 +42,8 @@ public class SalesOrderFragment extends BaseFragment {
 
     private SalesOrder salesOrder;
 
-    @Bind(R.id.txtOrder)
-    TextView textOrder;
+    //@Bind(R.id.txtOrder)
+    //TextView textOrder;
 
     @Bind(R.id.txtClient)
     TextView textClient;
@@ -67,14 +72,13 @@ public class SalesOrderFragment extends BaseFragment {
             salesOrder = SalesOrderService.findById(getActivity(), getArguments().getInt(ORDER_ID));
         }
         setHasOptionsMenu(true);
-      }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflateAndBind(inflater, container, R.layout.fragment_sales_order);
 
         if (salesOrder != null) {
-            textOrder.setText(salesOrder.toString());
             textClient.setText(salesOrder.getCustomer().getCustomerName());
         }
 
@@ -88,8 +92,7 @@ public class SalesOrderFragment extends BaseFragment {
                 PackageManager manager = view.getContext().getPackageManager();
                 if (manager.resolveActivity(intent, 0) != null){
                     startActivityForResult(intent, 0);
-                } else
-                {
+                } else {
                     Snackbar.make(view, R.string.message_barcode_scanner, Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }
             }
@@ -98,14 +101,21 @@ public class SalesOrderFragment extends BaseFragment {
         buttonRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: 21/03/17 CONTINUE...
                 String message = salesOrder.readPackage(view.getContext(), String.valueOf(barcode.getText()));
                 Snackbar.make(view, message, Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 barcode.setText("");
+
+                // refresh list
+                myAdapter.notifyDataSetChanged();
+
+                // hide the keyboard
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(barcode.getWindowToken(), 0);
             }
         });
 
         setupRecycler();
+
         return rootView;
     }
 
@@ -123,6 +133,39 @@ public class SalesOrderFragment extends BaseFragment {
                 barcode.setText("");
             }
         }
+    }
+    // TODO: 29/03/17 CONTINUE... Implementar leitura dinamica via Scanner
+    // TODO: 29/03/17 Implementar remoção de caixa já lida
+    // TODO: 29/03/17 Incluir na lista de pedidos informação se está aberto ou não 
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.settings_actions, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.getItem(0).setVisible(!salesOrder.isDelivered());
+        menu.getItem(1).setVisible(salesOrder.isDelivered());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        String message;
+
+        switch (item.getItemId()) {
+            case R.id.action_finish_order:
+                message = salesOrder.finishOrder(getActivity());
+                Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                return true;
+            case R.id.action_open_order:
+                message = salesOrder.OpenOrder(getActivity());
+                Snackbar.make(getView(), message, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public static SalesOrderFragment newInstance(int itemID) {

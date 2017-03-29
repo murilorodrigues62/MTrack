@@ -53,11 +53,11 @@ public class SalesOrderPackageRepository {
         }
     }
 
-    public List<SalesOrderPackage> findBySalesOrderReal(int idSalesOrder){
+    public List<SalesOrderPackage> findBySalesOrderReal(int idSalesOrder, int idProduct){
         database=dbHelper.getReadableDatabase();
         try {
             Cursor cursor = database.query(TABLE, ALLCOLUMNS,
-                    IDSALESORDERREAL + " = ?", new String[]{String.valueOf(idSalesOrder)}, null, null, null);
+                    IDSALESORDERREAL + " = ? AND " + IDPRODUCT + " = ? ", new String[]{String.valueOf(idSalesOrder), String.valueOf(idProduct)}, null, null, null);
             return toList(cursor);
         } finally {
             database.close();
@@ -78,11 +78,19 @@ public class SalesOrderPackageRepository {
         }
     }
 
-    // TODO: 19/03/17 Add update SalesOrder
-    public int update(ContentValues values, String where, String[] whereArgs) {
+    public int updateSalesOrderReal(SalesOrderPackage salesOrderPackage){
         database = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(IDSALESORDERREAL, salesOrderPackage.getSalesOrderReal().getIdSalesOrder());
+
+        String where = IDSALESORDER + " =?  AND "+ IDPRODUCT +" =?  AND " + BARCODE + " =? ";
+
+        String[] whereArgs = {String.valueOf(salesOrderPackage.getSalesOrder().getIdSalesOrder()),
+                String.valueOf(salesOrderPackage.getProduct().getIdProduct()),
+                salesOrderPackage.getBarcode()};
+
         try {
-            // update TABLE set values = ... where _id=?
             int count = database.update(TABLE, values, where, whereArgs);
             return count;
         } finally {

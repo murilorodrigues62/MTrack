@@ -2,7 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
-        android:title="@string/settings"
+        android:id="@+id/action_finish_order"
+        android:title="@string/finish_order"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_open_order"
+        android:title="@string/open_order"
         app:showAsAction="never" />
 </menu>

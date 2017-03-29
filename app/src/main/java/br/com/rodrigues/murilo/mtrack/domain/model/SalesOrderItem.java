@@ -1,10 +1,15 @@
 package br.com.rodrigues.murilo.mtrack.domain.model;
 
+import android.content.Context;
+
+import br.com.rodrigues.murilo.mtrack.domain.service.SalesOrderPackageService;
+
 public class SalesOrderItem {
     private int idSalesOrderItem;
     private SalesOrder salesOrder;
     private Product product;
     private int quantity;
+    private int quantityRead;
 
     public SalesOrderItem() {}
 
@@ -38,6 +43,11 @@ public class SalesOrderItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getQuantityRead(Context context) {
+        quantityRead = SalesOrderPackageService.findBySalesOrderReal(context, this).size();
+        return quantityRead;
     }
 
     @Override

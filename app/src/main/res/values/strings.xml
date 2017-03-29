@@ -18,4 +18,15 @@
     <string name="msg_packages_read">All packages was read for this product</string>
     <string name="msg_package_read">"Package was read for sales order "</string>
     <string name="msg_package_read_ok">Package read!</string>
+    <string name="read">Read</string>
+    <string name="qty">Qty</string>
+    <string name="product">Product</string>
+    <string name="finish_order">Finish Order</string>
+    <string name="sales_order_finished">Sales Order Finished!</string>
+    <string name="sales_order_not_finished">Sales Order Not Finished!</string>
+    <string name="sales_order_was_finished">Sales Order Was Finished!</string>
+    <string name="open_order">Open Order</string>
+    <string name="sales_order_was_opened">Sales Order Was Opened</string>
+    <string name="sales_order_opened">Sales Order Opened!</string>
+    <string name="sales_order_not_opened">Sales Order Not Opened!</string>
 </resources>

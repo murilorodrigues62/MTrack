@@ -101,4 +101,22 @@ public class SalesOrderRepository {
         }
         return salesOrders;
     }
+
+    public boolean finishOrder(int idSalesOrder, boolean isDelivered) {
+        database = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DELIVERED, isDelivered ? 1 : 0);
+
+        String where = IDSALESORDER + " =? ";
+
+        String[] whereArgs = {String.valueOf(idSalesOrder)};
+
+        try {
+            int count = database.update(TABLE, values, where, whereArgs);
+            return count == 1;
+        } finally {
+            database.close();
+        }
+    }
 }

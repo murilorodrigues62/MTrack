@@ -15,7 +15,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SalesOrderItemAdapter extends RecyclerView.Adapter<SalesOrderItemAdapter.MyHolder> {
-
+    private ViewGroup parent;
     private final List<SalesOrderItem> salesOrderItems;
 
     public SalesOrderItemAdapter(ArrayList salesOrderItems) {
@@ -24,6 +24,8 @@ public class SalesOrderItemAdapter extends RecyclerView.Adapter<SalesOrderItemAd
 
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        this.parent = parent;
+
         return new MyHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.adapter_sales_order_item, parent, false));
     }
@@ -32,6 +34,8 @@ public class SalesOrderItemAdapter extends RecyclerView.Adapter<SalesOrderItemAd
     public void onBindViewHolder(MyHolder holder, int position) {
         holder.title.setText(salesOrderItems.get(position).getProduct().toString());
         holder.count.setText(String.valueOf(salesOrderItems.get(position).getQuantity()));
+        holder.read.setText(String.valueOf(salesOrderItems.get(position).getQuantityRead(parent.getContext())));
+
     }
 
     @Override
@@ -53,6 +57,9 @@ public class SalesOrderItemAdapter extends RecyclerView.Adapter<SalesOrderItemAd
 
         @Bind(R.id.product_count)
         public TextView count;
+
+        @Bind(R.id.product_read)
+        public TextView read;
 
         public MyHolder(View itemView) {
             super(itemView);

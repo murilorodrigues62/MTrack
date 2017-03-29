@@ -24,4 +24,9 @@ public class SalesOrderService {
         SalesOrder salesOrder = db.findById(idSalesOrder);
         return salesOrder;
     }
+
+    public static boolean finishOrder(Context context, SalesOrder salesOrder) {
+        SalesOrderRepository db = new SalesOrderRepository(context);
+        return db.finishOrder(salesOrder.getIdSalesOrder(), salesOrder.isDelivered());
+    }
 }
