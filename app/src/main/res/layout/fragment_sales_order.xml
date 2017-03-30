@@ -32,8 +32,8 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="0dp"
                     android:paddingTop="10dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <TextView
                         android:id="@+id/txtClient"
@@ -70,6 +70,35 @@
                         android:layout_alignTop="@+id/text_barcode_layout"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true" />
+
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/radioGroup"
+                        android:layout_below="@+id/buttonRead"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="false"
+                        android:weightSum="1"
+                        android:layout_marginTop="5dp">
+
+                        <RadioButton android:id="@+id/radio_insert"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignTop="@+id/radio_remove"
+                            android:layout_toRightOf="@+id/radio_remove"
+                            android:layout_toEndOf="@+id/radio_remove"
+                            android:checked="true"
+                            android:text="@string/insert"
+                            android:layout_marginRight="10dp" />
+
+                        <RadioButton android:id="@+id/radio_remove"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignTop="@+id/txtClient"
+                            android:text="@string/remove" />
+
+                    </RadioGroup>
 
                 </RelativeLayout>
 

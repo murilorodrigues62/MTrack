@@ -19,7 +19,7 @@
             android:layout_marginBottom="8dp">
 
             <EditText
-                android:id="@+id/text_transporter"
+                android:id="@+id/settings_transporter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/settings_hint_transporter" />
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/text_webservice"
+                android:id="@+id/settings_webservice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/settingss_hint_webservice"

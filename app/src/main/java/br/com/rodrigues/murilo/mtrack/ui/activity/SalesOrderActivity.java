@@ -32,6 +32,3 @@ public class SalesOrderActivity extends BaseActivity {
         ab.setTitle(ab.getTitle() + " " + String.valueOf(idSalesOrder));
     }
 }
-
-// TODO: 15/03/17 Implementar quantidade digitos da identificação para ler automatico
-// TODO: 18/03/17 exibir pedido e cliente no title e subtitle da tollbar (subtitle não está aparecendo)

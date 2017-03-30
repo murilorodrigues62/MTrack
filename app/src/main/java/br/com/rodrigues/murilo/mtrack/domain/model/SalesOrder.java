@@ -19,11 +19,6 @@ public class SalesOrder {
 
     public SalesOrder() { }
 
-    @Override
-    public String toString() {
-        return "Order " + idSalesOrder; // TODO: 28/03/17 change this text
-    }
-
     public int getIdSalesOrder() {
         return idSalesOrder;
     }
@@ -87,17 +82,17 @@ public class SalesOrder {
 
     }
 
-    public String readPackage(Context context, String barcode){
+    public ReturnMessage readPackage(Context context, String barcode){
 
         // not read if order was finished
         if (this.isDelivered()) {
-            return context.getString(R.string.sales_order_was_finished);
+            return new ReturnMessage(false, context.getString(R.string.sales_order_was_finished));
         }
 
         // Search for package barcode
         SalesOrderPackage salesOrderPackage = SalesOrderPackageService.findByBarcode(context, this.getIdDelivery(), barcode);
         if (salesOrderPackage == null){
-            return context.getString(R.string.msg_package_not_found);
+            return new ReturnMessage(false, context.getString(R.string.msg_package_not_found));
         } else {
             
             if (salesOrderItems == null) {
@@ -113,27 +108,47 @@ public class SalesOrder {
 
                     // Check total packages read
                     if (salesOrderItem.getQuantityRead(context) >= salesOrderItem.getQuantity()){
-                        return context.getString(R.string.msg_packages_read);
+                        return new ReturnMessage(false, context.getString(R.string.msg_packages_read));
                     }
 
                     if (salesOrderPackage.getSalesOrderReal() != null){
-                        return context.getString(R.string.msg_package_read) + salesOrderPackage.getSalesOrderReal().getIdSalesOrder();
+                        return new ReturnMessage(false, context.getString(R.string.msg_package_read) + salesOrderPackage.getSalesOrderReal().getIdSalesOrder());
                     } else {
                         salesOrderPackage.setSalesOrderReal(this);
                     }
 
                     // Update Sales Order Real of package
-                    SalesOrderPackageService.updateSalesOrderReal(context, salesOrderPackage);
-
-                    return context.getString(R.string.msg_package_read_ok);
+                    if (SalesOrderPackageService.updateSalesOrderReal(context, salesOrderPackage)) {
+                        return new ReturnMessage(true, context.getString(R.string.msg_package_read_ok));
+                    }
                 }
             }
 
             if (!productInOrder){
-                return context.getString(R.string.msg_product_not_found);
+                return new ReturnMessage(false, context.getString(R.string.msg_product_not_found));
             }
         }
-        return context.getString(R.string.msg_package_not_found);
+        return new ReturnMessage(false, context.getString(R.string.msg_package_not_found));
+    }
+
+    public ReturnMessage removePackage(Context context, String barcode) {
+        // not read if order was finished
+        if (this.isDelivered()) {
+            return new ReturnMessage(false, context.getString(R.string.sales_order_was_finished));
+        }
+
+        // Search for package in this order
+        SalesOrderPackage salesOrderPackage = SalesOrderPackageService.findInOrder(context, this, barcode);
+        if (salesOrderPackage == null){
+            return new ReturnMessage(false, context.getString(R.string.msg_package_not_found));
+        } else {
+
+            // Update Sales Order Real of package
+            if (SalesOrderPackageService.removeSalesOrderReal(context, salesOrderPackage)) {
+                return new ReturnMessage(true, context.getString(R.string.package_removed));
+            }
+        }
+        return new ReturnMessage(false, context.getString(R.string.msg_package_not_found));
     }
 
     @Override
@@ -150,6 +165,7 @@ public class SalesOrder {
     public int hashCode() {
         return (int) (idSalesOrder ^ (idSalesOrder >>> 32));
     }
+
 
 
 }

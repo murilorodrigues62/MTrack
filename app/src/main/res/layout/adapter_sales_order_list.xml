@@ -11,9 +11,9 @@
     android:clickable="true">
 
     <TextView
-        android:id="@+id/article_title"
+        android:id="@+id/order_list_order"
         style="style/TextAppearance.Medium"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
         android:lineSpacingMultiplier="0.85"
@@ -22,20 +22,40 @@
         android:maxLines="1"
         android:ellipsize="end"
         android:textStyle="bold"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="A" />
+        android:text="A"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/order_list_status"
+        android:layout_toStartOf="@+id/order_list_status" />
 
     <TextView
-        android:id="@+id/article_subtitle"
+        style="style/TextAppearance.Medium"
+        android:id="@+id/order_list_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:lineSpacingMultiplier="0.85"
+        android:paddingBottom="4dp"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="A"
+        android:layout_alignTop="@+id/order_list_order"
+        android:layout_alignRight="@+id/order_list_customer"
+        android:layout_alignEnd="@+id/order_list_customer"
+        android:paddingRight="5dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/order_list_customer"
         style="style/TextAppearance.Small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
         android:singleLine="true"
-        android:layout_below="@+id/article_title"
+        android:layout_below="@+id/order_list_order"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="B" />

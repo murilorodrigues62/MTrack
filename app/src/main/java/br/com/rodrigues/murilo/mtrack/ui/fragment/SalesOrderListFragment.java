@@ -78,7 +78,4 @@ public class SalesOrderListFragment extends BaseFragment {
             }
         };
     }
-
-
-
 }

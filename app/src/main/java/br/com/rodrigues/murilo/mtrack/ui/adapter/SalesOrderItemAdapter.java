@@ -46,7 +46,6 @@ public class SalesOrderItemAdapter extends RecyclerView.Adapter<SalesOrderItemAd
     // Update a product
     private void updateItem(int position) {
         SalesOrderItem salesOrderItem = salesOrderItems.get(position);
-        //salesOrderItem.incrementRead(); // TODO: 10/02/17 Criar imcrementRead para incrementar quantidade lida do produto
         notifyItemChanged(position);
     }
 

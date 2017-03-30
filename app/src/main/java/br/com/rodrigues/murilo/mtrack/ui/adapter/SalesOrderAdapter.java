@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 public class SalesOrderAdapter extends RecyclerView.Adapter<SalesOrderAdapter.MyHolder> {
     private final List<SalesOrder> salesOrders;
     private OrderOnClickListener orderOnClickListener;
+    private ViewGroup parent;
 
     public SalesOrderAdapter(ArrayList orders, OrderOnClickListener orderOnClickListener) {
         this.salesOrders = orders;
@@ -25,14 +26,17 @@ public class SalesOrderAdapter extends RecyclerView.Adapter<SalesOrderAdapter.My
 
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        this.parent = parent;
         return new MyHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.adapter_sales_order_list, parent, false));
     }
 
     @Override
     public void onBindViewHolder(final MyHolder holder, final int position) {
-        holder.title.setText(salesOrders.get(position).toString());
-        holder.subtitle.setText(salesOrders.get(position).getCustomer().getCustomerName());
+        holder.textOrder.setText(parent.getContext().getText(R.string.order) + " " + String.valueOf(salesOrders.get(position).getIdSalesOrder()));
+        holder.textCustomer.setText(salesOrders.get(position).getCustomer().getCustomerName());
+        //holder.textStatus.setText(salesOrders.get(position).isDelivered()? "Delivered": "Not Delivered");
+        // TODO: 29/03/17 [Whish] - Show status and refresh when it's update using starActivityForResult
 
         // On Click
         if (orderOnClickListener != null) {
@@ -54,11 +58,14 @@ public class SalesOrderAdapter extends RecyclerView.Adapter<SalesOrderAdapter.My
 
     public class MyHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.article_title)
-        public TextView title;
+        @Bind(R.id.order_list_order)
+        public TextView textOrder;
 
-        @Bind(R.id.article_subtitle)
-        public TextView subtitle;
+        @Bind(R.id.order_list_customer)
+        public TextView textCustomer;
+
+        //@Bind(R.id.order_list_status)
+        //public TextView textStatus;
 
         public MyHolder(View itemView) {
             super(itemView);
@@ -68,6 +75,6 @@ public class SalesOrderAdapter extends RecyclerView.Adapter<SalesOrderAdapter.My
 
     public interface OrderOnClickListener {
        void onClickOrder(View view, int id);
-        // TODO: 11/03/17 change id id for SalesOrder serealizable
+        // TODO: 11/03/17 change id for SalesOrder serealizable
     }
 }

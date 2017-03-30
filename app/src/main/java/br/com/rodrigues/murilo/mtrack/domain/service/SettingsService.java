@@ -13,4 +13,9 @@ public class SettingsService {
         Settings settings = db.findSettings();
         return settings;
     }
+
+    public static boolean update(Context context, Settings settings){
+        SettingsRepository db = new SettingsRepository(context);
+        return db.update(settings) == 1;
+    }
 }

@@ -1,5 +1,6 @@
 package br.com.rodrigues.murilo.mtrack.domain.repository;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,8 +27,6 @@ public class SettingsRepository {
         this.context = context;
         this.dbHelper = new SQLiteHelper(context);
     }
-
-    // TODO: 20/03/17 Create Update Settings
 
     public Settings findSettings(){
 
@@ -67,5 +66,24 @@ public class SettingsRepository {
             cursor.moveToNext();
         }
         return Settings;
+    }
+
+    public int update(Settings settings) {
+        database = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(TRANSPORTERCODE, settings.getTransporterCode());
+        values.put(URLEDATA, settings.getUrlEdata());
+
+        String where = IDSETTINGS + " =? ";
+
+        String[] whereArgs = {String.valueOf(settings.getIdSettings())};
+
+        try {
+            int count = database.update(TABLE, values, where, whereArgs);
+            return count;
+        } finally {
+            database.close();
+        }
     }
 }

@@ -70,3 +70,4 @@ public class SyncActivity extends BaseActivity {
         }.start();
     }
 }
+// TODO: 02/03/17 [Wish] Use Preference layout (PreferenceScreen, SwitchPreference)

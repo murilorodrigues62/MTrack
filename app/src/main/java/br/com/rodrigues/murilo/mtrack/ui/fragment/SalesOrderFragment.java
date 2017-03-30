@@ -18,11 +18,13 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import br.com.rodrigues.murilo.mtrack.R;
+import br.com.rodrigues.murilo.mtrack.domain.model.ReturnMessage;
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrderItem;
 import br.com.rodrigues.murilo.mtrack.domain.service.SalesOrderItemService;
@@ -39,7 +41,7 @@ public class SalesOrderFragment extends BaseFragment {
     public static final String ORDER_ID = "ORDER_ID";
     public static final String QR_CODE_MODE = "QR_CODE_MODE";
     public static final String SCAN_RESULT = "SCAN_RESULT";
-
+    private ReturnMessage returnMessage = null; // last return method message
     private SalesOrder salesOrder;
 
     //@Bind(R.id.txtOrder)
@@ -59,6 +61,12 @@ public class SalesOrderFragment extends BaseFragment {
 
     @Bind(R.id.buttonRead)
     Button buttonRead;
+
+    @Bind(R.id.radio_insert)
+    RadioButton radioInsert;
+
+    @Bind(R.id.radio_remove)
+    RadioButton radioRemove;
 
     private SalesOrderItemAdapter myAdapter;
 
@@ -101,16 +109,23 @@ public class SalesOrderFragment extends BaseFragment {
         buttonRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String message = salesOrder.readPackage(view.getContext(), String.valueOf(barcode.getText()));
-                Snackbar.make(view, message, Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                barcode.setText("");
-
-                // refresh list
-                myAdapter.notifyDataSetChanged();
-
                 // hide the keyboard
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(barcode.getWindowToken(), 0);
+
+                if (radioRemove.isChecked()) {
+                    returnMessage = salesOrder.removePackage(view.getContext(), String.valueOf(barcode.getText()));
+                } else {
+                    returnMessage = salesOrder.readPackage(view.getContext(), String.valueOf(barcode.getText()));
+                }
+
+                Snackbar.make(view, returnMessage.getMessage(), Snackbar.LENGTH_LONG).setAction("Action", null).show();
+
+                if (returnMessage.isOk()){
+                    barcode.setText("");
+                    // refresh list
+                    myAdapter.notifyDataSetChanged();
+                }
             }
         });
 
@@ -126,6 +141,11 @@ public class SalesOrderFragment extends BaseFragment {
                 String contents = intent.getStringExtra(SCAN_RESULT);
                 //String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 barcode.setText(contents);
+                buttonRead.performClick();
+
+                if (returnMessage.isOk()) {
+                    fab.performClick();
+                }
 
                 // Handle successful scan
             } else if (resultCode == ((BaseActivity) getActivity()).RESULT_CANCELED) {
@@ -134,10 +154,8 @@ public class SalesOrderFragment extends BaseFragment {
             }
         }
     }
-    // TODO: 29/03/17 CONTINUE... Implementar leitura dinamica via Scanner
-    // TODO: 29/03/17 Implementar remoção de caixa já lida
-    // TODO: 29/03/17 Incluir na lista de pedidos informação se está aberto ou não 
-
+    // TODO: 29/03/17 [Wish] - Use sound effects on read
+    // TODO: 29/03/17 [Wish] - Add Sales Order Delivered info on list
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -194,5 +212,3 @@ public class SalesOrderFragment extends BaseFragment {
                 new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
     }
 }
-
-// TODO: 11/03/17 ajustar layout do card contendo dados do pedido, para ficar menor.

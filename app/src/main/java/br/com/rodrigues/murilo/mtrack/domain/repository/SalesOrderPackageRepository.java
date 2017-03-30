@@ -78,6 +78,19 @@ public class SalesOrderPackageRepository {
         }
     }
 
+    public SalesOrderPackage findInOrder(int idDelivery, int idSalesOrder, String barcode) {
+        database=dbHelper.getReadableDatabase();
+        try {
+            Cursor cursor = database.query(TABLE, ALLCOLUMNS,
+                    BARCODE + " = ? AND " + IDDELIVERY + " = ? AND " + IDSALESORDERREAL + " = ? ", new String[]{barcode, String.valueOf(idDelivery), String.valueOf(idSalesOrder)}, null, null, null);
+
+            List<SalesOrderPackage> salesOrderPackages = toList(cursor);
+            return salesOrderPackages.isEmpty() ? null : salesOrderPackages.get(0);
+        } finally {
+            database.close();
+        }
+    }
+
     public int updateSalesOrderReal(SalesOrderPackage salesOrderPackage){
         database = dbHelper.getWritableDatabase();
 
@@ -87,6 +100,26 @@ public class SalesOrderPackageRepository {
         String where = IDSALESORDER + " =?  AND "+ IDPRODUCT +" =?  AND " + BARCODE + " =? ";
 
         String[] whereArgs = {String.valueOf(salesOrderPackage.getSalesOrder().getIdSalesOrder()),
+                String.valueOf(salesOrderPackage.getProduct().getIdProduct()),
+                salesOrderPackage.getBarcode()};
+
+        try {
+            int count = database.update(TABLE, values, where, whereArgs);
+            return count;
+        } finally {
+            database.close();
+        }
+    }
+
+    public int removeSalesOrderReal(SalesOrderPackage salesOrderPackage) {
+        database = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(IDSALESORDERREAL, "NULL");
+
+        String where = IDSALESORDERREAL + " =?  AND "+ IDPRODUCT +" =?  AND " + BARCODE + " =? ";
+
+        String[] whereArgs = {String.valueOf(salesOrderPackage.getSalesOrderReal().getIdSalesOrder()),
                 String.valueOf(salesOrderPackage.getProduct().getIdProduct()),
                 salesOrderPackage.getBarcode()};
 

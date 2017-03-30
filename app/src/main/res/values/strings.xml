@@ -29,4 +29,9 @@
     <string name="sales_order_was_opened">Sales Order Was Opened</string>
     <string name="sales_order_opened">Sales Order Opened!</string>
     <string name="sales_order_not_opened">Sales Order Not Opened!</string>
+    <string name="error_not_saved">Error. Data not saved!</string>
+    <string name="order">"Order "</string>
+    <string name="insert">Insert</string>
+    <string name="remove">Remove</string>
+    <string name="package_removed">Package removed!</string>
 </resources>

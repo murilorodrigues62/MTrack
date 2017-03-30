@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrderItem;
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrderPackage;
 import br.com.rodrigues.murilo.mtrack.domain.repository.SalesOrderPackageRepository;
@@ -35,8 +36,19 @@ public class SalesOrderPackageService {
         return salesOrderPackage;
     }
 
-    public static int updateSalesOrderReal(Context context, SalesOrderPackage salesOrderPackage){
+    public static boolean updateSalesOrderReal(Context context, SalesOrderPackage salesOrderPackage){
         SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
-        return db.updateSalesOrderReal(salesOrderPackage);
+        return db.updateSalesOrderReal(salesOrderPackage) == 1;
+    }
+
+    public static SalesOrderPackage findInOrder(Context context, SalesOrder salesOrder, String barcode) {
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        SalesOrderPackage salesOrderPackage = db.findInOrder(salesOrder.getIdDelivery(), salesOrder.getIdSalesOrder(), barcode);
+        return salesOrderPackage;
+    }
+
+    public static boolean removeSalesOrderReal(Context context, SalesOrderPackage salesOrderPackage) {
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        return db.removeSalesOrderReal(salesOrderPackage) == 1;
     }
 }
