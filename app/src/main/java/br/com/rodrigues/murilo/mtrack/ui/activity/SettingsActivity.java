@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import br.com.rodrigues.murilo.mtrack.R;
 import br.com.rodrigues.murilo.mtrack.domain.model.Settings;
-import br.com.rodrigues.murilo.mtrack.domain.service.SettingsService;
+import br.com.rodrigues.murilo.mtrack.infra.service.SettingsService;
 import br.com.rodrigues.murilo.mtrack.ui.base.BaseActivity;
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -1,8 +1,13 @@
 package br.com.rodrigues.murilo.mtrack.domain.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Customer {
+    @SerializedName("Id")
     private int idCustomer;
+    @SerializedName("Name")
     private String customerName;
+    @SerializedName("Code")
     private String customerCode;
 
     public Customer(){}

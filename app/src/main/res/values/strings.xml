@@ -34,4 +34,7 @@
     <string name="insert">Insert</string>
     <string name="remove">Remove</string>
     <string name="package_removed">Package removed!</string>
+    <string name="synchronizing">Synchronizing</string>
+    <string name="updating_database">Updating database...</string>
+    <string name="sync_finished">Sync finished</string>
 </resources>

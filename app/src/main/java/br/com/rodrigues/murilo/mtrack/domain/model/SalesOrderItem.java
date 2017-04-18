@@ -2,14 +2,20 @@ package br.com.rodrigues.murilo.mtrack.domain.model;
 
 import android.content.Context;
 
-import br.com.rodrigues.murilo.mtrack.domain.service.SalesOrderPackageService;
+import com.google.gson.annotations.SerializedName;
+
+import br.com.rodrigues.murilo.mtrack.infra.service.SalesOrderPackageService;
 
 public class SalesOrderItem {
+    @SerializedName("Id")
     private int idSalesOrderItem;
-    private SalesOrder salesOrder;
+    @SerializedName("Product")
     private Product product;
+    @SerializedName("Quantity")
     private int quantity;
+    @SerializedName("QuantityRead")
     private int quantityRead;
+    private SalesOrder salesOrder;
 
     public SalesOrderItem() {}
 

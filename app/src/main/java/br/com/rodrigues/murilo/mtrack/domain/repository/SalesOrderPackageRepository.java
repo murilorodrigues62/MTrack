@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrderPackage;
-import br.com.rodrigues.murilo.mtrack.domain.service.ProductService;
-import br.com.rodrigues.murilo.mtrack.domain.service.SalesOrderService;
-import br.com.rodrigues.murilo.mtrack.domain.util.SQLiteHelper;
+import br.com.rodrigues.murilo.mtrack.infra.SQLiteHelper;
+import br.com.rodrigues.murilo.mtrack.infra.service.ProductService;
+import br.com.rodrigues.murilo.mtrack.infra.service.SalesOrderService;
 
 public class SalesOrderPackageRepository {
     // Name in DataBase
@@ -91,15 +91,34 @@ public class SalesOrderPackageRepository {
         }
     }
 
+    public boolean insert(SalesOrderPackage salesOrderPackage){
+        database=dbHelper.getWritableDatabase();
+
+        try {
+            ContentValues values = new ContentValues();
+
+            values.put(IDDELIVERY, salesOrderPackage.getIdDelivery());
+            values.put(IDSALESORDER, salesOrderPackage.getSalesOrder().getIdSalesOrder());
+            values.put(IDPRODUCT, salesOrderPackage.getProduct().getIdProduct());
+            values.put(BARCODE, salesOrderPackage.getBarcode());
+            values.put(IDSALESORDERREAL, salesOrderPackage.getSalesOrderReal().getIdSalesOrder());
+
+            database.insert(TABLE, null, values);
+        } finally {
+            database.close();
+        }
+        return true;
+    }
+
     public int updateSalesOrderReal(SalesOrderPackage salesOrderPackage){
         database = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(IDSALESORDERREAL, salesOrderPackage.getSalesOrderReal().getIdSalesOrder());
 
-        String where = IDSALESORDER + " =?  AND "+ IDPRODUCT +" =?  AND " + BARCODE + " =? ";
+        String where = IDDELIVERY + " =?  AND "+ IDPRODUCT +" =?  AND " + BARCODE + " =? ";
 
-        String[] whereArgs = {String.valueOf(salesOrderPackage.getSalesOrder().getIdSalesOrder()),
+        String[] whereArgs = {String.valueOf(salesOrderPackage.getIdDelivery()),
                 String.valueOf(salesOrderPackage.getProduct().getIdProduct()),
                 salesOrderPackage.getBarcode()};
 

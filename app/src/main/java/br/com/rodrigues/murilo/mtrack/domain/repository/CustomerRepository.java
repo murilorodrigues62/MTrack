@@ -1,5 +1,6 @@
 package br.com.rodrigues.murilo.mtrack.domain.repository;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.domain.model.Customer;
-import br.com.rodrigues.murilo.mtrack.domain.util.SQLiteHelper;
+import br.com.rodrigues.murilo.mtrack.infra.SQLiteHelper;
 
 public class CustomerRepository {
     // Name in DataBase
@@ -48,6 +49,22 @@ public class CustomerRepository {
         } finally {
             database.close();
         }
+    }
+
+    public boolean insert(Customer customer){
+        database=dbHelper.getWritableDatabase();
+
+        try {
+            ContentValues values = new ContentValues();
+
+            values.put(IDCUSTOMER, customer.getIdCustomer());
+            values.put(CUSTOMERNAME, customer.getCustomerName());
+
+            database.insert(TABLE, null, values);
+        } finally {
+            database.close();
+        }
+        return true;
     }
 
     // Read cursor and create list

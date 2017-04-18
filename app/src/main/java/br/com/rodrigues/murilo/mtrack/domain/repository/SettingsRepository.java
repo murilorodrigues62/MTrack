@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.domain.model.Settings;
-import br.com.rodrigues.murilo.mtrack.domain.util.SQLiteHelper;
+import br.com.rodrigues.murilo.mtrack.infra.SQLiteHelper;
 
 public class SettingsRepository {
     // Name in DataBase

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
-import br.com.rodrigues.murilo.mtrack.domain.service.CustomerService;
-import br.com.rodrigues.murilo.mtrack.domain.util.SQLiteHelper;
+import br.com.rodrigues.murilo.mtrack.infra.service.CustomerService;
+import br.com.rodrigues.murilo.mtrack.infra.SQLiteHelper;
 
 public class SalesOrderRepository {
     // Name in DataBase
@@ -62,7 +62,9 @@ public class SalesOrderRepository {
             ContentValues values = new ContentValues();
 
             values.put(IDSALESORDER, salesOrder.getIdSalesOrder());
-            values.put(IDSALESORDER, salesOrder.getIdDelivery());
+            values.put(IDDELIVERY, salesOrder.getIdDelivery());
+            values.put(IDCUSTOMER, salesOrder.getCustomer().getIdCustomer());
+            values.put(DELIVERED, salesOrder.isDelivered());
 
             database.insert(TABLE, null, values);
         } finally {

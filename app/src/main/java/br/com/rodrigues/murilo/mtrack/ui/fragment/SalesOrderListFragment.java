@@ -16,7 +16,7 @@ import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
 import br.com.rodrigues.murilo.mtrack.ui.activity.SalesOrderActivity;
 import br.com.rodrigues.murilo.mtrack.ui.adapter.SalesOrderAdapter;
 import br.com.rodrigues.murilo.mtrack.ui.base.BaseFragment;
-import br.com.rodrigues.murilo.mtrack.domain.service.SalesOrderService;
+import br.com.rodrigues.murilo.mtrack.infra.service.SalesOrderService;
 import butterknife.Bind;
 
 /**

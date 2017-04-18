@@ -1,0 +1,59 @@
+package br.com.rodrigues.murilo.mtrack.infra.service;
+
+import android.content.Context;
+
+import java.util.List;
+
+import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
+import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrderItem;
+import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrderPackage;
+import br.com.rodrigues.murilo.mtrack.domain.repository.SalesOrderPackageRepository;
+
+public class SalesOrderPackageService {
+
+    // Get Orders from local Database
+    public static List<SalesOrderPackage> findAll(Context context) {
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        List<SalesOrderPackage> salesOrderPackages = db.findAll();
+        return salesOrderPackages;
+    }
+
+    public static List<SalesOrderPackage> findBySalesOrder(Context context, int idSalesOrder) {
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        List<SalesOrderPackage> salesOrderPackages = db.findBySalesOrder(idSalesOrder);
+        return salesOrderPackages;
+    }
+
+    public static List<SalesOrderPackage> findBySalesOrderReal(Context context, SalesOrderItem salesOrderItem) {
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        List<SalesOrderPackage> salesOrderPackages = db.findBySalesOrderReal(salesOrderItem.getSalesOrder().getIdSalesOrder(), salesOrderItem.getProduct().getIdProduct());
+        return salesOrderPackages;
+    }
+
+    public static SalesOrderPackage findByBarcode(Context context, int idDelivery,  String barcode) {
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        SalesOrderPackage salesOrderPackage = db.findByBarCode(idDelivery, barcode);
+        return salesOrderPackage;
+    }
+
+    public static boolean updateSalesOrderReal(Context context, SalesOrderPackage salesOrderPackage){
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        return db.updateSalesOrderReal(salesOrderPackage) == 1;
+    }
+
+    public static SalesOrderPackage findInOrder(Context context, SalesOrder salesOrder, String barcode) {
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        SalesOrderPackage salesOrderPackage = db.findInOrder(salesOrder.getIdDelivery(), salesOrder.getIdSalesOrder(), barcode);
+        return salesOrderPackage;
+    }
+
+    public static boolean removeSalesOrderReal(Context context, SalesOrderPackage salesOrderPackage) {
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        return db.removeSalesOrderReal(salesOrderPackage) == 1;
+    }
+
+    public static boolean insert(Context context, SalesOrderPackage salesOrderPackage){
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        return db.insert(salesOrderPackage);
+    }
+}

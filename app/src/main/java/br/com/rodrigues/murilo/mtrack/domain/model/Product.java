@@ -1,11 +1,13 @@
 package br.com.rodrigues.murilo.mtrack.domain.model;
 
-/**
- * Created by root on 13/02/17.
- */
+import com.google.gson.annotations.SerializedName;
+
 public class Product {
+    @SerializedName("Id")
     private int idProduct;
+    @SerializedName("Code")
     private String productCode;
+    @SerializedName("Name")
     private String productName;
 
     public Product() {

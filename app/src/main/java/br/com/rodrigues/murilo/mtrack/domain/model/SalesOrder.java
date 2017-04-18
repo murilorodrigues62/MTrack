@@ -2,19 +2,25 @@ package br.com.rodrigues.murilo.mtrack.domain.model;
 
 import android.content.Context;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.R;
-import br.com.rodrigues.murilo.mtrack.domain.service.SalesOrderItemService;
-import br.com.rodrigues.murilo.mtrack.domain.service.SalesOrderPackageService;
-import br.com.rodrigues.murilo.mtrack.domain.service.SalesOrderService;
+import br.com.rodrigues.murilo.mtrack.infra.service.SalesOrderItemService;
+import br.com.rodrigues.murilo.mtrack.infra.service.SalesOrderPackageService;
+import br.com.rodrigues.murilo.mtrack.infra.service.SalesOrderService;
 
 public class SalesOrder {
+    @SerializedName("Id")
     private int idSalesOrder;
+    @SerializedName("IdDelivery")
     private int idDelivery;
+    @SerializedName("Customer")
     private Customer customer = null;
-    private int idProduct;
+    @SerializedName("Delivered")
     private boolean delivered;
+    @SerializedName("SalesOrderItems")
     private List<SalesOrderItem> salesOrderItems = null;
 
     public SalesOrder() { }
@@ -35,14 +41,6 @@ public class SalesOrder {
         this.idDelivery = idDelivery;
     }
 
-    public int getIdProduct() {
-        return idProduct;
-    }
-
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
-    }
-
     public boolean isDelivered() {
         return delivered;
     }
@@ -57,6 +55,10 @@ public class SalesOrder {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public List<SalesOrderItem> getSalesOrderItems() {
+        return salesOrderItems;
     }
 
     public String finishOrder(Context context){
@@ -165,7 +167,5 @@ public class SalesOrder {
     public int hashCode() {
         return (int) (idSalesOrder ^ (idSalesOrder >>> 32));
     }
-
-
 
 }
