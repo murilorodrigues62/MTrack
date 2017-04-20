@@ -37,4 +37,8 @@
     <string name="synchronizing">Synchronizing</string>
     <string name="updating_database">Updating database...</string>
     <string name="sync_finished">Sync finished</string>
+    <string name="sync_data_with_web_service">Sync Data With Web Service</string>
+    <string name="update_sales_orders">Update Sales Orders</string>
+    <string name="send_delivery">Send Delivery</string>
+    <string name="clear_database">Clear DataBase</string>
 </resources>

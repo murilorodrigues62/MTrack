@@ -34,4 +34,8 @@ public class CustomerService {
         CustomerRepository db = new CustomerRepository(context);
         return db.insert(customer);
     }
+    public static boolean deleteAll(Context context){
+        CustomerRepository db = new CustomerRepository(context);
+        return db.deleteAll();
+    }
 }

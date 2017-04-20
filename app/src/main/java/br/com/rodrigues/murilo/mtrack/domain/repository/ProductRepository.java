@@ -69,6 +69,16 @@ public class ProductRepository {
         return true;
     }
 
+    public boolean deleteAll() {
+        database = dbHelper.getWritableDatabase();
+        try {
+            database.execSQL("DELETE FROM " + TABLE);
+        } finally {
+            database.close();
+        }
+        return true;
+    }
+
     // Read cursor and create list
     private List<Product> toList(Cursor cursor) {
         List<Product> products = new ArrayList<Product>();

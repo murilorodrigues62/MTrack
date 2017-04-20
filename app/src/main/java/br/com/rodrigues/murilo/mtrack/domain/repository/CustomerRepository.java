@@ -67,6 +67,16 @@ public class CustomerRepository {
         return true;
     }
 
+    public boolean deleteAll() {
+        database = dbHelper.getWritableDatabase();
+        try {
+            database.execSQL("DELETE FROM " + TABLE);
+        } finally {
+            database.close();
+        }
+        return true;
+    }
+
     // Read cursor and create list
     private List<Customer> toList(Cursor cursor) {
         List<Customer> Customers = new ArrayList<Customer>();

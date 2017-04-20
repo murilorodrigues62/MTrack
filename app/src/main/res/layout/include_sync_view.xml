@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sync Data With Web Service"
+            android:text="@string/sync_data_with_web_service"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:id="@+id/textView"
             android:layout_gravity="center_horizontal"
@@ -33,18 +33,27 @@
         <Switch
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:text="Update Sales Orders"
-            android:id="@+id/switch1"
+            android:text="@string/update_sales_orders"
+            android:id="@+id/switchUpdate"
             android:checked="true"
             android:layout_weight="0.10" />
 
         <Switch
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:text="Send Delivery"
-            android:id="@+id/switch2"
+            android:text="@string/send_delivery"
+            android:id="@+id/switchSend"
             android:checked="true"
             android:layout_weight="0.10" />
+
+        <Switch
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_database"
+            android:id="@+id/switchClear"
+            android:checked="false"
+            android:layout_weight="0.10"
+            android:textColor="@color/design_textinput_error_color_light" />
 
 
     </LinearLayout>

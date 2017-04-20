@@ -37,4 +37,9 @@ public class SalesOrderItemService {
         SalesOrderItemRepository db = new SalesOrderItemRepository(context);
         return db.insert(salesOrderItem);
     }
+
+    public static boolean deleteAll(Context context){
+        SalesOrderItemRepository db = new SalesOrderItemRepository(context);
+        return db.deleteAll();
+    }
 }

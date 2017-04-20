@@ -32,4 +32,9 @@ public class ProductService {
         return db.insert(product);
     }
 
+    public static boolean deleteAll(Context context){
+        ProductRepository db = new ProductRepository(context);
+        return db.deleteAll();
+    }
+
 }

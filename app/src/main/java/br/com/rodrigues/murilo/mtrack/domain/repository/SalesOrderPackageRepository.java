@@ -150,6 +150,16 @@ public class SalesOrderPackageRepository {
         }
     }
 
+    public boolean deleteAll() {
+        database = dbHelper.getWritableDatabase();
+        try {
+            database.execSQL("DELETE FROM " + TABLE);
+        } finally {
+            database.close();
+        }
+        return true;
+    }
+
     // Read cursor and create list
     private List<SalesOrderPackage> toList(Cursor cursor) {
         List<SalesOrderPackage> salesOrderPackages = new ArrayList<SalesOrderPackage>();

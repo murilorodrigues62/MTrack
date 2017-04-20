@@ -86,6 +86,16 @@ public class SalesOrderItemRepository {
         return true;
     }
 
+    public boolean deleteAll() {
+        database = dbHelper.getWritableDatabase();
+        try {
+            database.execSQL("DELETE FROM " + TABLE);
+        } finally {
+            database.close();
+        }
+        return true;
+    }
+
     // Read cursor and create list
     private List<SalesOrderItem> toList(Cursor cursor) {
         List<SalesOrderItem> salesOrderItems = new ArrayList<SalesOrderItem>();

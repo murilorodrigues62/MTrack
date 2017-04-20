@@ -6,6 +6,7 @@ import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrderItem;
+import br.com.rodrigues.murilo.mtrack.domain.model.Settings;
 import br.com.rodrigues.murilo.mtrack.domain.repository.SalesOrderRepository;
 import br.com.rodrigues.murilo.mtrack.infra.ApiClient;
 import br.com.rodrigues.murilo.mtrack.infra.ApiInterface;
@@ -37,14 +38,11 @@ public class SalesOrderService {
     }
 
     // Get all Transporter Sales Order from Web Service
-    public static boolean syncSalesOrder(final Context context) {
-        // TODO: 17/04/17 Create Thread
-        String url = SettingsService.findSettings(context).getUrlEdata();
-        String transporter = SettingsService.findSettings(context).getTransporterCode();
+    public static boolean getSalesOrderWS(final Context context, Settings settings) {
 
-        ApiInterface apiInterface = ApiClient.getClient(url).create(ApiInterface.class);
+        ApiInterface apiInterface = ApiClient.getClient(settings.getUrlEdata()).create(ApiInterface.class);
 
-        Call<List<SalesOrder>> call = apiInterface.getTransporteSalesOrder(transporter);
+        Call<List<SalesOrder>> call = apiInterface.getTransporterSalesOrder(settings.getTransporterCode());
 
         call.enqueue(new Callback<List<SalesOrder>>() {
             @Override
@@ -52,10 +50,8 @@ public class SalesOrderService {
 
                 // Get data from JSON to Objects
                 List<SalesOrder> salesOrders = response.body();
-                // Persists Object in DB
+                // Persist Object in DB
                 sync(context, salesOrders);
-                // TODO: 17/04/17 Sync packages and delivery
-
             }
 
             @Override
@@ -102,5 +98,10 @@ public class SalesOrderService {
         }
 
         return true;
+    }
+
+    public static boolean deleteAll(Context context){
+        SalesOrderRepository db = new SalesOrderRepository(context);
+        return db.deleteAll();
     }
 }
