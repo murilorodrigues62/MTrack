@@ -24,6 +24,12 @@ public class SalesOrderPackageService {
         return salesOrderPackages;
     }
 
+    private static List<SalesOrderPackage> findAllRead(Context context) {
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        List<SalesOrderPackage> salesOrderPackages = db.findAllRead();
+        return salesOrderPackages;
+    }
+
     public static List<SalesOrderPackage> findBySalesOrder(Context context, int idSalesOrder) {
         SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
         List<SalesOrderPackage> salesOrderPackages = db.findBySalesOrder(idSalesOrder);
@@ -63,21 +69,30 @@ public class SalesOrderPackageService {
         return db.insert(salesOrderPackage);
     }
 
+    // TODO: 20/04/17 Create Interface for Services
+    public static boolean deleteAll(Context context){
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        return db.deleteAll();
+    }
+
     // Get all Packages from Web Service
     public static boolean getSalesOrderPackageWS(final Context context, Settings settings) {
 
         ApiInterface apiInterface = ApiClient.getClient(settings.getUrlEdata()).create(ApiInterface.class);
 
-        Call<List<SalesOrderPackage>> call = apiInterface.getSalesOrderPackage(settings.getTransporterCode());
+        //Call<List<SalesOrderPackage>> call = apiInterface.getSalesOrderPackage(settings.getTransporterCode());
+        Call<List<SalesOrderPackage>> call = apiInterface.getSalesOrderPackage(); // TODO: 24/04/17 change
 
         call.enqueue(new Callback<List<SalesOrderPackage>>() {
             @Override
             public void onResponse(Call<List<SalesOrderPackage>> call, Response<List<SalesOrderPackage>> response) {
 
-                // Get data from JSON to Objects
-                List<SalesOrderPackage> packages = response.body();
-                // Persist Object in DB
-                if (packages != null) sync(context, packages);
+                if (response.isSuccessful()) {
+                    // Get data from JSON to Objects
+                    List<SalesOrderPackage> packages = response.body();
+                    // Persist Object in DB
+                    if (packages != null) sync(context, packages);
+                }
             }
 
             @Override
@@ -103,40 +118,41 @@ public class SalesOrderPackageService {
 
         ApiInterface apiInterface = ApiClient.getClient(settings.getUrlEdata()).create(ApiInterface.class);
 
-        Call<List<SalesOrderPackage>> call = apiInterface.putSalesOrderPackage(SalesOrderPackageService.findAll(context));
+        // TODO: 24/04/17 Find just read package
+        Call<List<SalesOrderPackage>> call = apiInterface.putSalesOrderPackage(SalesOrderPackageService.findAllRead(context));
 
         call.enqueue(new Callback<List<SalesOrderPackage>>() {
             @Override
             public void onResponse(Call<List<SalesOrderPackage>> call, Response<List<SalesOrderPackage>> response) {
 
-                // TODO: 20/04/17  Verificar se será retornando lista de caixas no body, se não voltar, buscar todos os pedidos e pacotes fechados, chamar mesma função no sync
-                clearDataBase(context);
-
+                if (response.isSuccessful()) {
+                    clearOrdersFinished(context);
+                }
             }
 
             @Override
             public void onFailure(Call<List<SalesOrderPackage>> call, Throwable t) {
-
+                call.cancel();
             }
         });
 
         return true;
     }
 
-    public static boolean clearDataBase(Context context){
-        // TODO: 20/04/17 implementar a não exclusão de tudo mas só dos pedidos e ajustar parar atualizar o que já tiver no sqlite (Clientes e Produtos)
+    public static boolean clearOrdersFinished(Context context){
+        SalesOrderPackageService.deleteFinished(context);
+        return SalesOrderService.deleteFinished(context);
+    }
+
+    private static boolean deleteFinished(Context context) {
+        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
+        return db.deleteFinished();
+    }
+
+    public static void clearDataBase(Context context) {
         SalesOrderPackageService.deleteAll(context);
-        SalesOrderItemService.deleteAll(context);
         SalesOrderService.deleteAll(context);
         ProductService.deleteAll(context);
         CustomerService.deleteAll(context);
-
-        return true;
-    }
-
-    // TODO: 20/04/17 Create Interface for Services
-    public static boolean deleteAll(Context context){
-        SalesOrderPackageRepository db = new SalesOrderPackageRepository(context);
-        return db.deleteAll();
     }
 }

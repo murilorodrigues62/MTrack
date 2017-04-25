@@ -43,9 +43,8 @@ public class SalesOrderFragment extends BaseFragment {
     public static final String SCAN_RESULT = "SCAN_RESULT";
     private ReturnMessage returnMessage = null; // last return method message
     private SalesOrder salesOrder;
+    private ArrayList<SalesOrderItem> salesOrderItems = new ArrayList<SalesOrderItem>();
 
-    //@Bind(R.id.txtOrder)
-    //TextView textOrder;
 
     @Bind(R.id.txtClient)
     TextView textClient;
@@ -201,14 +200,19 @@ public class SalesOrderFragment extends BaseFragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        // Adapter to add products in list
-        ArrayList<SalesOrderItem> salesOrderItems = (ArrayList<SalesOrderItem>) SalesOrderItemService.findByIdOrder(getActivity(), salesOrder.getIdSalesOrder());
-
         myAdapter = new SalesOrderItemAdapter(salesOrderItems);
         recyclerView.setAdapter(myAdapter);
 
         // Add divider line
         recyclerView.addItemDecoration(
                 new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        salesOrderItems.clear();
+        salesOrderItems.addAll(SalesOrderItemService.findByIdOrder(getActivity(), salesOrder.getIdSalesOrder()));
+        myAdapter.notifyDataSetChanged();
     }
 }

@@ -48,10 +48,12 @@ public class SalesOrderService {
             @Override
             public void onResponse(Call<List<SalesOrder>> call, Response<List<SalesOrder>> response) {
 
-                // Get data from JSON to Objects
-                List<SalesOrder> salesOrders = response.body();
-                // Persist Object in DB
-                sync(context, salesOrders);
+                if (response.isSuccessful()) {
+                    // Get data from JSON to Objects
+                    List<SalesOrder> salesOrders = response.body();
+                    // Persist Object in DB
+                    sync(context, salesOrders);
+                }
             }
 
             @Override
@@ -93,15 +95,26 @@ public class SalesOrderService {
                 if(ProductService.findById(context, item.getProduct().getIdProduct()) == null){
                     ProductService.insert(context, item.getProduct());
                 }
-
             }
         }
-
         return true;
     }
 
     public static boolean deleteAll(Context context){
+        SalesOrderItemService.deleteAll(context);
         SalesOrderRepository db = new SalesOrderRepository(context);
         return db.deleteAll();
+    }
+
+    public static boolean delete(Context context, SalesOrder salesOrder){
+        SalesOrderItemService.deleteByOrder(context, salesOrder);
+        SalesOrderRepository db = new SalesOrderRepository(context);
+        return db.delete(salesOrder);
+    }
+
+    public static boolean deleteFinished(Context context){
+        SalesOrderItemService.deleteFinished(context);
+        SalesOrderRepository db = new SalesOrderRepository(context);
+        return db.deleteFinished();
     }
 }

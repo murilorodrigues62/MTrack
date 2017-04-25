@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrderItem;
 import br.com.rodrigues.murilo.mtrack.domain.repository.SalesOrderItemRepository;
 
@@ -41,5 +42,15 @@ public class SalesOrderItemService {
     public static boolean deleteAll(Context context){
         SalesOrderItemRepository db = new SalesOrderItemRepository(context);
         return db.deleteAll();
+    }
+
+    public static boolean deleteByOrder(Context context, SalesOrder salesOrder){
+        SalesOrderItemRepository db = new SalesOrderItemRepository(context);
+        return db.deleteByOrder(salesOrder);
+    }
+
+    public static boolean deleteFinished(Context context) {
+        SalesOrderItemRepository db = new SalesOrderItemRepository(context);
+        return db.deleteFinished();
     }
 }

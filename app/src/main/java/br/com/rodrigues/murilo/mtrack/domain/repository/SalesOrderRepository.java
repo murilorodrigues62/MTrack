@@ -83,6 +83,26 @@ public class SalesOrderRepository {
         return true;
     }
 
+    public boolean delete(SalesOrder salesOrder) {
+        database = dbHelper.getWritableDatabase();
+        try {
+            database.execSQL("DELETE FROM " + TABLE + " WHERE " + IDSALESORDER + " = " + String.valueOf(salesOrder.getIdSalesOrder()));
+        } finally {
+            database.close();
+        }
+        return true;
+    }
+
+    public boolean deleteFinished() {
+        database = dbHelper.getWritableDatabase();
+        try {
+            database.execSQL("DELETE FROM " + TABLE + " WHERE " + DELIVERED + " = 1");
+        } finally {
+            database.close();
+        }
+        return true;
+    }
+
     // Read cursor and create list
     private List<SalesOrder> toList(Cursor cursor) {
         List<SalesOrder> salesOrders = new ArrayList<SalesOrder>();

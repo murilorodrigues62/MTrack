@@ -28,6 +28,7 @@ public class SalesOrderListFragment extends BaseFragment {
     RecyclerView recyclerView;
 
     private SalesOrderAdapter myAdapter;
+    private ArrayList<SalesOrder> salesOrders = new ArrayList<SalesOrder>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,19 +51,13 @@ public class SalesOrderListFragment extends BaseFragment {
     }
 
     private void setupRecycler() {
-
-        // Configurando o gerenciador de layout para ser uma lista.
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-
-        // Adiciona o adapter que irá anexar os objetos à lista.
-        ArrayList<SalesOrder> salesOrders = (ArrayList<SalesOrder>) SalesOrderService.findAll(getActivity());
-
         myAdapter = new SalesOrderAdapter(salesOrders, onClick());
         recyclerView.setAdapter(myAdapter);
 
-        // Configurando um divider entre linhas, para uma melhor visualização.
+        // Config a line divider decoration
         recyclerView.addItemDecoration(
                 new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
     }
@@ -77,5 +72,13 @@ public class SalesOrderListFragment extends BaseFragment {
                 startActivity(detailIntent);
             }
         };
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        salesOrders.clear();
+        salesOrders.addAll(SalesOrderService.findAll(getActivity()));
+        myAdapter.notifyDataSetChanged();
     }
 }

@@ -19,8 +19,11 @@ public interface ApiInterface {
     @GET("api/transporter/{id}/order")
     Call<List<SalesOrder>> getTransporterSalesOrder(@Path("id") String id);
 
-    @GET("api/transporter/{id}/package")
-    Call<List<SalesOrderPackage>> getSalesOrderPackage(@Path("id") String id);
+    // @GET("api/transporter/{id}/package") // TODO: 24/04/17 change
+    //Call<List<SalesOrderPackage>> getSalesOrderPackage(@Path("id") String id);
+
+    @GET("api/package/")
+    Call<List<SalesOrderPackage>> getSalesOrderPackage();
 
     @PUT("api/package/")
     Call<List<SalesOrderPackage>> putSalesOrderPackage(@Body List<SalesOrderPackage> salesOrderPackages);

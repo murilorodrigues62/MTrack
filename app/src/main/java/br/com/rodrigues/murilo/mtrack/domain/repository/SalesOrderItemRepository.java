@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrder;
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrderItem;
 import br.com.rodrigues.murilo.mtrack.infra.SQLiteHelper;
 import br.com.rodrigues.murilo.mtrack.infra.service.ProductService;
@@ -96,6 +97,30 @@ public class SalesOrderItemRepository {
         return true;
     }
 
+    public boolean deleteByOrder(SalesOrder salesOrder) {
+        database = dbHelper.getWritableDatabase();
+        try {
+            database.execSQL("DELETE FROM " + TABLE + " WHERE " + IDSALESORDER + " = " + String.valueOf(salesOrder.getIdSalesOrder()));
+        } finally {
+            database.close();
+        }
+        return true;
+    }
+
+    public boolean deleteFinished() {
+        database = dbHelper.getWritableDatabase();
+        try {
+            database.execSQL("DELETE FROM " + TABLE +
+                             " WHERE " + IDSALESORDER + " IN " +
+                                     " (SELECT " + SalesOrderRepository.IDSALESORDER +
+                                     "    FROM " + SalesOrderRepository.TABLE +
+                                     "   WHERE " + SalesOrderRepository.DELIVERED + " = 1");
+        } finally {
+            database.close();
+        }
+        return true;
+    }
+
     // Read cursor and create list
     private List<SalesOrderItem> toList(Cursor cursor) {
         List<SalesOrderItem> salesOrderItems = new ArrayList<SalesOrderItem>();
@@ -125,4 +150,5 @@ public class SalesOrderItemRepository {
         }
         return salesOrderItems;
     }
+
 }

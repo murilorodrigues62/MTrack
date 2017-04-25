@@ -42,6 +42,21 @@ public class SalesOrderPackageRepository {
         }
     }
 
+    public List<SalesOrderPackage> findAllRead() {
+        database=dbHelper.getReadableDatabase();
+        try {
+            Cursor cursor = database.query(TABLE, ALLCOLUMNS,
+                    IDSALESORDERREAL + " > 0 " +
+                            " AND " + IDSALESORDERREAL + " IN " +
+                            " (SELECT " + SalesOrderRepository.IDSALESORDER +
+                            "    FROM " + SalesOrderRepository.TABLE +
+                            "   WHERE " + SalesOrderRepository.DELIVERED + " = 1)" , null, null, null, null);
+            return toList(cursor);
+        } finally {
+            database.close();
+        }
+    }
+
     public List<SalesOrderPackage> findBySalesOrder(int idSalesOrder){
         database=dbHelper.getReadableDatabase();
         try {
@@ -98,10 +113,10 @@ public class SalesOrderPackageRepository {
             ContentValues values = new ContentValues();
 
             values.put(IDDELIVERY, salesOrderPackage.getIdDelivery());
-            values.put(IDSALESORDER, salesOrderPackage.getSalesOrder().getIdSalesOrder());
-            values.put(IDPRODUCT, salesOrderPackage.getProduct().getIdProduct());
+            values.put(IDSALESORDER, (salesOrderPackage.getSalesOrder() == null ? salesOrderPackage.getIdSalesOrder() : salesOrderPackage.getSalesOrder().getIdSalesOrder()));
+            values.put(IDPRODUCT, (salesOrderPackage.getProduct() == null ? salesOrderPackage.getIdProduct() : salesOrderPackage.getProduct().getIdProduct()));
             values.put(BARCODE, salesOrderPackage.getBarcode());
-            values.put(IDSALESORDERREAL, salesOrderPackage.getSalesOrderReal().getIdSalesOrder());
+            values.put(IDSALESORDERREAL, (salesOrderPackage.getSalesOrderReal() == null ? salesOrderPackage.getIdSalesOrderReal() : salesOrderPackage.getSalesOrderReal().getIdSalesOrder()));
 
             database.insert(TABLE, null, values);
         } finally {
@@ -160,6 +175,33 @@ public class SalesOrderPackageRepository {
         return true;
     }
 
+    public boolean delete(SalesOrderPackage salesOrderPackage) {
+        database = dbHelper.getWritableDatabase();
+        try {
+            database.execSQL("DELETE FROM " + TABLE +
+                             " WHERE " + IDDELIVERY + " = " + String.valueOf(salesOrderPackage.getIdDelivery()) +
+                             "   AND " + IDPRODUCT  + " = " + String.valueOf(salesOrderPackage.getProduct().getIdProduct()) +
+                             "   AND " + BARCODE    + " = " + salesOrderPackage.getBarcode());
+        } finally {
+            database.close();
+        }
+        return true;
+    }
+
+    public boolean deleteFinished() {
+        database = dbHelper.getWritableDatabase();
+        try {
+            database.execSQL("DELETE FROM " + TABLE +
+                    " WHERE " + IDSALESORDERREAL + " IN " +
+                    " (SELECT " + SalesOrderRepository.IDSALESORDER +
+                    "    FROM " + SalesOrderRepository.TABLE +
+                    "   WHERE " + SalesOrderRepository.DELIVERED + " = 1");
+        } finally {
+            database.close();
+        }
+        return true;
+    }
+
     // Read cursor and create list
     private List<SalesOrderPackage> toList(Cursor cursor) {
         List<SalesOrderPackage> salesOrderPackages = new ArrayList<SalesOrderPackage>();
@@ -181,6 +223,9 @@ public class SalesOrderPackageRepository {
                         break;
                     case BARCODE:
                         salesOrderPackage.setBarcode(cursor.getString(i));
+                        break;
+                    case IDDELIVERY:
+                        salesOrderPackage.setIdDelivery(cursor.getInt(i));
                         break;
                 }
             }

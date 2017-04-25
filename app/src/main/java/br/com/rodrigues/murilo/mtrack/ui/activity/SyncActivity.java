@@ -63,24 +63,24 @@ public class SyncActivity extends BaseActivity {
                     Context context = getApplicationContext();
                     Settings settings = SettingsService.findSettings(context);
 
-                    // If user chose update data
-                    if (booleans[0]) {
-                        // Sync orders and packages
-                        SalesOrderService.getSalesOrderWS(context, settings);
-                        SalesOrderPackageService.getSalesOrderPackageWS(context, settings);
-                        sleep(1000);
-                    }
-
                     // If user chose send data
                     if (booleans[1]) {
                         // add
-                        // buscar todos pedidos finalizados e todos as caixas com pedido real para eles
+                        SalesOrderPackageService.putSalesOrderPackageWS(context, settings);
                         sleep(1000);
                     }
 
                     // If user chose clear data base
                     if (booleans[2]) {
                         SalesOrderPackageService.clearDataBase(context);
+                        sleep(1000);
+                    }
+
+                    // If user chose update data
+                    if (booleans[0]) {
+                        // Sync orders and packages
+                        SalesOrderService.getSalesOrderWS(context, settings);
+                        SalesOrderPackageService.getSalesOrderPackageWS(context, settings);
                         sleep(1000);
                     }
 
