@@ -51,7 +51,7 @@ public class SalesOrderPackageRepository {
                             " (SELECT " + SalesOrderRepository.IDSALESORDER +
                             "    FROM " + SalesOrderRepository.TABLE +
                             "   WHERE " + SalesOrderRepository.DELIVERED + " = 1)" , null, null, null, null);
-            return toList(cursor);
+            return toList2(cursor);
         } finally {
             database.close();
         }
@@ -195,7 +195,7 @@ public class SalesOrderPackageRepository {
                     " WHERE " + IDSALESORDERREAL + " IN " +
                     " (SELECT " + SalesOrderRepository.IDSALESORDER +
                     "    FROM " + SalesOrderRepository.TABLE +
-                    "   WHERE " + SalesOrderRepository.DELIVERED + " = 1");
+                    "   WHERE " + SalesOrderRepository.DELIVERED + " = 1 )");
         } finally {
             database.close();
         }
@@ -220,6 +220,40 @@ public class SalesOrderPackageRepository {
                         break;
                     case IDSALESORDERREAL:
                         salesOrderPackage.setSalesOrderReal(SalesOrderService.findById(this.context, cursor.getInt(i)));
+                        break;
+                    case BARCODE:
+                        salesOrderPackage.setBarcode(cursor.getString(i));
+                        break;
+                    case IDDELIVERY:
+                        salesOrderPackage.setIdDelivery(cursor.getInt(i));
+                        break;
+                }
+            }
+            salesOrderPackages.add(salesOrderPackage);
+            cursor.moveToNext();
+        }
+        return salesOrderPackages;
+    }
+
+
+    // Read cursor and create list
+    private List<SalesOrderPackage> toList2(Cursor cursor) {
+        List<SalesOrderPackage> salesOrderPackages = new ArrayList<SalesOrderPackage>();
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            SalesOrderPackage salesOrderPackage = new SalesOrderPackage();
+
+            for(int i = 0; i < cursor.getColumnCount(); i++){
+                switch (cursor.getColumnName(i)){
+                    case IDPRODUCT:
+                        salesOrderPackage.setIdProduct(cursor.getInt(i));
+                        break;
+                    case IDSALESORDER:
+                        salesOrderPackage.setIdSalesOrder(cursor.getInt(i));
+                        break;
+                    case IDSALESORDERREAL:
+                        salesOrderPackage.setIdSalesOrderReal(cursor.getInt(i));
                         break;
                     case BARCODE:
                         salesOrderPackage.setBarcode(cursor.getString(i));

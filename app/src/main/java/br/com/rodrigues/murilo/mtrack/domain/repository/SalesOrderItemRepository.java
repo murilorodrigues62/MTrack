@@ -114,7 +114,7 @@ public class SalesOrderItemRepository {
                              " WHERE " + IDSALESORDER + " IN " +
                                      " (SELECT " + SalesOrderRepository.IDSALESORDER +
                                      "    FROM " + SalesOrderRepository.TABLE +
-                                     "   WHERE " + SalesOrderRepository.DELIVERED + " = 1");
+                                     "   WHERE " + SalesOrderRepository.DELIVERED + " = 1 )");
         } finally {
             database.close();
         }

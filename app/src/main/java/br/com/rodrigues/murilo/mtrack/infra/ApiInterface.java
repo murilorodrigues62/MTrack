@@ -8,7 +8,7 @@ import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrderPackage;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.PUT;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface ApiInterface {
@@ -19,12 +19,9 @@ public interface ApiInterface {
     @GET("api/transporter/{id}/order")
     Call<List<SalesOrder>> getTransporterSalesOrder(@Path("id") String id);
 
-    // @GET("api/transporter/{id}/package") // TODO: 24/04/17 change
-    //Call<List<SalesOrderPackage>> getSalesOrderPackage(@Path("id") String id);
+    @GET("api/transporter/{id}/package")
+    Call<List<SalesOrderPackage>> getSalesOrderPackage(@Path("id") String id);
 
-    @GET("api/package/")
-    Call<List<SalesOrderPackage>> getSalesOrderPackage();
-
-    @PUT("api/package/")
-    Call<List<SalesOrderPackage>> putSalesOrderPackage(@Body List<SalesOrderPackage> salesOrderPackages);
+    @POST("api/package/")
+    Call<Boolean> postSalesOrderPackage(@Body List<SalesOrderPackage> salesOrderPackages);
 }

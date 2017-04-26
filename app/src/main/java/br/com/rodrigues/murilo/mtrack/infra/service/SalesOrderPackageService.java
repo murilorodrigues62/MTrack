@@ -80,8 +80,7 @@ public class SalesOrderPackageService {
 
         ApiInterface apiInterface = ApiClient.getClient(settings.getUrlEdata()).create(ApiInterface.class);
 
-        //Call<List<SalesOrderPackage>> call = apiInterface.getSalesOrderPackage(settings.getTransporterCode());
-        Call<List<SalesOrderPackage>> call = apiInterface.getSalesOrderPackage(); // TODO: 24/04/17 change
+        Call<List<SalesOrderPackage>> call = apiInterface.getSalesOrderPackage(settings.getTransporterCode());
 
         call.enqueue(new Callback<List<SalesOrderPackage>>() {
             @Override
@@ -100,7 +99,6 @@ public class SalesOrderPackageService {
                 call.cancel();
             }
         });
-
         return true;
     }
 
@@ -118,12 +116,11 @@ public class SalesOrderPackageService {
 
         ApiInterface apiInterface = ApiClient.getClient(settings.getUrlEdata()).create(ApiInterface.class);
 
-        // TODO: 24/04/17 Find just read package
-        Call<List<SalesOrderPackage>> call = apiInterface.putSalesOrderPackage(SalesOrderPackageService.findAllRead(context));
+        Call<Boolean> call = apiInterface.postSalesOrderPackage(SalesOrderPackageService.findAllRead(context));
 
-        call.enqueue(new Callback<List<SalesOrderPackage>>() {
+        call.enqueue(new Callback<Boolean>() {
             @Override
-            public void onResponse(Call<List<SalesOrderPackage>> call, Response<List<SalesOrderPackage>> response) {
+            public void onResponse(Call call, Response response) {
 
                 if (response.isSuccessful()) {
                     clearOrdersFinished(context);
@@ -131,11 +128,10 @@ public class SalesOrderPackageService {
             }
 
             @Override
-            public void onFailure(Call<List<SalesOrderPackage>> call, Throwable t) {
+            public void onFailure(Call call, Throwable t) {
                 call.cancel();
             }
         });
-
         return true;
     }
 

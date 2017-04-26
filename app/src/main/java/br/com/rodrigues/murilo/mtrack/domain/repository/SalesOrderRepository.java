@@ -96,7 +96,7 @@ public class SalesOrderRepository {
     public boolean deleteFinished() {
         database = dbHelper.getWritableDatabase();
         try {
-            database.execSQL("DELETE FROM " + TABLE + " WHERE " + DELIVERED + " = 1");
+            database.execSQL("DELETE FROM " + TABLE + " WHERE " + DELIVERED + " = 1 ");
         } finally {
             database.close();
         }

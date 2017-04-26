@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="@string/update_sales_orders"
             android:id="@+id/switchUpdate"
-            android:checked="true"
+            android:checked="false"
             android:layout_weight="0.10" />
 
         <Switch
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/send_delivery"
             android:id="@+id/switchSend"
-            android:checked="true"
+            android:checked="false"
             android:layout_weight="0.10" />
 
         <Switch
