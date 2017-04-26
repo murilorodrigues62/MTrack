@@ -10,8 +10,6 @@ import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.domain.model.SalesOrderPackage;
 import br.com.rodrigues.murilo.mtrack.infra.SQLiteHelper;
-import br.com.rodrigues.murilo.mtrack.infra.service.ProductService;
-import br.com.rodrigues.murilo.mtrack.infra.service.SalesOrderService;
 
 public class SalesOrderPackageRepository {
     // Name in DataBase
@@ -51,7 +49,7 @@ public class SalesOrderPackageRepository {
                             " (SELECT " + SalesOrderRepository.IDSALESORDER +
                             "    FROM " + SalesOrderRepository.TABLE +
                             "   WHERE " + SalesOrderRepository.DELIVERED + " = 1)" , null, null, null, null);
-            return toList2(cursor);
+            return toList(cursor);
         } finally {
             database.close();
         }
@@ -113,10 +111,10 @@ public class SalesOrderPackageRepository {
             ContentValues values = new ContentValues();
 
             values.put(IDDELIVERY, salesOrderPackage.getIdDelivery());
-            values.put(IDSALESORDER, (salesOrderPackage.getSalesOrder() == null ? salesOrderPackage.getIdSalesOrder() : salesOrderPackage.getSalesOrder().getIdSalesOrder()));
-            values.put(IDPRODUCT, (salesOrderPackage.getProduct() == null ? salesOrderPackage.getIdProduct() : salesOrderPackage.getProduct().getIdProduct()));
+            values.put(IDSALESORDER, salesOrderPackage.getIdSalesOrder());
+            values.put(IDPRODUCT, (salesOrderPackage.getIdProduct()));
             values.put(BARCODE, salesOrderPackage.getBarcode());
-            values.put(IDSALESORDERREAL, (salesOrderPackage.getSalesOrderReal() == null ? salesOrderPackage.getIdSalesOrderReal() : salesOrderPackage.getSalesOrderReal().getIdSalesOrder()));
+            values.put(IDSALESORDERREAL, (salesOrderPackage.getIdSalesOrderReal()));
 
             database.insert(TABLE, null, values);
         } finally {
@@ -129,12 +127,12 @@ public class SalesOrderPackageRepository {
         database = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(IDSALESORDERREAL, salesOrderPackage.getSalesOrderReal().getIdSalesOrder());
+        values.put(IDSALESORDERREAL, salesOrderPackage.getIdSalesOrderReal());
 
         String where = IDDELIVERY + " =?  AND "+ IDPRODUCT +" =?  AND " + BARCODE + " =? ";
 
         String[] whereArgs = {String.valueOf(salesOrderPackage.getIdDelivery()),
-                String.valueOf(salesOrderPackage.getProduct().getIdProduct()),
+                String.valueOf(salesOrderPackage.getIdProduct()),
                 salesOrderPackage.getBarcode()};
 
         try {
@@ -153,8 +151,8 @@ public class SalesOrderPackageRepository {
 
         String where = IDSALESORDERREAL + " =?  AND "+ IDPRODUCT +" =?  AND " + BARCODE + " =? ";
 
-        String[] whereArgs = {String.valueOf(salesOrderPackage.getSalesOrderReal().getIdSalesOrder()),
-                String.valueOf(salesOrderPackage.getProduct().getIdProduct()),
+        String[] whereArgs = {String.valueOf(salesOrderPackage.getIdSalesOrderReal()),
+                String.valueOf(salesOrderPackage.getIdProduct()),
                 salesOrderPackage.getBarcode()};
 
         try {
@@ -180,7 +178,7 @@ public class SalesOrderPackageRepository {
         try {
             database.execSQL("DELETE FROM " + TABLE +
                              " WHERE " + IDDELIVERY + " = " + String.valueOf(salesOrderPackage.getIdDelivery()) +
-                             "   AND " + IDPRODUCT  + " = " + String.valueOf(salesOrderPackage.getProduct().getIdProduct()) +
+                             "   AND " + IDPRODUCT  + " = " + String.valueOf(salesOrderPackage.getIdProduct()) +
                              "   AND " + BARCODE    + " = " + salesOrderPackage.getBarcode());
         } finally {
             database.close();
@@ -204,40 +202,6 @@ public class SalesOrderPackageRepository {
 
     // Read cursor and create list
     private List<SalesOrderPackage> toList(Cursor cursor) {
-        List<SalesOrderPackage> salesOrderPackages = new ArrayList<SalesOrderPackage>();
-
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            SalesOrderPackage salesOrderPackage = new SalesOrderPackage();
-
-            for(int i = 0; i < cursor.getColumnCount(); i++){
-                switch (cursor.getColumnName(i)){
-                    case IDPRODUCT:
-                        salesOrderPackage.setProduct(ProductService.findById(this.context, cursor.getInt(i)));
-                        break;
-                    case IDSALESORDER:
-                        salesOrderPackage.setSalesOrder(SalesOrderService.findById(this.context, cursor.getInt(i)));
-                        break;
-                    case IDSALESORDERREAL:
-                        salesOrderPackage.setSalesOrderReal(SalesOrderService.findById(this.context, cursor.getInt(i)));
-                        break;
-                    case BARCODE:
-                        salesOrderPackage.setBarcode(cursor.getString(i));
-                        break;
-                    case IDDELIVERY:
-                        salesOrderPackage.setIdDelivery(cursor.getInt(i));
-                        break;
-                }
-            }
-            salesOrderPackages.add(salesOrderPackage);
-            cursor.moveToNext();
-        }
-        return salesOrderPackages;
-    }
-
-
-    // Read cursor and create list
-    private List<SalesOrderPackage> toList2(Cursor cursor) {
         List<SalesOrderPackage> salesOrderPackages = new ArrayList<SalesOrderPackage>();
 
         cursor.moveToFirst();

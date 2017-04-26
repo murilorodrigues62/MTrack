@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 import br.com.rodrigues.murilo.mtrack.R;
+import br.com.rodrigues.murilo.mtrack.infra.service.ProductService;
 import br.com.rodrigues.murilo.mtrack.infra.service.SalesOrderItemService;
 import br.com.rodrigues.murilo.mtrack.infra.service.SalesOrderPackageService;
 import br.com.rodrigues.murilo.mtrack.infra.service.SalesOrderService;
@@ -105,7 +106,7 @@ public class SalesOrder {
             Boolean productInOrder = false;
             for (SalesOrderItem salesOrderItem: salesOrderItems) {
 
-                if (salesOrderItem.getProduct().equals(salesOrderPackage.getProduct())){
+                if (salesOrderItem.getProduct().equals(ProductService.findById(context, salesOrderPackage.getIdProduct()))){
                     productInOrder = true;
 
                     // Check total packages read
@@ -113,10 +114,10 @@ public class SalesOrder {
                         return new ReturnMessage(false, context.getString(R.string.msg_packages_read));
                     }
 
-                    if (salesOrderPackage.getSalesOrderReal() != null){
-                        return new ReturnMessage(false, context.getString(R.string.msg_package_read) + salesOrderPackage.getSalesOrderReal().getIdSalesOrder());
+                    if (salesOrderPackage.getIdSalesOrderReal() > 0){
+                        return new ReturnMessage(false, context.getString(R.string.msg_package_read) + salesOrderPackage.getIdSalesOrderReal());
                     } else {
-                        salesOrderPackage.setSalesOrderReal(this);
+                        salesOrderPackage.setIdSalesOrderReal(this.getIdSalesOrder());
                     }
 
                     // Update Sales Order Real of package

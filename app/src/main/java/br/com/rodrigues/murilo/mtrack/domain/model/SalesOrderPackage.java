@@ -5,13 +5,8 @@ import com.google.gson.annotations.SerializedName;
 public class SalesOrderPackage {
     @SerializedName("IdDelivery")
     private int idDelivery;
-    private SalesOrder salesOrder;
-    private Product product;
-    private SalesOrder salesOrderReal;
     @SerializedName("Barcode")
     private String barcode;
-
-    // Private attribute just used to get data in Json and insert into database
     @SerializedName("IdSalesOrder")
     private int idSalesOrder;
     @SerializedName("IdSalesOrderReal")
@@ -27,30 +22,6 @@ public class SalesOrderPackage {
 
     public void setIdDelivery(int idDelivery) {
         this.idDelivery = idDelivery;
-    }
-
-    public SalesOrder getSalesOrder() {
-        return salesOrder;
-    }
-
-    public void setSalesOrder(SalesOrder salesOrder) {
-        this.salesOrder = salesOrder;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public SalesOrder getSalesOrderReal() {
-        return salesOrderReal;
-    }
-
-    public void setSalesOrderReal(SalesOrder salesOrderReal) {
-        this.salesOrderReal = salesOrderReal;
     }
 
     public String getBarcode() {
