@@ -10,6 +10,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/include_toolbar" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            android:layout_gravity="top|center"
+            android:src="@mipmap/background"
+            android:layout_margin="30dp" />
     </LinearLayout>
     <include layout="@layout/include_navigation" />
 

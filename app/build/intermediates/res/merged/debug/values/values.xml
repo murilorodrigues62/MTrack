@@ -373,7 +373,7 @@
     <string name="navigation_quotes">Sales Order</string>
     <string name="navigation_settings">Settings</string>
     <string name="navigation_sync">Sync</string>
-    <string name="navigation_title">MTrack System</string>
+    <string name="navigation_title">MTrack</string>
     <string name="open_order">Open Order</string>
     <string name="order">"Order "</string>
     <string name="package_removed">Package removed!</string>

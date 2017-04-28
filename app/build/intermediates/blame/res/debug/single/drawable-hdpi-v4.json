@@ -180,6 +180,10 @@
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/exploded-aar/com.android.support/design/25.2.0/res/drawable-hdpi-v4/design_ic_visibility_off.png"
     },
     {
+        "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_sync.png",
+        "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/drawable-hdpi/ic_sync.png"
+    },
+    {
         "merged": "/home/rodrigues/Área de Trabalho/MTrack/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_barcode.png",
         "source": "/home/rodrigues/Área de Trabalho/MTrack/app/src/main/res/drawable-hdpi/ic_barcode.png"
     },
